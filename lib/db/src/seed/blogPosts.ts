@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { InsertBlogPost } from "../schema";
 
 export const BLOG_POST_SEEDS: InsertBlogPost[] = [

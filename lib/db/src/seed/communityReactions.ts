@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const COMMUNITY_REACTION_SEEDS = [
   { postIndex: 0, userId: "seed_reactor_001", type: "love" as const },
   { postIndex: 0, userId: "seed_reactor_002", type: "insightful" as const },

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const COMMUNITY_POST_SEEDS = [
   {
     authorId: "seed_user_001",

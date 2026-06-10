@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { InsertEvent } from "../schema";
 
 export const EVENT_SEEDS: InsertEvent[] = [

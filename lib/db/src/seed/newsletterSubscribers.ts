@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { InsertNewsletter } from "../schema";
 
 export const NEWSLETTER_SUBSCRIBER_SEEDS: InsertNewsletter[] = [

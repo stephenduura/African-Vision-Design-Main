@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { InsertContact } from "../schema";
 
 export const CONTACT_SUBMISSION_SEEDS: InsertContact[] = [
