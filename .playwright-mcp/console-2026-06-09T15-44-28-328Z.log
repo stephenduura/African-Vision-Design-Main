@@ -1,0 +1,134 @@
+[     372ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=1639f5fd:17986
+[  129341ms] [WARNING] <link rel=preload> uses an unsupported `as` value @ https://checkout.stripe.com/c/pay/cs_live_a1dU3khsu9Fp5lCuLoK2vi2IpWgroXiZz6afyKDn6e05818v5glNT73Tl5#fid1d2BpamRhQ2prcSc%2FJ0lqd2QnKSdnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSd2cGd2ZndsdXFsamtQa2x0cGBrYHZ2QGtkZ2lgYSc%2FY2RpdmApJ2JwZGZkaGppYFNkd2xka3EnPydmamtxd2ppJyknZHVsTmB8Jz8ndW5aaWxzYFowNFFgRmlWVGxjUGhHRjZBVzNnSzxpcHFzYmAzaldISHd0cDZjT1xsf3ZJSndpS1w0RF80V01EMzFnbzVsaEQwSk51YldrdUhBPTEwYz1yanFCXFVhSWZ%2FYDU1f0RSVkBwbFInKSdjd2poVmB3c2B3Jz9xd3BgKSdnZGZuYndqcGthRmppancnPycmYzBjNWAwJyknaWR8anBxUXx1YCc%2FJ3Zsa2JpYFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl:0
+[  129342ms] [WARNING] <link rel=preload> uses an unsupported `as` value @ https://checkout.stripe.com/c/pay/cs_live_a1dU3khsu9Fp5lCuLoK2vi2IpWgroXiZz6afyKDn6e05818v5glNT73Tl5#fid1d2BpamRhQ2prcSc%2FJ0lqd2QnKSdnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSd2cGd2ZndsdXFsamtQa2x0cGBrYHZ2QGtkZ2lgYSc%2FY2RpdmApJ2JwZGZkaGppYFNkd2xka3EnPydmamtxd2ppJyknZHVsTmB8Jz8ndW5aaWxzYFowNFFgRmlWVGxjUGhHRjZBVzNnSzxpcHFzYmAzaldISHd0cDZjT1xsf3ZJSndpS1w0RF80V01EMzFnbzVsaEQwSk51YldrdUhBPTEwYz1yanFCXFVhSWZ%2FYDU1f0RSVkBwbFInKSdjd2poVmB3c2B3Jz9xd3BgKSdnZGZuYndqcGthRmppancnPycmYzBjNWAwJyknaWR8anBxUXx1YCc%2FJ3Zsa2JpYFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl:0
+[  134342ms] [LOG] %c EvalError
+    at nm (https://client.px-cloud.net/PXVl48pWoc/main.min.js:2:65409)
+    at pl (https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:160)
+    at FZ (https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:137942)
+    at FX (https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:137561)
+    at https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:139279
+    at https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:139285
+    at https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:139750 @ https://client.px-cloud.net/PXVl48pWoc/main.min.js:1
+[  135044ms] [ERROR] Framing 'https://client.wra-api.net/' violates the following Content Security Policy directive: "frame-src 'self' https://*.px-cloud.net https://*.px-cdn.net https://crcldu.com". The request has been blocked.
+ @ https://client.px-cloud.net/:0
+[  135083ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://client.wra-api.net') does not match the recipient window's origin ('null'). @ https://client.px-cloud.net/PXVl48pWoc/main.min.js:2
+[  287189ms] [WARNING] <link rel=preload> uses an unsupported `as` value @ https://checkout.stripe.com/c/pay/cs_live_a1dU3khsu9Fp5lCuLoK2vi2IpWgroXiZz6afyKDn6e05818v5glNT73Tl5#fid1d2BpamRhQ2prcSc%2FJ0lqd2QnKSdnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSd2cGd2ZndsdXFsamtQa2x0cGBrYHZ2QGtkZ2lgYSc%2FY2RpdmApJ2JwZGZkaGppYFNkd2xka3EnPydmamtxd2ppJyknZHVsTmB8Jz8ndW5aaWxzYFowNFFgRmlWVGxjUGhHRjZBVzNnSzxpcHFzYmAzaldISHd0cDZjT1xsf3ZJSndpS1w0RF80V01EMzFnbzVsaEQwSk51YldrdUhBPTEwYz1yanFCXFVhSWZ%2FYDU1f0RSVkBwbFInKSdjd2poVmB3c2B3Jz9xd3BgKSdnZGZuYndqcGthRmppancnPycmYzBjNWAwJyknaWR8anBxUXx1YCc%2FJ3Zsa2JpYFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl:0
+[  287189ms] [WARNING] <link rel=preload> uses an unsupported `as` value @ https://checkout.stripe.com/c/pay/cs_live_a1dU3khsu9Fp5lCuLoK2vi2IpWgroXiZz6afyKDn6e05818v5glNT73Tl5#fid1d2BpamRhQ2prcSc%2FJ0lqd2QnKSdnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSd2cGd2ZndsdXFsamtQa2x0cGBrYHZ2QGtkZ2lgYSc%2FY2RpdmApJ2JwZGZkaGppYFNkd2xka3EnPydmamtxd2ppJyknZHVsTmB8Jz8ndW5aaWxzYFowNFFgRmlWVGxjUGhHRjZBVzNnSzxpcHFzYmAzaldISHd0cDZjT1xsf3ZJSndpS1w0RF80V01EMzFnbzVsaEQwSk51YldrdUhBPTEwYz1yanFCXFVhSWZ%2FYDU1f0RSVkBwbFInKSdjd2poVmB3c2B3Jz9xd3BgKSdnZGZuYndqcGthRmppancnPycmYzBjNWAwJyknaWR8anBxUXx1YCc%2FJ3Zsa2JpYFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl:0
+[  289136ms] [LOG] %c EvalError
+    at nm (https://client.px-cloud.net/PXVl48pWoc/main.min.js:2:65409)
+    at pl (https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:160)
+    at FZ (https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:137942)
+    at FX (https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:137561)
+    at https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:139279
+    at https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:139285
+    at https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:139750 @ https://client.px-cloud.net/PXVl48pWoc/main.min.js:1
+[  289667ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=1639f5fd:17986
+[  291554ms] [WARNING] <link rel=preload> uses an unsupported `as` value @ https://checkout.stripe.com/c/pay/cs_live_a1127CqRLoE2rTrDWlyLw2xIttfX7ZHn6opuAJQsYIeFtrPKHuB5w4O2XP#fid1d2BpamRhQ2prcSc%2FJ0lqd2QnKSdnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSd2cGd2ZndsdXFsamtQa2x0cGBrYHZ2QGtkZ2lgYSc%2FY2RpdmApJ2JwZGZkaGppYFNkd2xka3EnPydmamtxd2ppJyknZHVsTmB8Jz8ndW5aaWxzYFowNFFgRmlWVGxjUGhHRjZBVzNnSzxpcHFzYmAzaldISHd0cDZjT1xsf3ZJSndpS1w0RF80V01EMzFnbzVsaEQwSk51YldrdUhBPTEwYz1yanFCXFVhSWZ%2FYDU1f0RSVkBwbFInKSdjd2poVmB3c2B3Jz9xd3BgKSdnZGZuYndqcGthRmppancnPycmYzBjNWAwJyknaWR8anBxUXx1YCc%2FJ3Zsa2JpYFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl:0
+[  291554ms] [WARNING] <link rel=preload> uses an unsupported `as` value @ https://checkout.stripe.com/c/pay/cs_live_a1127CqRLoE2rTrDWlyLw2xIttfX7ZHn6opuAJQsYIeFtrPKHuB5w4O2XP#fid1d2BpamRhQ2prcSc%2FJ0lqd2QnKSdnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSd2cGd2ZndsdXFsamtQa2x0cGBrYHZ2QGtkZ2lgYSc%2FY2RpdmApJ2JwZGZkaGppYFNkd2xka3EnPydmamtxd2ppJyknZHVsTmB8Jz8ndW5aaWxzYFowNFFgRmlWVGxjUGhHRjZBVzNnSzxpcHFzYmAzaldISHd0cDZjT1xsf3ZJSndpS1w0RF80V01EMzFnbzVsaEQwSk51YldrdUhBPTEwYz1yanFCXFVhSWZ%2FYDU1f0RSVkBwbFInKSdjd2poVmB3c2B3Jz9xd3BgKSdnZGZuYndqcGthRmppancnPycmYzBjNWAwJyknaWR8anBxUXx1YCc%2FJ3Zsa2JpYFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl:0
+[  293334ms] [LOG] %c EvalError
+    at nm (https://client.px-cloud.net/PXVl48pWoc/main.min.js:2:65409)
+    at pl (https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:160)
+    at FZ (https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:137942)
+    at FX (https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:137561)
+    at https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:139279
+    at https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:139285
+    at https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:139750 @ https://client.px-cloud.net/PXVl48pWoc/main.min.js:1
+[  293936ms] [ERROR] Framing 'https://client.wra-api.net/' violates the following Content Security Policy directive: "frame-src 'self' https://*.px-cloud.net https://*.px-cdn.net https://crcldu.com". The request has been blocked.
+ @ https://client.px-cloud.net/:0
+[  294005ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://client.wra-api.net') does not match the recipient window's origin ('null'). @ https://client.px-cloud.net/PXVl48pWoc/main.min.js:2
+[  293936ms] [ERROR] Framing 'https://client.wra-api.net/' violates the following Content Security Policy directive: "frame-src 'self' https://*.px-cloud.net https://*.px-cdn.net https://crcldu.com". The request has been blocked.
+ @ https://client.px-cloud.net/:0
+[  294005ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://client.wra-api.net') does not match the recipient window's origin ('null'). @ https://client.px-cloud.net/PXVl48pWoc/main.min.js:2
+[  295557ms] [WARNING] Cannot download icons after the webpage has been closed (web app manifest "https://pay.google.com/gp/p/web_manifest.json" for payment handler manifest "https://google.com/pay"). @ https://checkout.stripe.com/c/pay/cs_live_a1127CqRLoE2rTrDWlyLw2xIttfX7ZHn6opuAJQsYIeFtrPKHuB5w4O2XP#fid1d2BpamRhQ2prcSc%2FJ0lqd2QnKSdnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSd2cGd2ZndsdXFsamtQa2x0cGBrYHZ2QGtkZ2lgYSc%2FY2RpdmApJ2JwZGZkaGppYFNkd2xka3EnPydmamtxd2ppJyknZHVsTmB8Jz8ndW5aaWxzYFowNFFgRmlWVGxjUGhHRjZBVzNnSzxpcHFzYmAzaldISHd0cDZjT1xsf3ZJSndpS1w0RF80V01EMzFnbzVsaEQwSk51YldrdUhBPTEwYz1yanFCXFVhSWZ%2FYDU1f0RSVkBwbFInKSdjd2poVmB3c2B3Jz9xd3BgKSdnZGZuYndqcGthRmppancnPycmYzBjNWAwJyknaWR8anBxUXx1YCc%2FJ3Zsa2JpYFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl:0
+[  295558ms] [ERROR] Failed to download or decode a non-empty icon for payment app with "https://pay.google.com/gp/p/web_manifest.json" manifest. @ https://checkout.stripe.com/c/pay/cs_live_a1127CqRLoE2rTrDWlyLw2xIttfX7ZHn6opuAJQsYIeFtrPKHuB5w4O2XP#fid1d2BpamRhQ2prcSc%2FJ0lqd2QnKSdnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSd2cGd2ZndsdXFsamtQa2x0cGBrYHZ2QGtkZ2lgYSc%2FY2RpdmApJ2JwZGZkaGppYFNkd2xka3EnPydmamtxd2ppJyknZHVsTmB8Jz8ndW5aaWxzYFowNFFgRmlWVGxjUGhHRjZBVzNnSzxpcHFzYmAzaldISHd0cDZjT1xsf3ZJSndpS1w0RF80V01EMzFnbzVsaEQwSk51YldrdUhBPTEwYz1yanFCXFVhSWZ%2FYDU1f0RSVkBwbFInKSdjd2poVmB3c2B3Jz9xd3BgKSdnZGZuYndqcGthRmppancnPycmYzBjNWAwJyknaWR8anBxUXx1YCc%2FJ3Zsa2JpYFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl:0
+[  296394ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=1639f5fd:17986
+[  300863ms] [WARNING] Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly. @ http://127.0.0.1:24545/node_modules/.vite/deps/framer-motion.js?v=b989e3c1:187
+[ 1663688ms] [LOG] [vite] server connection lost. Polling for restart... @ http://127.0.0.1:24545/@vite/client:864
+[ 1667191ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=e56fe158:17986
+[ 1834325ms] [LOG] [vite] server connection lost. Polling for restart... @ http://127.0.0.1:24545/@vite/client:864
+[ 1840952ms] [LOG] [vite] server connection lost. Polling for restart... @ http://127.0.0.1:24545/@vite/client:864
+[ 1840961ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_RESET @ http://127.0.0.1:24545/node_modules/.vite/deps/@clerk_themes.js?v=3d753a63:0
+[ 1840961ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_RESET @ http://127.0.0.1:24545/src/components/ui/toaster.tsx:0
+[ 1840961ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_RESET @ http://127.0.0.1:24545/node_modules/.vite/deps/@clerk_react_internal.js?v=c4500b09:0
+[ 1842986ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/components/ui/tooltip.tsx:0
+[ 1842991ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/contexts/AuthContext.tsx:0
+[ 1843007ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/components/auth/LocalAuthForms.tsx:0
+[ 1845021ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/not-found.tsx:0
+[ 1845022ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/components/layout/Layout.tsx:0
+[ 1845022ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Home.tsx:0
+[ 1845022ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/About.tsx:0
+[ 1845022ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Projects.tsx:0
+[ 1845036ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/ProjectDetail.tsx:0
+[ 1847043ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Team.tsx:0
+[ 1847045ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Impact.tsx:0
+[ 1847046ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Donate.tsx:0
+[ 1847046ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Community.tsx:0
+[ 1847056ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Partners.tsx:0
+[ 1847076ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Blog.tsx:0
+[ 1849084ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/BlogPostDetail.tsx:0
+[ 1849086ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Roadmap.tsx:0
+[ 1849086ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Contact.tsx:0
+[ 1849086ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Office.tsx:0
+[ 1849086ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/DoingBusiness.tsx:0
+[ 1849086ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/AfricanInsights.tsx:0
+[ 1851115ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Vacancies.tsx:0
+[ 1851116ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Account.tsx:0
+[ 1851117ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/News.tsx:0
+[ 1851117ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/EventDetail.tsx:0
+[ 1851117ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Dashboard.tsx:0
+[ 1851133ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=179dce02:0
+[ 1853141ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/react-dom_client.js?v=df7c673d:0
+[ 1853144ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/react.js?v=179dce02:0
+[ 1853144ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/@clerk_react.js?v=43481295:0
+[ 1853145ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/wouter.js?v=cddc6d74:0
+[ 1853145ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/@tanstack_react-query.js?v=b532247f:0
+[ 1855170ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/favicon.svg:0
+[52229497ms] [LOG] [vite] server connection lost. Polling for restart... @ http://127.0.0.1:24545/@vite/client:864
+[52241667ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/react-dom_client.js?v=a87c3a26:0
+[52253825ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=dad62878:0
+[52253879ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/wouter.js?v=2eb8bdf2:0
+[52253881ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/favicon.svg:0
+[52255848ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/@clerk_react_internal.js?v=2acece07:0
+[52255864ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/@clerk_themes.js?v=d07e7be2:0
+[52255866ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/components/ui/toaster.tsx:0
+[52255871ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/components/ui/tooltip.tsx:0
+[52255930ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/contexts/AuthContext.tsx:0
+[52255931ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/components/auth/LocalAuthForms.tsx:0
+[52257878ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/not-found.tsx:0
+[52257892ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/components/layout/Layout.tsx:0
+[52257892ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Home.tsx:0
+[52257907ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/About.tsx:0
+[52257955ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Projects.tsx:0
+[52257956ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/ProjectDetail.tsx:0
+[52259921ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Team.tsx:0
+[52259939ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Impact.tsx:0
+[52259940ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Donate.tsx:0
+[52259953ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Community.tsx:0
+[52259997ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Partners.tsx:0
+[52259998ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Blog.tsx:0
+[52261956ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/BlogPostDetail.tsx:0
+[52261979ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Roadmap.tsx:0
+[52261980ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Contact.tsx:0
+[52261981ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Office.tsx:0
+[52262040ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/DoingBusiness.tsx:0
+[52262041ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/AfricanInsights.tsx:0
+[52263991ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Vacancies.tsx:0
+[52264015ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Account.tsx:0
+[52264016ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/News.tsx:0
+[52264017ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/EventDetail.tsx:0
+[52264074ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/pages/Dashboard.tsx:0
+[52264083ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/@clerk_react.js?v=ee743879:0
+[52266056ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/react.js?v=dad62878:0
+[52266057ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/@tanstack_react-query.js?v=fc9af03c:0
+[52527104ms] [LOG] [vite] server connection lost. Polling for restart... @ http://127.0.0.1:24545/@vite/client:864
+[52533206ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/App.tsx:0
+[52535213ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/index.css:0
+[52553484ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/favicon.svg:0
+[52553512ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=bdc9a1d0:0
+[52553515ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/node_modules/.vite/deps/react-dom_client.js?v=a67b4add:0
+[54803065ms] [LOG] [vite] server connection lost. Polling for restart... @ http://127.0.0.1:24545/@vite/client:864
+[54805106ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/src/main.tsx:0
+[54807202ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:24545/favicon.svg:0
+[55036252ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45265d3e:17986
+[56343601ms] [LOG] [vite] server connection lost. Polling for restart... @ http://127.0.0.1:24545/@vite/client:864
+[59618861ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45265d3e:17986

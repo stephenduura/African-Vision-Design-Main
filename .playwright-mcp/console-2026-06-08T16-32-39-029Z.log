@@ -1,0 +1,18 @@
+[     460ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:17986
+[     737ms] TypeError: (events ?? []).map is not a function
+    at News (http://127.0.0.1:24545/src/pages/News.tsx:564:44)
+    at react-stack-bottom-frame (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:17424:20)
+    at renderWithHooks (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:4206:24)
+    at updateFunctionComponent (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:6619:21)
+    at beginWork (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:7654:20)
+    at runWithFiberInDEV (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:1485:72)
+    at performUnitOfWork (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:10868:98)
+    at workLoopSync (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:10728:43)
+    at renderRootSync (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:10711:13)
+    at performWorkOnRoot (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:10359:46)
+[     737ms] [WARNING] %s
+
+%s
+ An error occurred in the <News> component. Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries. @ http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:6228
+[   74179ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:17986

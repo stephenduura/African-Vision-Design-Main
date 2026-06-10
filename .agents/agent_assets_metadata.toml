@@ -1,0 +1,128 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "RnlcshPoR5vV8S1WGQSdK"
+uri = "file://artifacts/papi-foundation/public/sectors/livestock.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "-_sPVfdQUWdLa7FzeGwnM"
+uri = "file://artifacts/papi-foundation/public/sectors/agritrading.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "Q_7jMG7qc_kxzkErkVbqw"
+uri = "file://artifacts/papi-foundation/public/sectors/finance.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "4G_xR2SSbCRC09tMC7g4A"
+uri = "file://artifacts/papi-foundation/public/sectors/construction.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "NMHkOYZGW2zWTjrOwM1p5"
+uri = "file://artifacts/papi-foundation/public/sectors/transport.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "LHF740tPSajpt3mu_4zP2"
+uri = "file://artifacts/papi-foundation/public/sectors/marine.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "_FcsNrmjCrXHgZardQna0"
+uri = "file://artifacts/papi-foundation/public/sectors/retail.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "tFDDhC0lMA8eLz5_Ug1k2"
+uri = "file://artifacts/papi-foundation/public/insights/hero.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "nti8upBvqeggcioFC3U9T"
+uri = "file://artifacts/papi-foundation/public/insights/digital.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "btojX3v3cFeW-T15wL7n1"
+uri = "file://artifacts/papi-foundation/public/insights/youth.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "7ga-Fq8aG-YInnjHO_-8p"
+uri = "file://artifacts/papi-foundation/public/insights/energy.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "Suk15EzFuwwTnXjx4HZiS"
+uri = "file://artifacts/papi-foundation/public/insights/fintech.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "wja1cphI66e3PxWJkLtSo"
+uri = "file://artifacts/papi-foundation/public/insights/urban.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "EysUOxout3o9Cts7FqXwv"
+uri = "file://artifacts/papi-foundation/public/team/hero.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "S-Qur7iQ36UsGKXWbPdyJ"
+uri = "file://artifacts/papi-foundation/public/roadmap/hero.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "6j29TtgnAKj9TOrdmMbJh"
+uri = "file://artifacts/papi-foundation/public/roadmap/cta.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "pjIlIzBNp2F6ZUZLPHUcI"
+uri = "file://artifacts/papi-foundation/public/partners/hero.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "WdMpir2xlSG3BjRGMlWd2"
+uri = "file://artifacts/papi-foundation/public/partners/cta.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "hTpqcm8OxtQEvdE76uTei"
+uri = "file://artifacts/papi-foundation/public/news/hero.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "2SDiu5j3iQlL5w26327hB"
+uri = "file://artifacts/papi-foundation/public/news/cta.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "P4vIDtBj81VYSTT0D4Zz_"
+uri = "file://attached_assets/generated_images/global_ambassadors.png"
+type = "image"
+title = "global ambassadors world map"

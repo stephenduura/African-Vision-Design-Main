@@ -1,0 +1,14 @@
+[     200ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4174/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=e56fe158:17986
+[   68995ms] [WARNING] <link rel=preload> uses an unsupported `as` value @ https://checkout.stripe.com/c/pay/cs_live_a1swQNRK3V7r7OJivrbqvCIcHSDRFS6chbBpZpHOMNMkv2gZaES1ZZZSFE#fid1d2BpamRhQ2prcSc%2FJ0lqd2QnKSdnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRRYEZpVlRsY1BoR0Y2QVczZ0s8aXBxc2JgM2pXSEh3dHA2Y09cbH92SUp3aUtcNERfNFdNRDMxZ281bGhEMEpOdWJXa3VIQT0xMGM9cmpxQlxVYUlmf2A1NX9EUlZAcGxSJyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmMwYzVgMCcpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl:0
+[   68995ms] [WARNING] <link rel=preload> uses an unsupported `as` value @ https://checkout.stripe.com/c/pay/cs_live_a1swQNRK3V7r7OJivrbqvCIcHSDRFS6chbBpZpHOMNMkv2gZaES1ZZZSFE#fid1d2BpamRhQ2prcSc%2FJ0lqd2QnKSdnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRRYEZpVlRsY1BoR0Y2QVczZ0s8aXBxc2JgM2pXSEh3dHA2Y09cbH92SUp3aUtcNERfNFdNRDMxZ281bGhEMEpOdWJXa3VIQT0xMGM9cmpxQlxVYUlmf2A1NX9EUlZAcGxSJyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmMwYzVgMCcpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl:0
+[   72516ms] [LOG] %c EvalError
+    at nH (https://client.px-cloud.net/PXVl48pWoc/main.min.js:2:65912)
+    at pG (https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:160)
+    at Gu (https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:135312)
+    at Gs (https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:134929)
+    at https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:136674
+    at https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:136680
+    at https://client.px-cloud.net/PXVl48pWoc/main.min.js:3:137145 @ https://client.px-cloud.net/PXVl48pWoc/main.min.js:1
+[   75200ms] [ERROR] Framing 'https://client.wra-api.net/' violates the following Content Security Policy directive: "frame-src 'self' https://*.px-cloud.net https://*.px-cdn.net https://crcldu.com". The request has been blocked.
+ @ https://client.px-cloud.net/:0
+[   75238ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://client.wra-api.net') does not match the recipient window's origin ('null'). @ https://client.px-cloud.net/PXVl48pWoc/main.min.js:2

@@ -1,0 +1,294 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e8]:
+            - img [ref=e9]
+            - text: info@papifoundation.net
+          - generic [ref=e12]:
+            - img [ref=e13]
+            - text: +31 6 42032437
+        - generic [ref=e15]:
+          - link "Facebook" [ref=e16] [cursor=pointer]:
+            - /url: https://facebook.com
+          - link "Twitter" [ref=e17] [cursor=pointer]:
+            - /url: https://twitter.com
+          - link "LinkedIn" [ref=e18] [cursor=pointer]:
+            - /url: https://linkedin.com
+          - link "Instagram" [ref=e19] [cursor=pointer]:
+            - /url: https://www.instagram.com/official_papifoundation
+          - link "YouTube" [ref=e20] [cursor=pointer]:
+            - /url: https://youtube.com
+      - generic [ref=e21]:
+        - link "Papi Foundation PAPI FOUNDATION Building Africa by Africans" [ref=e22] [cursor=pointer]:
+          - /url: /
+          - img "Papi Foundation" [ref=e23]
+          - generic [ref=e24]:
+            - generic [ref=e25]: PAPI FOUNDATION
+            - generic [ref=e26]: Building Africa by Africans
+        - button [ref=e27]:
+          - img [ref=e28]
+    - main [ref=e29]:
+      - generic [ref=e30]:
+        - generic [ref=e35]:
+          - generic [ref=e36]: Change a Life Today
+          - heading "Your Donation Builds Africa." [level=1] [ref=e37]:
+            - text: Your Donation
+            - text: Builds Africa.
+          - paragraph [ref=e38]: 100% transparent. Every euro tracked and reported. Choose where your donation goes, and watch it work.
+        - generic [ref=e41]:
+          - generic [ref=e46]: Live Donations
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - generic [ref=e50]: €0
+              - generic [ref=e51]: Total Raised
+            - generic [ref=e52]:
+              - generic [ref=e53]: "0"
+              - generic [ref=e54]: Donors
+            - generic [ref=e55]:
+              - generic [ref=e57]: €0/mo
+              - generic [ref=e58]: Monthly Recurring
+          - generic [ref=e59]:
+            - img [ref=e60]
+            - generic [ref=e66]: Updates every 6s
+        - generic [ref=e69]:
+          - generic [ref=e70]:
+            - img [ref=e71]
+            - generic [ref=e73]: 100% Secure Payments
+          - generic [ref=e74]:
+            - img [ref=e75]
+            - generic [ref=e78]: Full Donation Transparency
+          - generic [ref=e79]:
+            - img [ref=e80]
+            - generic [ref=e85]: 0 Donors Worldwide
+          - generic [ref=e86]:
+            - img [ref=e87]
+            - generic [ref=e89]: 15,000+ Lives Impacted
+        - generic [ref=e92]:
+          - generic [ref=e94]:
+            - generic [ref=e95]:
+              - generic [ref=e96]: Make Your Donation
+              - heading "Every Euro Counts" [level=2] [ref=e97]
+            - generic [ref=e98]:
+              - generic [ref=e99]:
+                - text: Donation Type
+                - generic [ref=e100]:
+                  - button "One-Time" [ref=e101]
+                  - button "Monthly" [ref=e102]
+              - generic [ref=e103]:
+                - text: Amount (EUR)
+                - generic [ref=e104]:
+                  - button "€20" [ref=e105]
+                  - button "€50" [ref=e106]
+                  - button "€100" [ref=e107]
+                  - button "€250" [ref=e108]
+                  - button "€500" [ref=e109]
+                  - button "€1000" [ref=e110]
+                - spinbutton "Amount (EUR)" [ref=e111]: "100"
+              - generic [ref=e112]:
+                - text: Your Name
+                - textbox "Your Name" [ref=e113]:
+                  - /placeholder: Your full name
+              - generic [ref=e114]:
+                - text: Direct to Project (Optional)
+                - combobox "Direct to Project (Optional)" [ref=e115]:
+                  - generic: General fund (highest impact)
+                  - img [ref=e116]
+                - combobox [ref=e118]
+              - generic [ref=e119]:
+                - text: Message (Optional)
+                - textbox "Message (Optional)" [ref=e120]:
+                  - /placeholder: Leave a message of encouragement...
+              - generic [ref=e122]:
+                - checkbox "Make my donation anonymous" [ref=e123]
+                - generic [ref=e124] [cursor=pointer]: Make my donation anonymous
+              - button "Donate €100" [ref=e125]:
+                - img
+                - text: Donate €100
+              - paragraph [ref=e126]: Your donation is secure. Papi Foundation is a registered humanitarian foundation. You will receive a tax receipt by email.
+          - generic [ref=e128]:
+            - generic [ref=e129]: Your Impact
+            - generic [ref=e130] [cursor=pointer]:
+              - img "€20 impact" [ref=e132]
+              - generic [ref=e133]:
+                - generic [ref=e134]: €20
+                - generic [ref=e135]: Provides clean drinking water for 1 child for an entire year
+            - generic [ref=e136] [cursor=pointer]:
+              - img "€100 impact" [ref=e138]
+              - generic [ref=e139]:
+                - generic [ref=e140]: €100
+                - generic [ref=e141]: Covers school supplies for 5 children for a full term
+            - generic [ref=e142] [cursor=pointer]:
+              - img "€250 impact" [ref=e144]
+              - generic [ref=e145]:
+                - generic [ref=e146]: €250
+                - generic [ref=e147]: Funds a mobile clinic visit to a rural community
+            - generic [ref=e148] [cursor=pointer]:
+              - img "€1000 impact" [ref=e150]
+              - generic [ref=e151]:
+                - generic [ref=e152]: €1000
+                - generic [ref=e153]: Installs a solar panel unit for an off-grid family home
+            - generic [ref=e154]:
+              - heading "Why Donors Trust Us" [level=3] [ref=e155]
+              - generic [ref=e156]:
+                - img [ref=e157]
+                - generic [ref=e160]: Every donation published publicly
+              - generic [ref=e161]:
+                - img [ref=e162]
+                - generic [ref=e165]: Annual audited accounts
+              - generic [ref=e166]:
+                - img [ref=e167]
+                - generic [ref=e170]: Direct beneficiary reporting
+              - generic [ref=e171]:
+                - img [ref=e172]
+                - generic [ref=e175]: Zero management fee on field funds
+        - generic [ref=e177]:
+          - generic [ref=e178]:
+            - generic [ref=e183]: Live Donor Wall
+            - heading "Recent Contributors" [level=2] [ref=e184]
+            - paragraph [ref=e185]: This wall updates automatically in real time as donations come in.
+          - generic [ref=e187]: Be the first to donate. Your name will appear here instantly.
+          - generic [ref=e188]:
+            - generic [ref=e189]:
+              - generic [ref=e190]: Grand Total Raised
+              - generic [ref=e192]: €0
+              - generic [ref=e193]: from 0 donors worldwide
+            - generic [ref=e198]: Live
+    - contentinfo [ref=e199]:
+      - generic [ref=e201]:
+        - generic [ref=e202]:
+          - generic [ref=e203]:
+            - img "Papi Foundation" [ref=e204]
+            - generic [ref=e205]:
+              - generic [ref=e206]: PAPI FOUNDATION
+              - generic [ref=e207]: Building Africa by Africans
+          - paragraph [ref=e208]: A global African humanitarian foundation investing in education, clean water, healthcare, and community empowerment across Africa.
+          - generic [ref=e209]:
+            - link "Facebook" [ref=e210] [cursor=pointer]:
+              - /url: https://facebook.com
+              - img [ref=e211]
+            - link "Twitter" [ref=e213] [cursor=pointer]:
+              - /url: https://twitter.com
+              - img [ref=e214]
+            - link "LinkedIn" [ref=e216] [cursor=pointer]:
+              - /url: https://linkedin.com
+              - img [ref=e217]
+            - link "Instagram" [ref=e221] [cursor=pointer]:
+              - /url: https://www.instagram.com/official_papifoundation
+              - img [ref=e222]
+            - link "YouTube" [ref=e225] [cursor=pointer]:
+              - /url: https://youtube.com
+              - img [ref=e226]
+        - generic [ref=e229]:
+          - heading "Quick Links" [level=4] [ref=e230]
+          - list [ref=e231]:
+            - listitem [ref=e232]:
+              - link "About Us" [ref=e233] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e234]:
+              - link "Doing Business in Africa" [ref=e235] [cursor=pointer]:
+                - /url: /doing-business
+            - listitem [ref=e236]:
+              - link "African Insights" [ref=e237] [cursor=pointer]:
+                - /url: /african-insights
+            - listitem [ref=e238]:
+              - link "Projects" [ref=e239] [cursor=pointer]:
+                - /url: /projects
+            - listitem [ref=e240]:
+              - link "Partners" [ref=e241] [cursor=pointer]:
+                - /url: /partners
+            - listitem [ref=e242]:
+              - link "Our Team" [ref=e243] [cursor=pointer]:
+                - /url: /team
+            - listitem [ref=e244]:
+              - link "Vacancies" [ref=e245] [cursor=pointer]:
+                - /url: /vacancies
+            - listitem [ref=e246]:
+              - link "News" [ref=e247] [cursor=pointer]:
+                - /url: /news
+            - listitem [ref=e248]:
+              - link "Events & Training" [ref=e249] [cursor=pointer]:
+                - /url: /events
+            - listitem [ref=e250]:
+              - link "Donate" [ref=e251] [cursor=pointer]:
+                - /url: /donate
+            - listitem [ref=e252]:
+              - link "Community" [ref=e253] [cursor=pointer]:
+                - /url: /community
+            - listitem [ref=e254]:
+              - link "Roadmap" [ref=e255] [cursor=pointer]:
+                - /url: /roadmap
+        - generic [ref=e256]:
+          - heading "Our Offices" [level=4] [ref=e257]
+          - generic [ref=e258]:
+            - generic [ref=e259]:
+              - generic [ref=e260]: Nigeria (HQ)
+              - generic [ref=e261]:
+                - img [ref=e262]
+                - text: Flat 2 Bahamas Estate, Opposite Grandpela, Durumi District, Abuja, Nigeria
+              - generic [ref=e265]:
+                - img [ref=e266]
+                - text: +31 6 42032437
+            - generic [ref=e268]:
+              - generic [ref=e269]: Nigeria
+              - generic [ref=e270]:
+                - img [ref=e271]
+                - text: Lagos, Nigeria
+              - generic [ref=e274]:
+                - img [ref=e275]
+                - text: +234 80 000 0000
+            - generic [ref=e277]:
+              - generic [ref=e278]: Ghana
+              - generic [ref=e279]:
+                - img [ref=e280]
+                - text: Accra, Ghana
+              - generic [ref=e283]:
+                - img [ref=e284]
+                - text: +233 20 000 0000
+            - generic [ref=e286]:
+              - generic [ref=e287]: Kenya
+              - generic [ref=e288]:
+                - img [ref=e289]
+                - text: Nairobi, Kenya
+              - generic [ref=e292]:
+                - img [ref=e293]
+                - text: +254 70 000 0000
+            - generic [ref=e295]:
+              - generic [ref=e296]: Rwanda
+              - generic [ref=e297]:
+                - img [ref=e298]
+                - text: Kigali, Rwanda
+              - generic [ref=e301]:
+                - img [ref=e302]
+                - text: +250 78 000 0000
+            - generic [ref=e304]:
+              - generic [ref=e305]:
+                - img [ref=e306]
+                - link "info@papifoundation.net" [ref=e309] [cursor=pointer]:
+                  - /url: mailto:info@papifoundation.net
+              - generic [ref=e310]:
+                - img [ref=e311]
+                - generic [ref=e313]: +31 6 42032437
+        - generic [ref=e314]:
+          - heading "Monthly Newsletter" [level=4] [ref=e315]
+          - paragraph [ref=e316]: Stay up to date with our latest projects, impact reports, and events from across Africa.
+          - generic [ref=e317]:
+            - textbox "Your name" [ref=e318]
+            - textbox "Your email address" [ref=e319]
+            - button "Subscribe" [ref=e320]:
+              - img [ref=e321]
+              - text: Subscribe
+      - generic [ref=e325]:
+        - generic [ref=e326]: "© 2026 Papi Foundation. All rights reserved. KvK: 00000000"
+        - generic [ref=e327]:
+          - link "Terms & Conditions" [ref=e328] [cursor=pointer]:
+            - /url: /terms
+          - link "Privacy Policy" [ref=e329] [cursor=pointer]:
+            - /url: /privacy
+          - link "Disclaimer" [ref=e330] [cursor=pointer]:
+            - /url: /disclaimer
+          - link "Sitemap" [ref=e331] [cursor=pointer]:
+            - /url: /sitemap
+  - region "Notifications (F8)":
+    - list

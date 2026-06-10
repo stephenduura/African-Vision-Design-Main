@@ -1,0 +1,42 @@
+- generic [ref=e2]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - img [ref=e7]
+      - heading "Create your account" [level=1] [ref=e11]
+      - paragraph [ref=e12]: Join the Papi Foundation community and start your membership.
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - text: Full name
+        - generic [ref=e15]:
+          - img
+          - textbox "Your full name" [ref=e16]
+      - generic [ref=e17]:
+        - text: Email
+        - generic [ref=e18]:
+          - img
+          - textbox "you@example.com" [ref=e19]
+      - generic [ref=e20]:
+        - text: Membership type
+        - combobox "Membership type" [ref=e21]:
+          - generic: Individual
+          - img [ref=e22]
+        - combobox [ref=e24]
+      - generic [ref=e25]:
+        - text: Password
+        - generic [ref=e26]:
+          - img
+          - textbox "Create a password" [ref=e27]
+      - generic [ref=e28]:
+        - text: Confirm password
+        - generic [ref=e29]:
+          - img
+          - textbox "Confirm your password" [ref=e30]
+      - button "Create Account" [ref=e31]:
+        - text: Create Account
+        - img
+    - generic [ref=e32]:
+      - text: Already have an account?
+      - link "Sign in" [ref=e33] [cursor=pointer]:
+        - /url: /sign-in
+  - region "Notifications (F8)":
+    - list

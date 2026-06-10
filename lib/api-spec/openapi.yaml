@@ -1,0 +1,1215 @@
+openapi: 3.1.0
+info:
+  title: Api
+  version: 0.1.0
+  description: Papi Foundation API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: projects
+    description: Project operations
+  - name: donations
+    description: Donation operations
+  - name: team
+    description: Team member operations
+  - name: partners
+    description: Partner operations
+  - name: events
+    description: Event operations
+  - name: community
+    description: Community operations
+  - name: blog
+    description: Blog operations
+  - name: impact
+    description: Impact stats
+  - name: contact
+    description: Contact operations
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /projects:
+    get:
+      operationId: listProjects
+      tags: [projects]
+      summary: List all projects
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [ongoing, completed, upcoming]
+        - name: country
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Project"
+    post:
+      operationId: createProject
+      tags: [projects]
+      summary: Create a project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+
+  /projects/{id}:
+    get:
+      operationId: getProject
+      tags: [projects]
+      summary: Get a project
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+
+  /projects/stats:
+    get:
+      operationId: getProjectStats
+      tags: [projects]
+      summary: Get project statistics
+      responses:
+        "200":
+          description: Stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectStats"
+
+  /donations:
+    get:
+      operationId: listDonations
+      tags: [donations]
+      summary: List donations
+      responses:
+        "200":
+          description: Donations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Donation"
+    post:
+      operationId: createDonation
+      tags: [donations]
+      summary: Create a donation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DonationInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Donation"
+
+  /donations/summary:
+    get:
+      operationId: getDonationSummary
+      tags: [donations]
+      summary: Get donation totals and summary
+      responses:
+        "200":
+          description: Donation summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DonationSummary"
+
+  /donations/checkout:
+    post:
+      operationId: createDonationCheckout
+      tags: [donations]
+      summary: Create a Stripe Checkout session for a donation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DonationCheckoutInput"
+      responses:
+        "200":
+          description: Checkout session created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DonationCheckoutSession"
+
+  /team:
+    get:
+      operationId: listTeamMembers
+      tags: [team]
+      summary: List team members
+      responses:
+        "200":
+          description: Team members
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TeamMember"
+    post:
+      operationId: createTeamMember
+      tags: [team]
+      summary: Create a team member
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamMemberInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TeamMember"
+
+  /partners:
+    get:
+      operationId: listPartners
+      tags: [partners]
+      summary: List partners
+      responses:
+        "200":
+          description: Partners
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Partner"
+    post:
+      operationId: createPartner
+      tags: [partners]
+      summary: Create a partner
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PartnerInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+
+  /events:
+    get:
+      operationId: listEvents
+      tags: [events]
+      summary: List events and updates
+      responses:
+        "200":
+          description: Events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Event"
+    post:
+      operationId: createEvent
+      tags: [events]
+      summary: Create an event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EventInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Event"
+
+  /events/recent:
+    get:
+      operationId: getRecentEvents
+      tags: [events]
+      summary: Get recent events and field updates
+      responses:
+        "200":
+          description: Recent events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Event"
+
+  /events/{id}:
+    get:
+      operationId: getEvent
+      tags: [events]
+      summary: Get a single event by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Event
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Event"
+        "404":
+          description: Not found
+
+  /community/members:
+    get:
+      operationId: listCommunityMembers
+      tags: [community]
+      summary: List community members
+      responses:
+        "200":
+          description: Community members
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CommunityMember"
+    post:
+      operationId: joinCommunity
+      tags: [community]
+      summary: Join the community
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CommunityMemberInput"
+      responses:
+        "201":
+          description: Joined
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommunityMember"
+
+  /community/stats:
+    get:
+      operationId: getCommunityStats
+      tags: [community]
+      summary: Get community statistics
+      responses:
+        "200":
+          description: Community stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommunityStats"
+
+  /community/posts:
+    get:
+      operationId: listCommunityPosts
+      tags: [community]
+      summary: List community posts
+      responses:
+        "200":
+          description: Community posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CommunityPost"
+    post:
+      operationId: createCommunityPost
+      tags: [community]
+      summary: Create a community post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CommunityPostInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommunityPost"
+
+  /community/posts/{id}:
+    delete:
+      operationId: deleteCommunityPost
+      tags: [community]
+      summary: Delete a community post
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  /community/posts/{id}/reaction:
+    put:
+      operationId: reactToPost
+      tags: [community]
+      summary: Set or toggle a reaction on a post
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReactionInput"
+      responses:
+        "200":
+          description: Updated post
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommunityPost"
+
+  /community/posts/{id}/comments:
+    get:
+      operationId: listPostComments
+      tags: [community]
+      summary: List comments on a post
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Comments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PostComment"
+    post:
+      operationId: createPostComment
+      tags: [community]
+      summary: Add a comment to a post
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CommentInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PostComment"
+
+  /community/comments/{id}:
+    delete:
+      operationId: deleteComment
+      tags: [community]
+      summary: Delete a comment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  /community/comments/{id}/reaction:
+    put:
+      operationId: reactToComment
+      tags: [community]
+      summary: Set or toggle a reaction on a comment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReactionInput"
+      responses:
+        "200":
+          description: Updated comment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PostComment"
+
+  /blog:
+    get:
+      operationId: listBlogPosts
+      tags: [blog]
+      summary: List blog posts
+      responses:
+        "200":
+          description: Blog posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/BlogPost"
+    post:
+      operationId: createBlogPost
+      tags: [blog]
+      summary: Create a blog post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BlogPostInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogPost"
+
+  /blog/{id}:
+    get:
+      operationId: getBlogPost
+      tags: [blog]
+      summary: Get a blog post
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Blog post
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogPost"
+
+  /impact:
+    get:
+      operationId: getImpactStats
+      tags: [impact]
+      summary: Get global impact statistics
+      responses:
+        "200":
+          description: Impact stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ImpactStats"
+
+  /impact/roadmap:
+    get:
+      operationId: getRoadmap
+      tags: [impact]
+      summary: Get foundation roadmap timeline
+      responses:
+        "200":
+          description: Roadmap
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/RoadmapItem"
+
+  /contact:
+    post:
+      operationId: submitContact
+      tags: [contact]
+      summary: Submit contact form
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactInput"
+      responses:
+        "201":
+          description: Submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContactResponse"
+
+  /newsletter:
+    post:
+      operationId: subscribeNewsletter
+      tags: [contact]
+      summary: Subscribe to newsletter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewsletterInput"
+      responses:
+        "201":
+          description: Subscribed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewsletterResponse"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required: [status]
+
+    Project:
+      type: object
+      required: [id, title, description, status, country, category, goalAmount, raisedAmount, imageUrl, createdAt]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [ongoing, completed, upcoming]
+        country:
+          type: string
+        category:
+          type: string
+        goalAmount:
+          type: number
+        raisedAmount:
+          type: number
+        progressPercent:
+          type: number
+        imageUrl:
+          type: string
+        beforeImageUrl:
+          type: ["string", "null"]
+        afterImageUrl:
+          type: ["string", "null"]
+        beneficiaries:
+          type: ["integer", "null"]
+        location:
+          type: ["string", "null"]
+        lat:
+          type: ["number", "null"]
+        lng:
+          type: ["number", "null"]
+        createdAt:
+          type: string
+
+    ProjectInput:
+      type: object
+      required: [title, description, status, country, category, goalAmount, imageUrl]
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [ongoing, completed, upcoming]
+        country:
+          type: string
+        category:
+          type: string
+        goalAmount:
+          type: number
+        raisedAmount:
+          type: number
+        imageUrl:
+          type: string
+        beforeImageUrl:
+          type: string
+        afterImageUrl:
+          type: string
+        beneficiaries:
+          type: integer
+        location:
+          type: string
+        lat:
+          type: number
+        lng:
+          type: number
+
+    ProjectStats:
+      type: object
+      required: [total, ongoing, completed, upcoming, totalRaised, totalBeneficiaries, countriesReached]
+      properties:
+        total:
+          type: integer
+        ongoing:
+          type: integer
+        completed:
+          type: integer
+        upcoming:
+          type: integer
+        totalRaised:
+          type: number
+        totalBeneficiaries:
+          type: integer
+        countriesReached:
+          type: integer
+
+    Donation:
+      type: object
+      required: [id, amount, currency, donorName, projectId, createdAt]
+      properties:
+        id:
+          type: integer
+        amount:
+          type: number
+        currency:
+          type: string
+        donorName:
+          type: string
+        isAnonymous:
+          type: boolean
+        projectId:
+          type: ["integer", "null"]
+        message:
+          type: ["string", "null"]
+        type:
+          type: string
+          enum: [one-time, monthly]
+        createdAt:
+          type: string
+
+    DonationInput:
+      type: object
+      required: [amount, currency, donorName]
+      properties:
+        amount:
+          type: number
+        currency:
+          type: string
+        donorName:
+          type: string
+        isAnonymous:
+          type: boolean
+        projectId:
+          type: integer
+        message:
+          type: string
+        type:
+          type: string
+          enum: [one-time, monthly]
+
+    DonationSummary:
+      type: object
+      required: [totalRaised, totalDonors, monthlyRecurring, recentDonations]
+      properties:
+        totalRaised:
+          type: number
+        totalDonors:
+          type: integer
+        monthlyRecurring:
+          type: number
+        recentDonations:
+          type: array
+          items:
+            $ref: "#/components/schemas/Donation"
+
+    DonationCheckoutInput:
+      type: object
+      required: [amount, currency, donorName, type]
+      properties:
+        amount:
+          type: number
+          exclusiveMinimum: 0
+          maximum: 1000000
+        currency:
+          type: string
+          enum: [EUR, USD, GBP]
+        donorName:
+          type: string
+          minLength: 1
+          maxLength: 200
+        isAnonymous:
+          type: boolean
+        projectId:
+          type: integer
+        message:
+          type: string
+          maxLength: 1000
+        type:
+          type: string
+          enum: [one-time, monthly]
+
+    DonationCheckoutSession:
+      type: object
+      required: [url]
+      properties:
+        url:
+          type: string
+
+    TeamMember:
+      type: object
+      required: [id, name, role, bio, imageUrl, order]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        role:
+          type: string
+        bio:
+          type: string
+        imageUrl:
+          type: string
+        linkedinUrl:
+          type: ["string", "null"]
+        category:
+          type: string
+          enum: [leadership, volunteer, ambassador]
+        order:
+          type: integer
+
+    TeamMemberInput:
+      type: object
+      required: [name, role, bio, imageUrl, category, order]
+      properties:
+        name:
+          type: string
+        role:
+          type: string
+        bio:
+          type: string
+        imageUrl:
+          type: string
+        linkedinUrl:
+          type: string
+        category:
+          type: string
+          enum: [leadership, volunteer, ambassador]
+        order:
+          type: integer
+
+    Partner:
+      type: object
+      required: [id, name, type, logoUrl, websiteUrl]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+          enum: [company, ngo, government, sponsor]
+        logoUrl:
+          type: string
+        websiteUrl:
+          type: string
+        country:
+          type: ["string", "null"]
+        description:
+          type: ["string", "null"]
+
+    PartnerInput:
+      type: object
+      required: [name, type, logoUrl, websiteUrl]
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum: [company, ngo, government, sponsor]
+        logoUrl:
+          type: string
+        websiteUrl:
+          type: string
+        country:
+          type: string
+        description:
+          type: string
+
+    Event:
+      type: object
+      required: [id, title, description, type, imageUrl, date, location, createdAt]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        content:
+          type: ["string", "null"]
+        type:
+          type: string
+          enum: [event, update, press, video]
+        imageUrl:
+          type: string
+        date:
+          type: string
+        location:
+          type: string
+        videoUrl:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+
+    EventInput:
+      type: object
+      required: [title, description, type, imageUrl, date, location]
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        content:
+          type: string
+        type:
+          type: string
+          enum: [event, update, press, video]
+        imageUrl:
+          type: string
+        date:
+          type: string
+        location:
+          type: string
+        videoUrl:
+          type: string
+
+    CommunityMember:
+      type: object
+      required: [id, name, email, country, memberType, joinedAt]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        country:
+          type: string
+        memberType:
+          type: string
+          enum: [individual, organization, volunteer]
+        bio:
+          type: ["string", "null"]
+        avatarUrl:
+          type: ["string", "null"]
+        joinedAt:
+          type: string
+
+    CommunityMemberInput:
+      type: object
+      required: [name, email, country, memberType]
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        country:
+          type: string
+        memberType:
+          type: string
+          enum: [individual, organization, volunteer]
+        bio:
+          type: string
+        avatarUrl:
+          type: string
+
+    CommunityStats:
+      type: object
+      required: [totalMembers, countries, volunteers, organizations]
+      properties:
+        totalMembers:
+          type: integer
+        countries:
+          type: integer
+        volunteers:
+          type: integer
+        organizations:
+          type: integer
+
+    ReactionCounts:
+      type: object
+      required: [like, love, celebrate, support, insightful]
+      properties:
+        like:
+          type: integer
+        love:
+          type: integer
+        celebrate:
+          type: integer
+        support:
+          type: integer
+        insightful:
+          type: integer
+
+    CommunityPost:
+      type: object
+      required: [id, authorId, authorName, content, createdAt, reactions, totalReactions, commentCount]
+      properties:
+        id:
+          type: integer
+        authorId:
+          type: string
+        authorName:
+          type: string
+        authorImageUrl:
+          type: ["string", "null"]
+        content:
+          type: string
+        imageUrl:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+        reactions:
+          $ref: "#/components/schemas/ReactionCounts"
+        totalReactions:
+          type: integer
+        myReaction:
+          type: ["string", "null"]
+        commentCount:
+          type: integer
+
+    CommunityPostInput:
+      type: object
+      required: [content]
+      properties:
+        content:
+          type: string
+        imageUrl:
+          type: string
+
+    PostComment:
+      type: object
+      required: [id, postId, authorId, authorName, content, createdAt, reactions, totalReactions]
+      properties:
+        id:
+          type: integer
+        postId:
+          type: integer
+        authorId:
+          type: string
+        authorName:
+          type: string
+        authorImageUrl:
+          type: ["string", "null"]
+        content:
+          type: string
+        createdAt:
+          type: string
+        reactions:
+          $ref: "#/components/schemas/ReactionCounts"
+        totalReactions:
+          type: integer
+        myReaction:
+          type: ["string", "null"]
+
+    CommentInput:
+      type: object
+      required: [content]
+      properties:
+        content:
+          type: string
+
+    ReactionInput:
+      type: object
+      required: [type]
+      properties:
+        type:
+          type: string
+          enum: [like, love, celebrate, support, insightful]
+
+    BlogPost:
+      type: object
+      required: [id, title, excerpt, content, author, category, imageUrl, publishedAt]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        excerpt:
+          type: string
+        content:
+          type: string
+        author:
+          type: string
+        category:
+          type: string
+          enum: [story, report, press, impact]
+        imageUrl:
+          type: string
+        publishedAt:
+          type: string
+
+    BlogPostInput:
+      type: object
+      required: [title, excerpt, content, author, category, imageUrl]
+      properties:
+        title:
+          type: string
+        excerpt:
+          type: string
+        content:
+          type: string
+        author:
+          type: string
+        category:
+          type: string
+          enum: [story, report, press, impact]
+        imageUrl:
+          type: string
+
+    ImpactStats:
+      type: object
+      required: [totalRaised, projectsCompleted, beneficiaries, countriesReached, partnersCount, communityMembers]
+      properties:
+        totalRaised:
+          type: number
+        projectsCompleted:
+          type: integer
+        beneficiaries:
+          type: integer
+        countriesReached:
+          type: integer
+        partnersCount:
+          type: integer
+        communityMembers:
+          type: integer
+
+    RoadmapItem:
+      type: object
+      required: [id, year, title, description, status, milestones]
+      properties:
+        id:
+          type: integer
+        year:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [completed, current, upcoming]
+        milestones:
+          type: array
+          items:
+            type: string
+
+    ContactInput:
+      type: object
+      required: [name, email, subject, message]
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        subject:
+          type: string
+        message:
+          type: string
+        phone:
+          type: string
+
+    ContactResponse:
+      type: object
+      required: [success, message]
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+
+    NewsletterInput:
+      type: object
+      required: [email]
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+
+    NewsletterResponse:
+      type: object
+      required: [success, message]
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string

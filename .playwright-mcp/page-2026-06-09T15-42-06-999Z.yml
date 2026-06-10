@@ -1,0 +1,364 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e8]:
+            - img [ref=e9]
+            - text: info@papifoundation.net
+          - generic [ref=e12]:
+            - img [ref=e13]
+            - text: +31 6 42032437
+        - generic [ref=e15]:
+          - link "Facebook" [ref=e16] [cursor=pointer]:
+            - /url: https://facebook.com
+          - link "Twitter" [ref=e17] [cursor=pointer]:
+            - /url: https://twitter.com
+          - link "LinkedIn" [ref=e18] [cursor=pointer]:
+            - /url: https://linkedin.com
+          - link "Instagram" [ref=e19] [cursor=pointer]:
+            - /url: https://www.instagram.com/official_papifoundation
+          - link "YouTube" [ref=e20] [cursor=pointer]:
+            - /url: https://youtube.com
+      - generic [ref=e21]:
+        - link "Papi Foundation PAPI FOUNDATION Building Africa by Africans" [ref=e22] [cursor=pointer]:
+          - /url: /
+          - img "Papi Foundation" [ref=e23]
+          - generic [ref=e24]:
+            - generic [ref=e25]: PAPI FOUNDATION
+            - generic [ref=e26]: Building Africa by Africans
+        - navigation [ref=e27]:
+          - link "Doing Business in Africa" [ref=e28] [cursor=pointer]:
+            - /url: /doing-business
+          - link "African Insights" [ref=e29] [cursor=pointer]:
+            - /url: /african-insights
+          - button "About Papi" [ref=e31]:
+            - text: About Papi
+            - img [ref=e32]
+          - link "News & Events" [ref=e34] [cursor=pointer]:
+            - /url: /news
+          - link "Community" [ref=e35] [cursor=pointer]:
+            - /url: /community
+          - link "Office" [ref=e36] [cursor=pointer]:
+            - /url: /office
+        - generic [ref=e37]:
+          - button "T Test" [ref=e39]:
+            - generic [ref=e40]: T
+            - text: Test
+            - img [ref=e41]
+          - link "Donate" [ref=e43] [cursor=pointer]:
+            - /url: /donate
+    - main [ref=e44]:
+      - generic [ref=e45]:
+        - generic [ref=e50]:
+          - generic [ref=e51]: Change a Life Today
+          - heading "Your Donation Builds Africa." [level=1] [ref=e52]:
+            - text: Your Donation
+            - text: Builds Africa.
+          - paragraph [ref=e53]: 100% transparent. Every euro tracked and reported. Choose where your donation goes, and watch it work.
+        - generic [ref=e56]:
+          - generic [ref=e61]: Live Donations
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - generic [ref=e65]: €11,550
+              - generic [ref=e66]: Total Raised
+            - generic [ref=e67]:
+              - generic [ref=e68]: "6"
+              - generic [ref=e69]: Donors
+            - generic [ref=e70]:
+              - generic [ref=e72]: €1,500/mo
+              - generic [ref=e73]: Monthly Recurring
+          - generic [ref=e74]:
+            - img [ref=e75]
+            - generic [ref=e81]: Updates every 6s
+        - generic [ref=e84]:
+          - generic [ref=e85]:
+            - img [ref=e86]
+            - generic [ref=e88]: 100% Secure Payments
+          - generic [ref=e89]:
+            - img [ref=e90]
+            - generic [ref=e93]: Full Donation Transparency
+          - generic [ref=e345]:
+            - img [ref=e346]
+            - generic [ref=e351]: 6 Donors Worldwide
+          - generic [ref=e101]:
+            - img [ref=e102]
+            - generic [ref=e104]: 15,000+ Lives Impacted
+        - generic [ref=e107]:
+          - generic [ref=e109]:
+            - generic [ref=e110]:
+              - generic [ref=e111]: Make Your Donation
+              - heading "Every Euro Counts" [level=2] [ref=e112]
+            - generic [ref=e113]:
+              - generic [ref=e114]:
+                - text: Donation Type
+                - generic [ref=e115]:
+                  - button "One-Time" [ref=e116]
+                  - button "Monthly" [active] [ref=e117]
+              - generic [ref=e118]:
+                - text: Amount (EUR)
+                - generic [ref=e119]:
+                  - button "€20" [ref=e120]
+                  - button "€50" [ref=e121]
+                  - button "€100" [ref=e122]
+                  - button "€250" [ref=e123]
+                  - button "€500" [ref=e124]
+                  - button "€1000" [ref=e125]
+                - spinbutton "Amount (EUR)" [ref=e126]: "100"
+              - generic [ref=e127]:
+                - text: Your Name
+                - textbox "Your Name" [ref=e128]:
+                  - /placeholder: Your full name
+              - generic [ref=e129]:
+                - text: Direct to Project (Optional)
+                - combobox "Direct to Project (Optional)" [ref=e130]:
+                  - generic: General fund (highest impact)
+                  - img [ref=e131]
+                - combobox [ref=e352]
+              - generic [ref=e134]:
+                - text: Message (Optional)
+                - textbox "Message (Optional)" [ref=e135]:
+                  - /placeholder: Leave a message of encouragement...
+              - generic [ref=e137]:
+                - checkbox "Make my donation anonymous" [ref=e138]
+                - generic [ref=e139] [cursor=pointer]: Make my donation anonymous
+              - button "Donate €100 / month" [ref=e407]:
+                - img
+                - text: Donate €100 / month
+              - paragraph [ref=e141]: Your donation is secure. Papi Foundation is a registered humanitarian foundation. You will receive a tax receipt by email.
+          - generic [ref=e143]:
+            - generic [ref=e144]: Your Impact
+            - generic [ref=e145] [cursor=pointer]:
+              - img "€20 impact" [ref=e147]
+              - generic [ref=e148]:
+                - generic [ref=e149]: €20
+                - generic [ref=e150]: Provides clean drinking water for 1 child for an entire year
+            - generic [ref=e151] [cursor=pointer]:
+              - img "€100 impact" [ref=e153]
+              - generic [ref=e154]:
+                - generic [ref=e155]: €100
+                - generic [ref=e156]: Covers school supplies for 5 children for a full term
+            - generic [ref=e157] [cursor=pointer]:
+              - img "€250 impact" [ref=e159]
+              - generic [ref=e160]:
+                - generic [ref=e161]: €250
+                - generic [ref=e162]: Funds a mobile clinic visit to a rural community
+            - generic [ref=e163] [cursor=pointer]:
+              - img "€1000 impact" [ref=e165]
+              - generic [ref=e166]:
+                - generic [ref=e167]: €1000
+                - generic [ref=e168]: Installs a solar panel unit for an off-grid family home
+            - generic [ref=e169]:
+              - heading "Why Donors Trust Us" [level=3] [ref=e170]
+              - generic [ref=e171]:
+                - img [ref=e172]
+                - generic [ref=e175]: Every donation published publicly
+              - generic [ref=e176]:
+                - img [ref=e177]
+                - generic [ref=e180]: Annual audited accounts
+              - generic [ref=e181]:
+                - img [ref=e182]
+                - generic [ref=e185]: Direct beneficiary reporting
+              - generic [ref=e186]:
+                - img [ref=e187]
+                - generic [ref=e190]: Zero management fee on field funds
+        - generic [ref=e192]:
+          - generic [ref=e193]:
+            - generic [ref=e198]: Live Donor Wall
+            - heading "Recent Contributors" [level=2] [ref=e199]
+            - paragraph [ref=e200]: This wall updates automatically in real time as donations come in.
+          - generic [ref=e201]:
+            - generic [ref=e353]:
+              - generic [ref=e354]:
+                - generic [ref=e355]: T
+                - generic [ref=e356]:
+                  - generic [ref=e357]: Tedum Henry Paago
+                  - generic [ref=e358]: "\"Kickstarting the clean water program with a leadership gift.\""
+              - generic [ref=e359]:
+                - generic [ref=e360]: €5,000
+                - generic [ref=e361]: one-time
+            - generic [ref=e362]:
+              - generic [ref=e363]:
+                - generic [ref=e364]: A
+                - generic [ref=e365]:
+                  - generic [ref=e366]: Anonymous Supporter
+                  - generic [ref=e367]: "\"For school materials and teacher support.\""
+              - generic [ref=e368]:
+                - generic [ref=e369]: €1,200
+                - generic [ref=e370]: monthly
+            - generic [ref=e371]:
+              - generic [ref=e372]:
+                - generic [ref=e373]: A
+                - generic [ref=e374]:
+                  - generic [ref=e375]: Amina Bello
+                  - generic [ref=e376]: "\"Proud to support clean water access in Abuja.\""
+              - generic [ref=e377]:
+                - generic [ref=e378]: €750
+                - generic [ref=e379]: one-time
+            - generic [ref=e380]:
+              - generic [ref=e381]:
+                - generic [ref=e382]: "N"
+                - generic [ref=e383]:
+                  - generic [ref=e384]: North Star Capital
+                  - generic [ref=e385]: "\"Backing women's economic empowerment and community growth.\""
+              - generic [ref=e386]:
+                - generic [ref=e387]: €2,500
+                - generic [ref=e388]: one-time
+            - generic [ref=e389]:
+              - generic [ref=e390]:
+                - generic [ref=e391]: K
+                - generic [ref=e392]:
+                  - generic [ref=e393]: Kwame Mensah
+                  - generic [ref=e394]: "\"Support for rural health outreach.\""
+              - generic [ref=e395]:
+                - generic [ref=e396]: €300
+                - generic [ref=e397]: monthly
+            - generic [ref=e398]:
+              - generic [ref=e399]:
+                - generic [ref=e400]: U
+                - generic [ref=e401]:
+                  - generic [ref=e402]: Unity Impact Trust
+                  - generic [ref=e403]: "\"Contributing to clean energy infrastructure.\""
+              - generic [ref=e404]:
+                - generic [ref=e405]: €1,800
+                - generic [ref=e406]: one-time
+          - generic [ref=e203]:
+            - generic [ref=e204]:
+              - generic [ref=e205]: Grand Total Raised
+              - generic [ref=e207]: €11,550
+              - generic [ref=e208]: from 6 donors worldwide
+            - generic [ref=e213]: Live
+    - contentinfo [ref=e214]:
+      - generic [ref=e216]:
+        - generic [ref=e217]:
+          - generic [ref=e218]:
+            - img "Papi Foundation" [ref=e219]
+            - generic [ref=e220]:
+              - generic [ref=e221]: PAPI FOUNDATION
+              - generic [ref=e222]: Building Africa by Africans
+          - paragraph [ref=e223]: A global African humanitarian foundation investing in education, clean water, healthcare, and community empowerment across Africa.
+          - generic [ref=e224]:
+            - link "Facebook" [ref=e225] [cursor=pointer]:
+              - /url: https://facebook.com
+              - img [ref=e226]
+            - link "Twitter" [ref=e228] [cursor=pointer]:
+              - /url: https://twitter.com
+              - img [ref=e229]
+            - link "LinkedIn" [ref=e231] [cursor=pointer]:
+              - /url: https://linkedin.com
+              - img [ref=e232]
+            - link "Instagram" [ref=e236] [cursor=pointer]:
+              - /url: https://www.instagram.com/official_papifoundation
+              - img [ref=e237]
+            - link "YouTube" [ref=e240] [cursor=pointer]:
+              - /url: https://youtube.com
+              - img [ref=e241]
+        - generic [ref=e244]:
+          - heading "Quick Links" [level=4] [ref=e245]
+          - list [ref=e246]:
+            - listitem [ref=e247]:
+              - link "About Us" [ref=e248] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e249]:
+              - link "Doing Business in Africa" [ref=e250] [cursor=pointer]:
+                - /url: /doing-business
+            - listitem [ref=e251]:
+              - link "African Insights" [ref=e252] [cursor=pointer]:
+                - /url: /african-insights
+            - listitem [ref=e253]:
+              - link "Projects" [ref=e254] [cursor=pointer]:
+                - /url: /projects
+            - listitem [ref=e255]:
+              - link "Our Team" [ref=e256] [cursor=pointer]:
+                - /url: /team
+            - listitem [ref=e257]:
+              - link "Vacancies" [ref=e258] [cursor=pointer]:
+                - /url: /vacancies
+            - listitem [ref=e259]:
+              - link "News" [ref=e260] [cursor=pointer]:
+                - /url: /news
+            - listitem [ref=e261]:
+              - link "Events & Training" [ref=e262] [cursor=pointer]:
+                - /url: /events
+            - listitem [ref=e263]:
+              - link "Donate" [ref=e264] [cursor=pointer]:
+                - /url: /donate
+            - listitem [ref=e265]:
+              - link "Community" [ref=e266] [cursor=pointer]:
+                - /url: /community
+            - listitem [ref=e267]:
+              - link "Roadmap" [ref=e268] [cursor=pointer]:
+                - /url: /roadmap
+        - generic [ref=e269]:
+          - heading "Our Offices" [level=4] [ref=e270]
+          - generic [ref=e271]:
+            - generic [ref=e272]:
+              - generic [ref=e273]: Nigeria (HQ)
+              - generic [ref=e274]:
+                - img [ref=e275]
+                - text: Flat 2 Bahamas Estate, Opposite Grandpela, Durumi District, Abuja, Nigeria
+              - generic [ref=e278]:
+                - img [ref=e279]
+                - text: +31 6 42032437
+            - generic [ref=e281]:
+              - generic [ref=e282]: Nigeria
+              - generic [ref=e283]:
+                - img [ref=e284]
+                - text: Lagos, Nigeria
+              - generic [ref=e287]:
+                - img [ref=e288]
+                - text: +234 80 000 0000
+            - generic [ref=e290]:
+              - generic [ref=e291]: Ghana
+              - generic [ref=e292]:
+                - img [ref=e293]
+                - text: Accra, Ghana
+              - generic [ref=e296]:
+                - img [ref=e297]
+                - text: +233 20 000 0000
+            - generic [ref=e299]:
+              - generic [ref=e300]: Kenya
+              - generic [ref=e301]:
+                - img [ref=e302]
+                - text: Nairobi, Kenya
+              - generic [ref=e305]:
+                - img [ref=e306]
+                - text: +254 70 000 0000
+            - generic [ref=e308]:
+              - generic [ref=e309]: Rwanda
+              - generic [ref=e310]:
+                - img [ref=e311]
+                - text: Kigali, Rwanda
+              - generic [ref=e314]:
+                - img [ref=e315]
+                - text: +250 78 000 0000
+            - generic [ref=e317]:
+              - generic [ref=e318]:
+                - img [ref=e319]
+                - link "info@papifoundation.net" [ref=e322] [cursor=pointer]:
+                  - /url: mailto:info@papifoundation.net
+              - generic [ref=e323]:
+                - img [ref=e324]
+                - generic [ref=e326]: +31 6 42032437
+        - generic [ref=e327]:
+          - heading "Monthly Newsletter" [level=4] [ref=e328]
+          - paragraph [ref=e329]: Stay up to date with our latest projects, impact reports, and events from across Africa.
+          - generic [ref=e330]:
+            - textbox "Your name" [ref=e331]
+            - textbox "Your email address" [ref=e332]
+            - button "Subscribe" [ref=e333]:
+              - img [ref=e334]
+              - text: Subscribe
+      - generic [ref=e338]:
+        - generic [ref=e339]: "© 2026 Papi Foundation. All rights reserved. KvK: 00000000"
+        - generic [ref=e340]:
+          - link "Terms & Conditions" [ref=e341] [cursor=pointer]:
+            - /url: /terms
+          - link "Privacy Policy" [ref=e342] [cursor=pointer]:
+            - /url: /privacy
+          - link "Disclaimer" [ref=e343] [cursor=pointer]:
+            - /url: /disclaimer
+          - link "Sitemap" [ref=e344] [cursor=pointer]:
+            - /url: /sitemap
+  - region "Notifications (F8)":
+    - list

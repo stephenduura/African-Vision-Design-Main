@@ -1,0 +1,59 @@
+[    2113ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=8078fd57:17986
+[    2613ms] [WARNING] Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly. @ http://127.0.0.1:24545/node_modules/.vite/deps/framer-motion.js?v=a25c4eaf:187
+[    2700ms] TypeError: projects.slice(...).map is not a function
+    at Home (http://127.0.0.1:24545/src/pages/Home.tsx:862:125)
+    at react-stack-bottom-frame (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=8078fd57:17424:20)
+    at renderWithHooks (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=8078fd57:4206:24)
+    at updateFunctionComponent (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=8078fd57:6619:21)
+    at beginWork (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=8078fd57:7654:20)
+    at runWithFiberInDEV (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=8078fd57:1485:72)
+    at performUnitOfWork (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=8078fd57:10868:98)
+    at workLoopSync (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=8078fd57:10728:43)
+    at renderRootSync (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=8078fd57:10711:13)
+    at performWorkOnRoot (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=8078fd57:10359:46)
+[    2700ms] [WARNING] %s
+
+%s
+ An error occurred in the <Home> component. Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries. @ http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=8078fd57:6228
+[    7822ms] ClerkRuntimeError2: Clerk: Failed to load Clerk JS, failed to load script: https://clerk.127.0.0.1/npm/@clerk/clerk-js@6/dist/clerk.browser.js
+
+(code="failed_to_load_clerk_js")
+
+
+    at rejectWith (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-2OY5V6EU.js?v=8078fd57:4056:33)
+    at http://127.0.0.1:24545/node_modules/.vite/deps/chunk-2OY5V6EU.js?v=8078fd57:4081:11
+[    8201ms] [LOG] [vite] server connection lost. Polling for restart... @ http://127.0.0.1:24545/@vite/client:864
+[   17238ms] [ERROR] ClerkRuntimeError2: Clerk: Failed to load Clerk JS
+
+(code="failed_to_load_clerk_js")
+
+
+    at rejectWith (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-2OY5V6EU.js?v=8078fd57:4056:33)
+    at loadClerkJSScript (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-2OY5V6EU.js?v=8078fd57:4074:83)
+    at _IsomorphicClerk2.getClerkJsEntryChunk (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-2OY5V6EU.js?v=8078fd57:6137:13)
+    at _IsomorphicClerk2.getEntryChunks (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-2OY5V6EU.js?v=8078fd57:6118:32)
+    at new _IsomorphicClerk2 (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-2OY5V6EU.js?v=8078fd57:5997:17)
+    at _IsomorphicClerk2.getOrCreateInstance (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-2OY5V6EU.js?v=8078fd57:6023:37)
+    at useLoadedIsomorphicClerk (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-2OY5V6EU.js?v=8078fd57:6294:76)
+    at ClerkProviderBase (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-2OY5V6EU.js?v=8078fd57:6272:44)
+    at react-stack-bottom-frame (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=8078fd57:17424:20)
+    at renderWithHooks (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=8078fd57:4206:24) @ http://127.0.0.1:24545/node_modules/.vite/deps/chunk-2OY5V6EU.js?v=8078fd57:6130
+[  134987ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:17986
+[  135314ms] [WARNING] Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly. @ http://127.0.0.1:24545/node_modules/.vite/deps/framer-motion.js?v=45070598:187
+[  135400ms] TypeError: projects.slice(...).map is not a function
+    at Home (http://127.0.0.1:24545/src/pages/Home.tsx:862:125)
+    at react-stack-bottom-frame (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:17424:20)
+    at renderWithHooks (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:4206:24)
+    at updateFunctionComponent (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:6619:21)
+    at beginWork (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:7654:20)
+    at runWithFiberInDEV (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:1485:72)
+    at performUnitOfWork (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:10868:98)
+    at workLoopSync (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:10728:43)
+    at renderRootSync (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:10711:13)
+    at performWorkOnRoot (http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:10359:46)
+[  135402ms] [WARNING] %s
+
+%s
+ An error occurred in the <Home> component. Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries. @ http://127.0.0.1:24545/node_modules/.vite/deps/chunk-OZEOEWP2.js?v=45070598:6228

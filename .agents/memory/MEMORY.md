@@ -1,0 +1,10 @@
+- [Framer ease typing](framer-ease-typing.md) — cubic-bezier ease arrays infer as number[] and break TS; use `as const` + `: Variants`.
+- [Premium page pattern](premium-page-pattern.md) — shared world-class page skeleton (hero/stats-band/editorial/CTA); reuse for any page redesign. Reference: AfricanInsights.tsx.
+- News & Events are ONE merged page at /news (News.tsx); /events redirects there, Events.tsx was deleted. Don't recreate a separate Events page. Event articles read at /news/:id (EventDetail.tsx); blog at /blog/:id.
+- [Orval query hooks](orval-query-hooks.md) — generated useGet* hooks set `enabled:!!(id)` internally; passing `{ query: { enabled } }` triggers a queryKey TS error. Call with no options.
+- [Stripe (stripe-replit-sync)](stripe-replit-sync.md) — keep it esbuild-external (migrations via import.meta.url); connector fields `secret`/`webhook_secret`; trust amount_total + REPLIT_DOMAINS, not client input.
+- [Drizzle push prompt](drizzle-push.md) — adding a UNIQUE constraint makes `drizzle-kit push` hang on an interactive prompt (even --force); apply via SQL instead.
+- [Deploy bot-shield](replit-deploy-shield.md) — deployed app 307s API calls to /__replshield unless they send `X-Requested-With`; set it in custom-fetch, needs redeploy.
+- [Image bg removal](image-bg-removal.md) — remove_image_background_tool can report success but return the original; always visually verify the output PNG.
+- [Community feed + Clerk](community-feed-clerk.md) — social feed on /community; reaction toggle MUST use onConflictDoUpdate upsert (unique constraint races→500); validate imageUrl server-side; Clerk web auth is cookie-based.
+- [Team roster seeding](team-roster-seeding.md) — team_members is code-managed: canonical TEAM_ROSTER in api-server seedTeam.ts is reconciled (delete+insert under advisory lock) on every startup. Edit the array, NOT SQL — a restart wipes manual SQL edits. This is how prod (separate content DB) gets corrected, since publish copies schema not content data.

@@ -1,0 +1,8 @@
+sec-ch-ua-platform: "Windows"
+authorization: Bearer local:%7B%22id%22%3A%225a9447b8-cd58-4bed-b1a9-886d0e5ad9ee%22%2C%22name%22%3A%22Test%20User%22%2C%22email%22%3A%22testuser%40example.com%22%2C%22imageUrl%22%3Anull%2C%22memberSince%22%3A%222026-06-09%22%2C%22memberType%22%3A%22individual%22%7D
+referer: http://127.0.0.1:24545/donate
+sec-ch-ua: "Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile: ?0
+x-requested-with: XMLHttpRequest
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+content-type: application/json

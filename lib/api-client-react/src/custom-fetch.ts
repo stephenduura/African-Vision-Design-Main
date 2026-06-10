@@ -1,0 +1,962 @@
+export type CustomFetchOptions = RequestInit & {
+  responseType?: "json" | "text" | "blob" | "auto";
+};
+
+export type ErrorType<T = unknown> = ApiError<T>;
+
+export type BodyType<T> = T;
+
+export type AuthTokenGetter = () => Promise<string | null> | string | null;
+
+const NO_BODY_STATUS = new Set([204, 205, 304]);
+const DEFAULT_JSON_ACCEPT = "application/json, application/problem+json";
+
+// ---------------------------------------------------------------------------
+// Module-level configuration
+// ---------------------------------------------------------------------------
+
+let _baseUrl: string | null = null;
+let _authTokenGetter: AuthTokenGetter | null = null;
+const COMMUNITY_REACTION_TYPES = [
+  "like",
+  "love",
+  "celebrate",
+  "support",
+  "insightful",
+] as const;
+type CommunityReactionType = (typeof COMMUNITY_REACTION_TYPES)[number];
+
+type BrowserCommunityMember = {
+  id: number;
+  name: string;
+  email: string;
+  country: string;
+  memberType: "individual" | "organization" | "volunteer";
+  bio?: string | null;
+  avatarUrl?: string | null;
+  joinedAt: string;
+};
+
+type BrowserCommunityPost = {
+  id: number;
+  authorId: string;
+  authorName: string;
+  authorImageUrl: string | null;
+  content: string;
+  imageUrl: string | null;
+  createdAt: string;
+};
+
+type BrowserPostReaction = {
+  id: number;
+  postId: number;
+  userId: string;
+  type: CommunityReactionType;
+  createdAt: string;
+};
+
+type BrowserComment = {
+  id: number;
+  postId: number;
+  authorId: string;
+  authorName: string;
+  authorImageUrl: string | null;
+  content: string;
+  createdAt: string;
+};
+
+type BrowserCommentReaction = {
+  id: number;
+  commentId: number;
+  userId: string;
+  type: CommunityReactionType;
+  createdAt: string;
+};
+
+type BrowserCommunityStore = {
+  nextIds: {
+    member: number;
+    post: number;
+    postReaction: number;
+    comment: number;
+    commentReaction: number;
+  };
+  members: BrowserCommunityMember[];
+  posts: BrowserCommunityPost[];
+  postReactions: BrowserPostReaction[];
+  comments: BrowserComment[];
+  commentReactions: BrowserCommentReaction[];
+};
+
+const COMMUNITY_STORE_KEY = "papi-community-browser-store";
+
+/**
+ * Set a base URL that is prepended to every relative request URL
+ * (i.e. paths that start with `/`).
+ *
+ * Useful for Expo bundles that need to call a remote API server.
+ * Pass `null` to clear the base URL.
+ */
+export function setBaseUrl(url: string | null): void {
+  _baseUrl = url ? url.replace(/\/+$/, "") : null;
+}
+
+/**
+ * Register a getter that supplies a bearer auth token.  Before every fetch
+ * the getter is invoked; when it returns a non-null string, an
+ * `Authorization: Bearer <token>` header is attached to the request.
+ *
+ * Useful for Expo bundles making token-gated API calls.
+ * Pass `null` to clear the getter.
+ *
+ * NOTE: This function should never be used in web applications where session
+ * token cookies are automatically associated with API calls by the browser.
+ */
+export function setAuthTokenGetter(getter: AuthTokenGetter | null): void {
+  _authTokenGetter = getter;
+}
+
+function isRequest(input: RequestInfo | URL): input is Request {
+  return typeof Request !== "undefined" && input instanceof Request;
+}
+
+function resolveMethod(input: RequestInfo | URL, explicitMethod?: string): string {
+  if (explicitMethod) return explicitMethod.toUpperCase();
+  if (isRequest(input)) return input.method.toUpperCase();
+  return "GET";
+}
+
+// Use loose check for URL — some runtimes (e.g. React Native) polyfill URL
+// differently, so `instanceof URL` can fail.
+function isUrl(input: RequestInfo | URL): input is URL {
+  return typeof URL !== "undefined" && input instanceof URL;
+}
+
+function applyBaseUrl(input: RequestInfo | URL): RequestInfo | URL {
+  if (!_baseUrl) return input;
+  const url = resolveUrl(input);
+  // Only prepend to relative paths (starting with /)
+  if (!url.startsWith("/")) return input;
+
+  const absolute = `${_baseUrl}${url}`;
+  if (typeof input === "string") return absolute;
+  if (isUrl(input)) return new URL(absolute);
+  return new Request(absolute, input as Request);
+}
+
+function resolveUrl(input: RequestInfo | URL): string {
+  if (typeof input === "string") return input;
+  if (isUrl(input)) return input.toString();
+  return input.url;
+}
+
+function mergeHeaders(...sources: Array<HeadersInit | undefined>): Headers {
+  const headers = new Headers();
+
+  for (const source of sources) {
+    if (!source) continue;
+    new Headers(source).forEach((value, key) => {
+      headers.set(key, value);
+    });
+  }
+
+  return headers;
+}
+
+function getMediaType(headers: Headers): string | null {
+  const value = headers.get("content-type");
+  return value ? value.split(";", 1)[0].trim().toLowerCase() : null;
+}
+
+function isJsonMediaType(mediaType: string | null): boolean {
+  return mediaType === "application/json" || Boolean(mediaType?.endsWith("+json"));
+}
+
+function isTextMediaType(mediaType: string | null): boolean {
+  return Boolean(
+    mediaType &&
+      (mediaType.startsWith("text/") ||
+        mediaType === "application/xml" ||
+        mediaType === "text/xml" ||
+        mediaType.endsWith("+xml") ||
+        mediaType === "application/x-www-form-urlencoded"),
+  );
+}
+
+// Use strict equality: in browsers, `response.body` is `null` when the
+// response genuinely has no content.  In React Native, `response.body` is
+// always `undefined` because the ReadableStream API is not implemented —
+// even when the response carries a full payload readable via `.text()` or
+// `.json()`.  Loose equality (`== null`) matches both `null` and `undefined`,
+// which causes every React Native response to be treated as empty.
+function hasNoBody(response: Response, method: string): boolean {
+  if (method === "HEAD") return true;
+  if (NO_BODY_STATUS.has(response.status)) return true;
+  if (response.headers.get("content-length") === "0") return true;
+  if (response.body === null) return true;
+  return false;
+}
+
+function stripBom(text: string): string {
+  return text.charCodeAt(0) === 0xfeff ? text.slice(1) : text;
+}
+
+function isBrowserEnvironment(): boolean {
+  return typeof window !== "undefined" && typeof localStorage !== "undefined";
+}
+
+function cloneBrowserStore(store: BrowserCommunityStore): BrowserCommunityStore {
+  return JSON.parse(JSON.stringify(store)) as BrowserCommunityStore;
+}
+
+function buildBrowserSeedStore(): BrowserCommunityStore {
+  return {
+    nextIds: {
+      member: 1,
+      post: 1,
+      postReaction: 1,
+      comment: 1,
+      commentReaction: 1,
+    },
+    members: [],
+    posts: [],
+    postReactions: [],
+    comments: [],
+    commentReactions: [],
+  };
+}
+
+function loadBrowserCommunityStore(): BrowserCommunityStore {
+  if (!isBrowserEnvironment()) return buildBrowserSeedStore();
+
+  const raw = localStorage.getItem(COMMUNITY_STORE_KEY);
+  if (!raw) return buildBrowserSeedStore();
+
+  try {
+    const parsed = JSON.parse(raw) as BrowserCommunityStore;
+    return {
+      nextIds: parsed.nextIds ?? buildBrowserSeedStore().nextIds,
+      members: Array.isArray(parsed.members) ? parsed.members : [],
+      posts: Array.isArray(parsed.posts) ? parsed.posts : [],
+      postReactions: Array.isArray(parsed.postReactions) ? parsed.postReactions : [],
+      comments: Array.isArray(parsed.comments) ? parsed.comments : [],
+      commentReactions: Array.isArray(parsed.commentReactions)
+        ? parsed.commentReactions
+        : [],
+    };
+  } catch {
+    return buildBrowserSeedStore();
+  }
+}
+
+function saveBrowserCommunityStore(store: BrowserCommunityStore): void {
+  if (!isBrowserEnvironment()) return;
+  localStorage.setItem(COMMUNITY_STORE_KEY, JSON.stringify(store));
+}
+
+function withBrowserCommunityStore<T>(
+  updater: (store: BrowserCommunityStore) => T,
+): T {
+  const store = loadBrowserCommunityStore();
+  const result = updater(store);
+  saveBrowserCommunityStore(store);
+  return result;
+}
+
+function emptyBrowserCounts(): Record<CommunityReactionType, number> {
+  return { like: 0, love: 0, celebrate: 0, support: 0, insightful: 0 };
+}
+
+function getBrowserUserIdentity(headers: Headers): {
+  id: string;
+  name: string;
+  imageUrl: string | null;
+} {
+  const authorization = headers.get("authorization");
+  const token =
+    authorization?.startsWith("Bearer ") ? authorization.slice("Bearer ".length).trim() : null;
+
+  if (token?.startsWith("local:")) {
+    try {
+      const raw = decodeURIComponent(token.slice("local:".length));
+      const parsed = JSON.parse(raw) as {
+        id?: string;
+        name?: string;
+        imageUrl?: string | null;
+      };
+      if (parsed.id) {
+        return {
+          id: parsed.id,
+          name: parsed.name?.trim() || "Member",
+          imageUrl: parsed.imageUrl?.trim() || null,
+        };
+      }
+    } catch {
+      // Ignore malformed preview tokens and fall back to an anonymous identity.
+    }
+  }
+
+  return { id: "local-browser-user", name: "Member", imageUrl: null };
+}
+
+function parseLocalRequestBody(initBody: BodyInit | null | undefined): unknown {
+  if (typeof initBody !== "string") return null;
+  try {
+    return JSON.parse(initBody);
+  } catch {
+    return null;
+  }
+}
+
+function jsonResponse(data: unknown, status = 200): Response {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: {
+      "content-type": "application/json",
+    },
+  });
+}
+
+function normalizeCommunityPath(url: string): string {
+  try {
+    return new URL(url, window.location.origin).pathname;
+  } catch {
+    return url;
+  }
+}
+
+function buildBrowserPostView(
+  post: BrowserCommunityPost,
+  store: BrowserCommunityStore,
+  me: string | null,
+) {
+  const counts = emptyBrowserCounts();
+  let myReaction: CommunityReactionType | null = null;
+  for (const reaction of store.postReactions.filter((item) => item.postId === post.id)) {
+    counts[reaction.type] += 1;
+    if (me && reaction.userId === me) myReaction = reaction.type;
+  }
+
+  const commentCount = store.comments.filter((comment) => comment.postId === post.id).length;
+  return {
+    id: post.id,
+    authorId: post.authorId,
+    authorName: post.authorName,
+    authorImageUrl: post.authorImageUrl,
+    content: post.content,
+    imageUrl: post.imageUrl,
+    createdAt: post.createdAt,
+    reactions: counts,
+    totalReactions: Object.values(counts).reduce((sum, value) => sum + value, 0),
+    myReaction,
+    commentCount,
+  };
+}
+
+function buildBrowserCommentView(
+  comment: BrowserComment,
+  store: BrowserCommunityStore,
+  me: string | null,
+) {
+  const counts = emptyBrowserCounts();
+  let myReaction: CommunityReactionType | null = null;
+  for (const reaction of store.commentReactions.filter(
+    (item) => item.commentId === comment.id,
+  )) {
+    counts[reaction.type] += 1;
+    if (me && reaction.userId === me) myReaction = reaction.type;
+  }
+
+  return {
+    id: comment.id,
+    postId: comment.postId,
+    authorId: comment.authorId,
+    authorName: comment.authorName,
+    authorImageUrl: comment.authorImageUrl,
+    content: comment.content,
+    createdAt: comment.createdAt,
+    reactions: counts,
+    totalReactions: Object.values(counts).reduce((sum, value) => sum + value, 0),
+    myReaction,
+  };
+}
+
+function updateBrowserPostReaction(
+  store: BrowserCommunityStore,
+  postId: number,
+  userId: string,
+  type: CommunityReactionType,
+): { status: "ok" | "not_found"; post: BrowserCommunityPost | null } {
+  const post = store.posts.find((item) => item.id === postId);
+  if (!post) {
+    return { status: "not_found", post: null };
+  }
+
+  const existing = store.postReactions.find(
+    (reaction) => reaction.postId === postId && reaction.userId === userId,
+  );
+  if (existing && existing.type === type) {
+    store.postReactions = store.postReactions.filter((reaction) => reaction.id !== existing.id);
+  } else if (existing) {
+    existing.type = type;
+    existing.createdAt = new Date().toISOString();
+  } else {
+    store.postReactions.push({
+      id: store.nextIds.postReaction++,
+      postId,
+      userId,
+      type,
+      createdAt: new Date().toISOString(),
+    });
+  }
+
+  return { status: "ok", post };
+}
+
+function updateBrowserCommentReaction(
+  store: BrowserCommunityStore,
+  commentId: number,
+  userId: string,
+  type: CommunityReactionType,
+): { status: "ok" | "not_found"; comment: BrowserComment | null } {
+  const comment = store.comments.find((item) => item.id === commentId);
+  if (!comment) {
+    return { status: "not_found", comment: null };
+  }
+
+  const existing = store.commentReactions.find(
+    (reaction) => reaction.commentId === commentId && reaction.userId === userId,
+  );
+  if (existing && existing.type === type) {
+    store.commentReactions = store.commentReactions.filter(
+      (reaction) => reaction.id !== existing.id,
+    );
+  } else if (existing) {
+    existing.type = type;
+    existing.createdAt = new Date().toISOString();
+  } else {
+    store.commentReactions.push({
+      id: store.nextIds.commentReaction++,
+      commentId,
+      userId,
+      type,
+      createdAt: new Date().toISOString(),
+    });
+  }
+
+  return { status: "ok", comment };
+}
+
+function handleBrowserCommunityRequest(
+  url: string,
+  method: string,
+  headers: Headers,
+  body: BodyInit | null | undefined,
+): Response | null {
+  if (!isBrowserEnvironment()) return null;
+  const path = normalizeCommunityPath(url);
+  if (!path.startsWith("/api/community/")) return null;
+
+  const me = getBrowserUserIdentity(headers);
+  const bodyData = parseLocalRequestBody(body);
+
+  return withBrowserCommunityStore((store) => {
+    if (path === "/api/community/stats" && method === "GET") {
+      const countries = new Set(store.members.map((member) => member.country.trim().toLowerCase()));
+      return jsonResponse(
+        {
+          totalMembers: store.members.length,
+          countries: countries.size,
+          activePosts: store.posts.length,
+          partnerships: 0,
+        },
+        200,
+      );
+    }
+
+    if (path === "/api/community/members" && method === "GET") {
+      return jsonResponse(
+        store.members
+          .slice()
+          .sort((a, b) => new Date(b.joinedAt).getTime() - new Date(a.joinedAt).getTime())
+          .map((member) => ({
+            ...member,
+          })),
+        200,
+      );
+    }
+
+    if (path === "/api/community/members" && method === "POST") {
+      const payload = bodyData as
+        | {
+            name?: string;
+            email?: string;
+            country?: string;
+            memberType?: BrowserCommunityMember["memberType"];
+            bio?: string;
+            avatarUrl?: string;
+          }
+        | null;
+
+      const name = payload?.name?.trim();
+      const email = payload?.email?.trim().toLowerCase();
+      const country = payload?.country?.trim();
+      const memberType = payload?.memberType;
+
+      if (!name || !email || !country || !memberType) {
+        return jsonResponse({ message: "Missing required fields." }, 400);
+      }
+
+      if (
+        store.members.some((member) => member.email.trim().toLowerCase() === email)
+      ) {
+        return jsonResponse({ message: "A member with this email already exists." }, 409);
+      }
+
+      const member: BrowserCommunityMember = {
+        id: store.nextIds.member++,
+        name,
+        email,
+        country,
+        memberType,
+        bio: payload?.bio?.trim() || null,
+        avatarUrl: payload?.avatarUrl?.trim() || null,
+        joinedAt: new Date().toISOString(),
+      };
+
+      store.members.push(member);
+      return jsonResponse(member, 201);
+    }
+
+    if (path === "/api/community/posts" && method === "GET") {
+      const posts = store.posts
+        .slice()
+        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+        .map((post) => buildBrowserPostView(post, store, me.id));
+      return jsonResponse(posts, 200);
+    }
+
+    if (path === "/api/community/posts" && method === "POST") {
+      const payload = bodyData as
+        | {
+            content?: string;
+            imageUrl?: string | null;
+          }
+        | null;
+
+      const content = payload?.content?.trim();
+      if (!content) return jsonResponse({ message: "Post content is required." }, 400);
+
+      const post: BrowserCommunityPost = {
+        id: store.nextIds.post++,
+        authorId: me.id,
+        authorName: me.name,
+        authorImageUrl: me.imageUrl,
+        content,
+        imageUrl: payload?.imageUrl?.trim() || null,
+        createdAt: new Date().toISOString(),
+      };
+
+      store.posts.push(post);
+      return jsonResponse(buildBrowserPostView(post, store, me.id), 201);
+    }
+
+    const postReactionMatch = path.match(/^\/api\/community\/posts\/(\d+)\/reaction$/);
+    if (postReactionMatch && method === "PUT") {
+      const postId = Number(postReactionMatch[1]);
+      const payload = bodyData as { type?: CommunityReactionType } | null;
+      const type = payload?.type;
+      if (!type || !COMMUNITY_REACTION_TYPES.includes(type)) {
+        return jsonResponse({ message: "Invalid reaction type." }, 400);
+      }
+
+      const result = updateBrowserPostReaction(store, postId, me.id, type);
+      if (result.status === "not_found" || !result.post) {
+        return jsonResponse({ message: "Post not found." }, 404);
+      }
+
+      return jsonResponse(buildBrowserPostView(result.post, store, me.id), 200);
+    }
+
+    const postMatch = path.match(/^\/api\/community\/posts\/(\d+)$/);
+    if (postMatch && (method === "DELETE" || method === "PUT")) {
+      const postId = Number(postMatch[1]);
+      const postIndex = store.posts.findIndex((item) => item.id === postId);
+      if (postIndex < 0) return jsonResponse({ message: "Post not found." }, 404);
+
+      const post = store.posts[postIndex];
+
+      if (method === "DELETE") {
+        if (post.authorId !== me.id) {
+          return jsonResponse({ message: "You can only delete your own post." }, 403);
+        }
+        store.posts.splice(postIndex, 1);
+        store.postReactions = store.postReactions.filter((reaction) => reaction.postId !== postId);
+        store.comments = store.comments.filter((comment) => comment.postId !== postId);
+        store.commentReactions = store.commentReactions.filter((reaction) =>
+          store.comments.some((comment) => comment.id === reaction.commentId),
+        );
+        return jsonResponse(null, 204);
+      }
+
+      const payload = bodyData as { type?: CommunityReactionType } | null;
+      const type = payload?.type;
+      if (!type || !COMMUNITY_REACTION_TYPES.includes(type)) {
+        return jsonResponse({ message: "Invalid reaction type." }, 400);
+      }
+
+      const result = updateBrowserPostReaction(store, postId, me.id, type);
+      if (result.status === "not_found" || !result.post) {
+        return jsonResponse({ message: "Post not found." }, 404);
+      }
+
+      return jsonResponse(buildBrowserPostView(result.post, store, me.id), 200);
+    }
+
+    const commentsMatch = path.match(/^\/api\/community\/posts\/(\d+)\/comments$/);
+    if (commentsMatch) {
+      const postId = Number(commentsMatch[1]);
+      const post = store.posts.find((item) => item.id === postId);
+      if (!post) return jsonResponse({ message: "Post not found." }, 404);
+
+      if (method === "GET") {
+        const comments = store.comments
+          .filter((comment) => comment.postId === postId)
+          .sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
+          .map((comment) => buildBrowserCommentView(comment, store, me.id));
+        return jsonResponse(comments, 200);
+      }
+
+      if (method === "POST") {
+        const payload = bodyData as { content?: string } | null;
+        const content = payload?.content?.trim();
+        if (!content) return jsonResponse({ message: "Comment content is required." }, 400);
+
+        const comment: BrowserComment = {
+          id: store.nextIds.comment++,
+          postId,
+          authorId: me.id,
+          authorName: me.name,
+          authorImageUrl: me.imageUrl,
+          content,
+          createdAt: new Date().toISOString(),
+        };
+        store.comments.push(comment);
+        return jsonResponse(buildBrowserCommentView(comment, store, me.id), 201);
+      }
+    }
+
+    const commentReactionMatch = path.match(/^\/api\/community\/comments\/(\d+)\/reaction$/);
+    if (commentReactionMatch && method === "PUT") {
+      const commentId = Number(commentReactionMatch[1]);
+      const payload = bodyData as { type?: CommunityReactionType } | null;
+      const type = payload?.type;
+      if (!type || !COMMUNITY_REACTION_TYPES.includes(type)) {
+        return jsonResponse({ message: "Invalid reaction type." }, 400);
+      }
+
+      const result = updateBrowserCommentReaction(store, commentId, me.id, type);
+      if (result.status === "not_found" || !result.comment) {
+        return jsonResponse({ message: "Comment not found." }, 404);
+      }
+
+      return jsonResponse(buildBrowserCommentView(result.comment, store, me.id), 200);
+    }
+
+    const commentMatch = path.match(/^\/api\/community\/comments\/(\d+)$/);
+    if (commentMatch && (method === "DELETE" || method === "PUT")) {
+      const commentId = Number(commentMatch[1]);
+      const commentIndex = store.comments.findIndex((item) => item.id === commentId);
+      if (commentIndex < 0) return jsonResponse({ message: "Comment not found." }, 404);
+
+      const comment = store.comments[commentIndex];
+
+      if (method === "DELETE") {
+        if (comment.authorId !== me.id) {
+          return jsonResponse({ message: "You can only delete your own comment." }, 403);
+        }
+        store.comments.splice(commentIndex, 1);
+        store.commentReactions = store.commentReactions.filter(
+          (reaction) => reaction.commentId !== commentId,
+        );
+        return jsonResponse(null, 204);
+      }
+
+      const payload = bodyData as { type?: CommunityReactionType } | null;
+      const type = payload?.type;
+      if (!type || !COMMUNITY_REACTION_TYPES.includes(type)) {
+        return jsonResponse({ message: "Invalid reaction type." }, 400);
+      }
+
+      const result = updateBrowserCommentReaction(store, commentId, me.id, type);
+      if (result.status === "not_found" || !result.comment) {
+        return jsonResponse({ message: "Comment not found." }, 404);
+      }
+
+      return jsonResponse(buildBrowserCommentView(result.comment, store, me.id), 200);
+    }
+
+    return jsonResponse({ message: "Unsupported community route." }, 404);
+  });
+}
+
+function looksLikeJson(text: string): boolean {
+  const trimmed = text.trimStart();
+  return trimmed.startsWith("{") || trimmed.startsWith("[");
+}
+
+function getStringField(value: unknown, key: string): string | undefined {
+  if (!value || typeof value !== "object") return undefined;
+
+  const candidate = (value as Record<string, unknown>)[key];
+  if (typeof candidate !== "string") return undefined;
+
+  const trimmed = candidate.trim();
+  return trimmed === "" ? undefined : trimmed;
+}
+
+function truncate(text: string, maxLength = 300): string {
+  return text.length > maxLength ? `${text.slice(0, maxLength - 1)}…` : text;
+}
+
+function buildErrorMessage(response: Response, data: unknown): string {
+  const prefix = `HTTP ${response.status} ${response.statusText}`;
+
+  if (typeof data === "string") {
+    const text = data.trim();
+    return text ? `${prefix}: ${truncate(text)}` : prefix;
+  }
+
+  const title = getStringField(data, "title");
+  const detail = getStringField(data, "detail");
+  const message =
+    getStringField(data, "message") ??
+    getStringField(data, "error_description") ??
+    getStringField(data, "error");
+
+  if (title && detail) return `${prefix}: ${title} — ${detail}`;
+  if (detail) return `${prefix}: ${detail}`;
+  if (message) return `${prefix}: ${message}`;
+  if (title) return `${prefix}: ${title}`;
+
+  return prefix;
+}
+
+export class ApiError<T = unknown> extends Error {
+  readonly name = "ApiError";
+  readonly status: number;
+  readonly statusText: string;
+  readonly data: T | null;
+  readonly headers: Headers;
+  readonly response: Response;
+  readonly method: string;
+  readonly url: string;
+
+  constructor(
+    response: Response,
+    data: T | null,
+    requestInfo: { method: string; url: string },
+  ) {
+    super(buildErrorMessage(response, data));
+    Object.setPrototypeOf(this, new.target.prototype);
+
+    this.status = response.status;
+    this.statusText = response.statusText;
+    this.data = data;
+    this.headers = response.headers;
+    this.response = response;
+    this.method = requestInfo.method;
+    this.url = response.url || requestInfo.url;
+  }
+}
+
+export class ResponseParseError extends Error {
+  readonly name = "ResponseParseError";
+  readonly status: number;
+  readonly statusText: string;
+  readonly headers: Headers;
+  readonly response: Response;
+  readonly method: string;
+  readonly url: string;
+  readonly rawBody: string;
+  readonly cause: unknown;
+
+  constructor(
+    response: Response,
+    rawBody: string,
+    cause: unknown,
+    requestInfo: { method: string; url: string },
+  ) {
+    super(
+      `Failed to parse response from ${requestInfo.method} ${response.url || requestInfo.url} ` +
+        `(${response.status} ${response.statusText}) as JSON`,
+    );
+    Object.setPrototypeOf(this, new.target.prototype);
+
+    this.status = response.status;
+    this.statusText = response.statusText;
+    this.headers = response.headers;
+    this.response = response;
+    this.method = requestInfo.method;
+    this.url = response.url || requestInfo.url;
+    this.rawBody = rawBody;
+    this.cause = cause;
+  }
+}
+
+async function parseJsonBody(
+  response: Response,
+  requestInfo: { method: string; url: string },
+): Promise<unknown> {
+  const raw = await response.text();
+  const normalized = stripBom(raw);
+
+  if (normalized.trim() === "") {
+    return null;
+  }
+
+  try {
+    return JSON.parse(normalized);
+  } catch (cause) {
+    throw new ResponseParseError(response, raw, cause, requestInfo);
+  }
+}
+
+async function parseErrorBody(response: Response, method: string): Promise<unknown> {
+  if (hasNoBody(response, method)) {
+    return null;
+  }
+
+  const mediaType = getMediaType(response.headers);
+
+  // Fall back to text when blob() is unavailable (e.g. some React Native builds).
+  if (mediaType && !isJsonMediaType(mediaType) && !isTextMediaType(mediaType)) {
+    return typeof response.blob === "function" ? response.blob() : response.text();
+  }
+
+  const raw = await response.text();
+  const normalized = stripBom(raw);
+  const trimmed = normalized.trim();
+
+  if (trimmed === "") {
+    return null;
+  }
+
+  if (isJsonMediaType(mediaType) || looksLikeJson(normalized)) {
+    try {
+      return JSON.parse(normalized);
+    } catch {
+      return raw;
+    }
+  }
+
+  return raw;
+}
+
+function inferResponseType(response: Response): "json" | "text" | "blob" {
+  const mediaType = getMediaType(response.headers);
+
+  if (isJsonMediaType(mediaType)) return "json";
+  if (isTextMediaType(mediaType) || mediaType == null) return "text";
+  return "blob";
+}
+
+async function parseSuccessBody(
+  response: Response,
+  responseType: "json" | "text" | "blob" | "auto",
+  requestInfo: { method: string; url: string },
+): Promise<unknown> {
+  if (hasNoBody(response, requestInfo.method)) {
+    return null;
+  }
+
+  const effectiveType =
+    responseType === "auto" ? inferResponseType(response) : responseType;
+
+  switch (effectiveType) {
+    case "json":
+      return parseJsonBody(response, requestInfo);
+
+    case "text": {
+      const text = await response.text();
+      return text === "" ? null : text;
+    }
+
+    case "blob":
+      if (typeof response.blob !== "function") {
+        throw new TypeError(
+          "Blob responses are not supported in this runtime. " +
+            "Use responseType \"json\" or \"text\" instead.",
+        );
+      }
+      return response.blob();
+  }
+}
+
+export async function customFetch<T = unknown>(
+  input: RequestInfo | URL,
+  options: CustomFetchOptions = {},
+): Promise<T> {
+  input = applyBaseUrl(input);
+  const { responseType = "auto", headers: headersInit, ...init } = options;
+
+  const method = resolveMethod(input, init.method);
+
+  if (init.body != null && (method === "GET" || method === "HEAD")) {
+    throw new TypeError(`customFetch: ${method} requests cannot have a body.`);
+  }
+
+  const headers = mergeHeaders(isRequest(input) ? input.headers : undefined, headersInit);
+
+  // Identify every call as an AJAX request. Replit's deployment bot-shield
+  // serves an HTML interstitial (307 -> /__replshield) to requests that lack
+  // this header, which breaks programmatic API calls (notably POST mutations).
+  if (!headers.has("x-requested-with")) {
+    headers.set("x-requested-with", "XMLHttpRequest");
+  }
+
+  if (
+    typeof init.body === "string" &&
+    !headers.has("content-type") &&
+    looksLikeJson(init.body)
+  ) {
+    headers.set("content-type", "application/json");
+  }
+
+  if (responseType === "json" && !headers.has("accept")) {
+    headers.set("accept", DEFAULT_JSON_ACCEPT);
+  }
+
+  // Attach bearer token when an auth getter is configured and no
+  // Authorization header has been explicitly provided.
+  if (_authTokenGetter && !headers.has("authorization")) {
+    const token = await _authTokenGetter();
+    if (token) {
+      headers.set("authorization", `Bearer ${token}`);
+    }
+  }
+
+  const requestInfo = { method, url: resolveUrl(input) };
+  const localCommunityResponse = handleBrowserCommunityRequest(
+    requestInfo.url,
+    method,
+    headers,
+    init.body,
+  );
+  if (localCommunityResponse) {
+    if (!localCommunityResponse.ok) {
+      const errorData = await parseErrorBody(localCommunityResponse, method);
+      throw new ApiError(localCommunityResponse, errorData, requestInfo);
+    }
+    return (await parseSuccessBody(localCommunityResponse, responseType, requestInfo)) as T;
+  }
+
+  const response = await fetch(input, { ...init, method, headers });
+
+  if (!response.ok) {
+    const errorData = await parseErrorBody(response, method);
+    throw new ApiError(response, errorData, requestInfo);
+  }
+
+  return (await parseSuccessBody(response, responseType, requestInfo)) as T;
+}

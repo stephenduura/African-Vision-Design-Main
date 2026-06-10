@@ -1,0 +1,558 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e8]:
+            - img [ref=e9]
+            - text: info@papifoundation.org
+          - generic [ref=e12]:
+            - img [ref=e13]
+            - text: +31 20 000 0000
+        - generic [ref=e15]:
+          - link "Facebook" [ref=e16] [cursor=pointer]:
+            - /url: https://facebook.com/
+          - link "Twitter" [ref=e17] [cursor=pointer]:
+            - /url: https://twitter.com/
+          - link "LinkedIn" [ref=e18] [cursor=pointer]:
+            - /url: https://linkedin.com/
+          - link "Instagram" [ref=e19] [cursor=pointer]:
+            - /url: https://instagram.com/
+          - link "YouTube" [ref=e20] [cursor=pointer]:
+            - /url: https://youtube.com/
+      - generic [ref=e21]:
+        - link "P PAPI FOUNDATION Building Africa by Africans" [ref=e22] [cursor=pointer]:
+          - /url: https://african-vision-design--dura05509.replit.app/
+          - generic [ref=e23]: P
+          - generic [ref=e24]:
+            - generic [ref=e25]: PAPI FOUNDATION
+            - generic [ref=e26]: Building Africa by Africans
+        - navigation [ref=e27]:
+          - link "Doing Business in Africa" [ref=e28] [cursor=pointer]:
+            - /url: https://african-vision-design--dura05509.replit.app/doing-business
+          - link "African Insights" [ref=e29] [cursor=pointer]:
+            - /url: https://african-vision-design--dura05509.replit.app/african-insights
+          - button "About Papi" [ref=e31]:
+            - text: About Papi
+            - img [ref=e32]
+          - link "Partners" [ref=e34] [cursor=pointer]:
+            - /url: https://african-vision-design--dura05509.replit.app/partners
+          - link "News" [ref=e35] [cursor=pointer]:
+            - /url: https://african-vision-design--dura05509.replit.app/news
+          - link "Events" [ref=e36] [cursor=pointer]:
+            - /url: https://african-vision-design--dura05509.replit.app/events
+          - link "Office" [ref=e37] [cursor=pointer]:
+            - /url: https://african-vision-design--dura05509.replit.app/office
+        - generic [ref=e38]:
+          - button "S Stephenpaago" [ref=e40]:
+            - generic [ref=e41]: S
+            - text: Stephenpaago
+            - img [ref=e42]
+          - link "Donate" [ref=e44] [cursor=pointer]:
+            - /url: https://african-vision-design--dura05509.replit.app/donate
+        - button [ref=e45]:
+          - img [ref=e46]
+    - main [ref=e47]:
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - generic [ref=e50]:
+            - generic [ref=e51]:
+              - generic [ref=e52]: Building Africa by Africans
+              - heading "Empowering Africa's Future, Together." [level=1] [ref=e53]:
+                - text: Empowering
+                - text: Africa's
+                - emphasis [ref=e54]: Future,
+                - text: Together.
+              - paragraph [ref=e55]: A world-class foundation funding education, clean water, healthcare, and economic development across Africa — with full transparency and a €13.8B global network.
+              - generic [ref=e56]:
+                - link "Donate Now" [ref=e57] [cursor=pointer]:
+                  - /url: https://african-vision-design--dura05509.replit.app/donate
+                  - text: Donate Now
+                  - img [ref=e58]
+                - link "Our Mission" [ref=e60] [cursor=pointer]:
+                  - /url: https://african-vision-design--dura05509.replit.app/about
+                  - text: Our Mission
+                  - img [ref=e61]
+            - img "Africa" [ref=e94]
+          - generic [ref=e95]:
+            - text: Scroll
+            - img [ref=e96]
+        - generic [ref=e100]:
+          - generic [ref=e101]:
+            - generic [ref=e103]: €10,250+
+            - generic [ref=e104]: Raised
+          - generic [ref=e105]:
+            - generic [ref=e107]: 17,000+
+            - generic [ref=e108]: Beneficiaries
+          - generic [ref=e109]:
+            - generic [ref=e111]: "3"
+            - generic [ref=e112]: Countries Active
+          - generic [ref=e113]:
+            - generic [ref=e115]: 8+
+            - generic [ref=e116]: Partners Worldwide
+        - generic [ref=e119]:
+          - generic [ref=e120]:
+            - img "African community gathering" [ref=e121]
+            - generic [ref=e122]:
+              - generic [ref=e123]: 230M+
+              - generic [ref=e124]: Network members united by one mission
+          - generic [ref=e125]:
+            - generic [ref=e126]: Our Community
+            - heading "A Movement Built on Purpose" [level=2] [ref=e127]:
+              - text: A Movement Built
+              - text: on Purpose
+            - paragraph [ref=e128]: The Papi Foundation community provides a unique opportunity to network with investors, development partners, field experts, and community leaders who are committed to transforming Africa. We connect purpose with resources — bridging Europe and Africa in meaningful, measurable ways.
+            - paragraph [ref=e129]: Our members span entrepreneurs, NGOs, government bodies, and individuals who believe that Africa's future must be built by Africans — with the support of a connected global community.
+            - generic [ref=e130]:
+              - generic [ref=e131]:
+                - img [ref=e132]
+                - generic [ref=e137]:
+                  - generic [ref=e138]: 230M+
+                  - generic [ref=e139]: Network Members
+              - generic [ref=e140]:
+                - img [ref=e141]
+                - generic [ref=e144]:
+                  - generic [ref=e145]: €13.8B
+                  - generic [ref=e146]: Investment Capacity
+              - generic [ref=e147]:
+                - img [ref=e148]
+                - generic [ref=e151]:
+                  - generic [ref=e152]: 47+
+                  - generic [ref=e153]: Countries Connected
+              - generic [ref=e154]:
+                - img [ref=e155]
+                - generic [ref=e159]:
+                  - generic [ref=e160]: 6 Sectors
+                  - generic [ref=e161]: Active Investment
+            - link "Join the Community" [ref=e163] [cursor=pointer]:
+              - /url: https://african-vision-design--dura05509.replit.app/community
+              - text: Join the Community
+              - img [ref=e164]
+        - generic [ref=e167]:
+          - generic [ref=e168]:
+            - generic [ref=e169]: The Power of Our Network
+            - heading "Papi Foundation Network" [level=2] [ref=e170]
+            - paragraph [ref=e171]: Our network is made of over 230 million connected members with a combined investment capacity of €13.8 billion — mobilised within nine months of our founding.
+          - generic [ref=e172]:
+            - generic [ref=e173]:
+              - generic [ref=e174]: 230M+
+              - generic [ref=e175]: Network Members
+              - generic [ref=e176]: Across 47 African countries and the global diaspora
+            - generic [ref=e177]:
+              - generic [ref=e178]: €13.8B
+              - generic [ref=e179]: Euros in Capacity
+              - generic [ref=e180]: Collective investment potential mobilised within 9 months
+            - generic [ref=e181]:
+              - generic [ref=e182]: 9 Months
+              - generic [ref=e183]: Time to Scale
+              - generic [ref=e184]: The fastest-growing African humanitarian network in history
+        - generic [ref=e186]:
+          - generic [ref=e187]:
+            - generic [ref=e188]: Where We Invest
+            - heading "Sectors of Impact" [level=2] [ref=e189]
+            - paragraph [ref=e190]: Seven key sectors driving Africa's economic growth and community resilience — backed by our €13.8B network.
+          - generic [ref=e191]:
+            - generic [ref=e192]:
+              - img "Livestock" [ref=e194]
+              - generic [ref=e195]:
+                - img [ref=e196]
+                - generic [ref=e202]: Livestock
+            - generic [ref=e203]:
+              - img "Agri-trading & Agricultural Machinery" [ref=e205]
+              - generic [ref=e206]:
+                - img [ref=e207]
+                - generic [ref=e213]: Agri-trading & Agricultural Machinery
+            - generic [ref=e214]:
+              - img "Business & Financial Services" [ref=e216]
+              - generic [ref=e217]:
+                - img [ref=e218]
+                - generic [ref=e220]: Business & Financial Services
+            - generic [ref=e221]:
+              - img "Construction & Engineering" [ref=e223]
+              - generic [ref=e224]:
+                - img [ref=e225]
+                - generic [ref=e229]: Construction & Engineering
+            - generic [ref=e230]:
+              - img "Transportation & Logistics" [ref=e232]
+              - generic [ref=e233]:
+                - img [ref=e234]
+                - generic [ref=e239]: Transportation & Logistics
+            - generic [ref=e240]:
+              - img "Marine & Offshore" [ref=e242]
+              - generic [ref=e243]:
+                - img [ref=e244]
+                - generic [ref=e248]: Marine & Offshore
+            - generic [ref=e249]:
+              - img "Retail" [ref=e251]
+              - generic [ref=e252]:
+                - img [ref=e253]
+                - generic [ref=e256]: Retail
+            - generic [ref=e257]:
+              - img [ref=e258]
+              - link "Explore All Opportunities" [ref=e260] [cursor=pointer]:
+                - /url: https://african-vision-design--dura05509.replit.app/doing-business
+        - generic [ref=e262]:
+          - generic [ref=e263]:
+            - generic [ref=e264]:
+              - generic [ref=e265]: Ongoing Work
+              - heading "Active Projects" [level=2] [ref=e266]
+            - link "All Projects" [ref=e267] [cursor=pointer]:
+              - /url: https://african-vision-design--dura05509.replit.app/projects
+              - text: All Projects
+              - img [ref=e268]
+          - generic [ref=e270]:
+            - generic [ref=e271]:
+              - generic [ref=e272]:
+                - img "Abuja Clean Water Initiative" [ref=e273]
+                - generic [ref=e274]: Clean WaterNigeria
+              - generic [ref=e275]:
+                - heading "Abuja Clean Water Initiative" [level=3] [ref=e276]
+                - generic [ref=e277]:
+                  - generic [ref=e278]: €62,000 raised73%
+                  - generic [ref=e279]: "Goal: €85,000"
+                - link "View Project" [ref=e280] [cursor=pointer]:
+                  - /url: https://african-vision-design--dura05509.replit.app/projects/1
+                  - text: View Project
+                  - img [ref=e281]
+            - generic [ref=e283]:
+              - generic [ref=e284]:
+                - img "Lagos Youth Education Center" [ref=e285]
+                - generic [ref=e286]: EducationNigeria
+              - generic [ref=e287]:
+                - heading "Lagos Youth Education Center" [level=3] [ref=e288]
+                - generic [ref=e289]:
+                  - generic [ref=e290]: €89,000 raised74%
+                  - generic [ref=e291]: "Goal: €120,000"
+                - link "View Project" [ref=e292] [cursor=pointer]:
+                  - /url: https://african-vision-design--dura05509.replit.app/projects/2
+                  - text: View Project
+                  - img [ref=e293]
+        - generic [ref=e297]:
+          - generic [ref=e298]:
+            - generic [ref=e299]: For the African Diaspora
+            - heading "Ready to Come Home and Build?" [level=2] [ref=e300]:
+              - text: Ready to Come Home
+              - text: and Build?
+            - paragraph [ref=e301]: Are you in the diaspora and ready to invest in Africa — to build businesses, create jobs, and grow the continent? Papi Foundation is your bridge. We connect you with the right partners, the right projects, and the right opportunities to make your investment count.
+            - generic [ref=e302]:
+              - generic [ref=e303]: Market research and investment intelligence
+              - generic [ref=e304]: Trade facilitation and logistics support
+              - generic [ref=e305]: Investment promotion and partner matching
+              - generic [ref=e306]: Legal guidance for cross-border projects
+              - generic [ref=e307]: Connections to government and NGO networks
+            - generic [ref=e308]:
+              - link "Business in Africa" [ref=e309] [cursor=pointer]:
+                - /url: https://african-vision-design--dura05509.replit.app/doing-business
+              - link "Join the Network" [ref=e310] [cursor=pointer]:
+                - /url: https://african-vision-design--dura05509.replit.app/community
+          - generic [ref=e311]:
+            - img "African diaspora business professionals" [ref=e312]
+            - generic [ref=e313]:
+              - generic [ref=e314]: €13.8B
+              - generic [ref=e315]: Network capacity
+        - generic [ref=e317]:
+          - generic [ref=e318]:
+            - generic [ref=e319]: Full Transparency
+            - heading "Live Donation Tracker" [level=2] [ref=e320]
+            - paragraph [ref=e321]: Every donation is visible. Every euro is tracked. Real-time accountability — because transparency builds trust.
+          - generic [ref=e322]:
+            - generic [ref=e323]:
+              - generic [ref=e324]: €10.3K
+              - generic [ref=e325]: Total Raised
+              - generic [ref=e326]: Updated in real-time
+            - generic [ref=e327]:
+              - generic [ref=e328]: "7"
+              - generic [ref=e329]: Total Donors
+              - generic [ref=e330]: From 3 countries
+            - generic [ref=e331]:
+              - generic [ref=e332]: €1.5K
+              - generic [ref=e333]: Monthly Recurring
+              - generic [ref=e334]: From committed supporters
+          - generic [ref=e335]:
+            - generic [ref=e336]: Recent Contributions
+            - generic [ref=e337]:
+              - generic [ref=e338]:
+                - generic [ref=e339]: A
+                - text: Anonymous Supporter
+              - generic [ref=e340]:
+                - generic [ref=e341]: €100
+                - generic [ref=e342]: one-time
+            - generic [ref=e343]:
+              - generic [ref=e344]:
+                - generic [ref=e345]: D
+                - text: Dr. Yusuf Abubakar
+              - generic [ref=e346]:
+                - generic [ref=e347]: €750
+                - generic [ref=e348]: monthly
+            - generic [ref=e349]:
+              - generic [ref=e350]:
+                - generic [ref=e351]: M
+                - text: Marie Dubois
+              - generic [ref=e352]:
+                - generic [ref=e353]: €150
+                - generic [ref=e354]: one-time
+            - generic [ref=e355]:
+              - generic [ref=e356]:
+                - generic [ref=e357]: H
+                - text: Heineken Foundation
+              - generic [ref=e358]:
+                - generic [ref=e359]: €5,000
+                - generic [ref=e360]: one-time
+            - generic [ref=e361]:
+              - generic [ref=e362]:
+                - generic [ref=e363]: K
+                - text: Kofi Mensah
+              - generic [ref=e364]:
+                - generic [ref=e365]: €250
+                - generic [ref=e366]: monthly
+            - link "View Full Donor Wall" [ref=e368] [cursor=pointer]:
+              - /url: https://african-vision-design--dura05509.replit.app/donate
+        - generic [ref=e370]:
+          - generic [ref=e371]:
+            - generic [ref=e372]:
+              - generic [ref=e373]: Latest Updates
+              - heading "Events & News" [level=2] [ref=e374]
+            - link "All Events" [ref=e375] [cursor=pointer]:
+              - /url: https://african-vision-design--dura05509.replit.app/events
+              - text: All Events
+              - img [ref=e376]
+          - generic [ref=e378]:
+            - generic [ref=e379]:
+              - img "First Graduation from Kano Healthcare Program" [ref=e381]
+              - generic [ref=e382]:
+                - generic [ref=e383]: update2025-02-14 — Kano, Nigeria
+                - heading "First Graduation from Kano Healthcare Program" [level=3] [ref=e384]
+                - paragraph [ref=e385]: 15 community health workers graduated from our Kano Healthcare training program today, equipped to serve their villages with basic medical care and maternal health support.
+            - generic [ref=e386]:
+              - img "West Africa Expansion Fundraising Gala" [ref=e388]
+              - generic [ref=e389]:
+                - generic [ref=e390]: event2025-03-28 — Rotterdam, Netherlands
+                - heading "West Africa Expansion Fundraising Gala" [level=3] [ref=e391]
+                - paragraph [ref=e392]: Exclusive gala dinner in Rotterdam supporting our 2025-2026 West Africa expansion into Ghana, Senegal, and Cameroon. 150 guests raised over €180,000 in a single evening.
+            - generic [ref=e393]:
+              - img "Lagos Youth Education Center Opening" [ref=e395]
+              - generic [ref=e396]:
+                - generic [ref=e397]: video2025-05-18 — Lagos, Nigeria
+                - heading "Lagos Youth Education Center Opening" [level=3] [ref=e398]
+                - paragraph [ref=e399]: Watch highlights from the grand opening of our Lagos Youth Education Center, featuring speeches from the community, performances by students, and a tour of the state-of-the-art facilities.
+        - generic [ref=e401]:
+          - generic [ref=e402]:
+            - generic [ref=e403]: Trusted Partners
+            - heading "Our Global Partners" [level=2] [ref=e404]
+          - generic [ref=e405]:
+            - link "Shell Foundation" [ref=e406] [cursor=pointer]:
+              - /url: https://shellfoundation.org/
+            - link "African Development Bank" [ref=e407] [cursor=pointer]:
+              - /url: https://afdb.org/
+            - link "Netherlands Ministry of Foreign Affairs" [ref=e408] [cursor=pointer]:
+              - /url: https://government.nl/
+            - link "Unilever" [ref=e409] [cursor=pointer]:
+              - /url: https://unilever.com/
+            - link "UNICEF" [ref=e410] [cursor=pointer]:
+              - /url: https://unicef.org/
+            - link "ING Bank" [ref=e411] [cursor=pointer]:
+              - /url: https://ing.com/
+          - link "View All Partners" [ref=e413] [cursor=pointer]:
+            - /url: https://african-vision-design--dura05509.replit.app/partners
+        - generic [ref=e417]:
+          - generic [ref=e418]:
+            - img "Emmanuel Okafor — CEO" [ref=e419]
+            - generic [ref=e420]:
+              - generic [ref=e421]: Emmanuel Okafor
+              - generic [ref=e422]: Founder & Executive Director
+          - generic [ref=e423]:
+            - generic [ref=e424]: Contact the Visionary
+            - heading "Reach Our CEO & Founder" [level=2] [ref=e425]
+            - paragraph [ref=e426]: Have a partnership proposal, investment discussion, or a question about our mission? Emmanuel is personally committed to growing the Papi Foundation network. Reach out directly.
+            - generic [ref=e427]:
+              - generic [ref=e428]:
+                - img [ref=e429]
+                - link "ceo@papifoundation.org" [ref=e432] [cursor=pointer]:
+                  - /url: mailto:ceo@papifoundation.org
+              - generic [ref=e433]:
+                - img [ref=e434]
+                - link "+31 20 000 0001" [ref=e436] [cursor=pointer]:
+                  - /url: tel:+31200000001
+              - generic [ref=e437]:
+                - img [ref=e438]
+                - text: Amsterdam, Netherlands
+            - link "Send a Message" [ref=e441] [cursor=pointer]:
+              - /url: https://african-vision-design--dura05509.replit.app/contact
+              - text: Send a Message
+              - img [ref=e442]
+        - generic [ref=e445]:
+          - generic [ref=e446]:
+            - generic [ref=e447]: Where We Are
+            - heading "Our Offices" [level=2] [ref=e448]
+          - generic [ref=e449]:
+            - generic [ref=e450]:
+              - img [ref=e451]
+              - generic [ref=e454]: Amsterdam
+              - generic [ref=e455]: Netherlands (HQ)
+              - generic [ref=e456]: +31 20 000 0000
+            - generic [ref=e457]:
+              - img [ref=e458]
+              - generic [ref=e461]: Lagos
+              - generic [ref=e462]: Nigeria
+              - generic [ref=e463]: +234 80 000 0000
+            - generic [ref=e464]:
+              - img [ref=e465]
+              - generic [ref=e468]: Accra
+              - generic [ref=e469]: Ghana
+              - generic [ref=e470]: +233 20 000 0000
+            - generic [ref=e471]:
+              - img [ref=e472]
+              - generic [ref=e475]: Nairobi
+              - generic [ref=e476]: Kenya
+              - generic [ref=e477]: +254 70 000 0000
+            - generic [ref=e478]:
+              - img [ref=e479]
+              - generic [ref=e482]: Kigali
+              - generic [ref=e483]: Rwanda
+              - generic [ref=e484]: +250 78 000 0000
+          - link "Full Office Directory" [ref=e486] [cursor=pointer]:
+            - /url: https://african-vision-design--dura05509.replit.app/office
+        - generic [ref=e489]:
+          - generic [ref=e490]: Join the Movement
+          - heading "Every Contribution Changes a Life" [level=2] [ref=e491]
+          - paragraph [ref=e492]: Whether you donate, partner, or become a member — your involvement matters. Together we are Building Africa by Africans.
+          - generic [ref=e493]:
+            - link "Donate Now" [ref=e494] [cursor=pointer]:
+              - /url: https://african-vision-design--dura05509.replit.app/donate
+            - link "Become a Member" [ref=e495] [cursor=pointer]:
+              - /url: https://african-vision-design--dura05509.replit.app/community
+    - contentinfo [ref=e496]:
+      - generic [ref=e498]:
+        - generic [ref=e499]:
+          - generic [ref=e500]:
+            - generic [ref=e501]: PAPI FOUNDATION
+            - generic [ref=e502]: Building Africa by Africans
+          - paragraph [ref=e503]: A global African humanitarian foundation investing in education, clean water, healthcare, and community empowerment across Africa.
+          - generic [ref=e504]:
+            - link "Facebook" [ref=e505] [cursor=pointer]:
+              - /url: https://facebook.com/
+              - img [ref=e506]
+            - link "Twitter" [ref=e508] [cursor=pointer]:
+              - /url: https://twitter.com/
+              - img [ref=e509]
+            - link "LinkedIn" [ref=e511] [cursor=pointer]:
+              - /url: https://linkedin.com/
+              - img [ref=e512]
+            - link "Instagram" [ref=e516] [cursor=pointer]:
+              - /url: https://instagram.com/
+              - img [ref=e517]
+            - link "YouTube" [ref=e520] [cursor=pointer]:
+              - /url: https://youtube.com/
+              - img [ref=e521]
+        - generic [ref=e524]:
+          - heading "Quick Links" [level=4] [ref=e525]
+          - list [ref=e526]:
+            - listitem [ref=e527]:
+              - link "About Us" [ref=e528] [cursor=pointer]:
+                - /url: https://african-vision-design--dura05509.replit.app/about
+            - listitem [ref=e529]:
+              - link "Doing Business in Africa" [ref=e530] [cursor=pointer]:
+                - /url: https://african-vision-design--dura05509.replit.app/doing-business
+            - listitem [ref=e531]:
+              - link "African Insights" [ref=e532] [cursor=pointer]:
+                - /url: https://african-vision-design--dura05509.replit.app/african-insights
+            - listitem [ref=e533]:
+              - link "Projects" [ref=e534] [cursor=pointer]:
+                - /url: https://african-vision-design--dura05509.replit.app/projects
+            - listitem [ref=e535]:
+              - link "Partners" [ref=e536] [cursor=pointer]:
+                - /url: https://african-vision-design--dura05509.replit.app/partners
+            - listitem [ref=e537]:
+              - link "Our Team" [ref=e538] [cursor=pointer]:
+                - /url: https://african-vision-design--dura05509.replit.app/team
+            - listitem [ref=e539]:
+              - link "Vacancies" [ref=e540] [cursor=pointer]:
+                - /url: https://african-vision-design--dura05509.replit.app/vacancies
+            - listitem [ref=e541]:
+              - link "News" [ref=e542] [cursor=pointer]:
+                - /url: https://african-vision-design--dura05509.replit.app/news
+            - listitem [ref=e543]:
+              - link "Events & Training" [ref=e544] [cursor=pointer]:
+                - /url: https://african-vision-design--dura05509.replit.app/events
+            - listitem [ref=e545]:
+              - link "Donate" [ref=e546] [cursor=pointer]:
+                - /url: https://african-vision-design--dura05509.replit.app/donate
+            - listitem [ref=e547]:
+              - link "Community" [ref=e548] [cursor=pointer]:
+                - /url: https://african-vision-design--dura05509.replit.app/community
+            - listitem [ref=e549]:
+              - link "Roadmap" [ref=e550] [cursor=pointer]:
+                - /url: https://african-vision-design--dura05509.replit.app/roadmap
+        - generic [ref=e551]:
+          - heading "Our Offices" [level=4] [ref=e552]
+          - generic [ref=e553]:
+            - generic [ref=e554]:
+              - generic [ref=e555]: Netherlands (HQ)
+              - generic [ref=e556]:
+                - img [ref=e557]
+                - text: Amsterdam, Netherlands
+              - generic [ref=e560]:
+                - img [ref=e561]
+                - text: +31 20 000 0000
+            - generic [ref=e563]:
+              - generic [ref=e564]: Nigeria
+              - generic [ref=e565]:
+                - img [ref=e566]
+                - text: Lagos, Nigeria
+              - generic [ref=e569]:
+                - img [ref=e570]
+                - text: +234 80 000 0000
+            - generic [ref=e572]:
+              - generic [ref=e573]: Ghana
+              - generic [ref=e574]:
+                - img [ref=e575]
+                - text: Accra, Ghana
+              - generic [ref=e578]:
+                - img [ref=e579]
+                - text: +233 20 000 0000
+            - generic [ref=e581]:
+              - generic [ref=e582]: Kenya
+              - generic [ref=e583]:
+                - img [ref=e584]
+                - text: Nairobi, Kenya
+              - generic [ref=e587]:
+                - img [ref=e588]
+                - text: +254 70 000 0000
+            - generic [ref=e590]:
+              - generic [ref=e591]: Rwanda
+              - generic [ref=e592]:
+                - img [ref=e593]
+                - text: Kigali, Rwanda
+              - generic [ref=e596]:
+                - img [ref=e597]
+                - text: +250 78 000 0000
+            - generic [ref=e599]:
+              - generic [ref=e600]:
+                - img [ref=e601]
+                - link "info@papifoundation.org" [ref=e604] [cursor=pointer]:
+                  - /url: mailto:info@papifoundation.org
+              - generic [ref=e605]:
+                - img [ref=e606]
+                - text: +31 20 000 0000
+        - generic [ref=e608]:
+          - heading "Monthly Newsletter" [level=4] [ref=e609]
+          - paragraph [ref=e610]: Stay up to date with our latest projects, impact reports, and events from across Africa.
+          - generic [ref=e611]:
+            - textbox "Your name" [ref=e612]
+            - textbox "Your email address" [ref=e613]
+            - button "Subscribe" [ref=e614]:
+              - img [ref=e615]
+              - text: Subscribe
+      - generic [ref=e619]:
+        - text: "© 2026 Papi Foundation. All rights reserved. KvK: 00000000"
+        - generic [ref=e620]:
+          - link "Terms & Conditions" [ref=e621] [cursor=pointer]:
+            - /url: https://african-vision-design--dura05509.replit.app/terms
+          - link "Privacy Policy" [ref=e622] [cursor=pointer]:
+            - /url: https://african-vision-design--dura05509.replit.app/privacy
+          - link "Disclaimer" [ref=e623] [cursor=pointer]:
+            - /url: https://african-vision-design--dura05509.replit.app/disclaimer
+          - link "Sitemap" [ref=e624] [cursor=pointer]:
+            - /url: https://african-vision-design--dura05509.replit.app/sitemap
+  - region "Notifications (F8)":
+    - list

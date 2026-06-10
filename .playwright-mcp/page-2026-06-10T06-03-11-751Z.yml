@@ -1,0 +1,86 @@
+- generic [active] [ref=e1]:
+  - heading "Directory listing for /" [level=1] [ref=e2]
+  - separator [ref=e3]
+  - list [ref=e4]:
+    - listitem [ref=e5]:
+      - link "africa_nobg.png" [ref=e6] [cursor=pointer]:
+        - /url: africa_nobg.png
+    - listitem [ref=e7]:
+      - link "audio_transcription_20260526_165952_1779814906433.txt" [ref=e8] [cursor=pointer]:
+        - /url: audio_transcription_20260526_165952_1779814906433.txt
+    - listitem [ref=e9]:
+      - link "Gemini_Generated_Image_oqt0qxoqt0qxoqt0_1779885927605.png" [ref=e10] [cursor=pointer]:
+        - /url: Gemini_Generated_Image_oqt0qxoqt0qxoqt0_1779885927605.png
+    - listitem [ref=e11]:
+      - link "Gemini_Generated_Image_r8xywir8xywir8xy_1779885037995.png" [ref=e12] [cursor=pointer]:
+        - /url: Gemini_Generated_Image_r8xywir8xywir8xy_1779885037995.png
+    - listitem [ref=e13]:
+      - link "Gemini_Generated_Image_ri9qyfri9qyfri9q_1779885101247.png" [ref=e14] [cursor=pointer]:
+        - /url: Gemini_Generated_Image_ri9qyfri9qyfri9q_1779885101247.png
+    - listitem [ref=e15]:
+      - link "Gemini_Generated_Image_xb6fz4xb6fz4xb6f_(1)_1779885037996.png" [ref=e16] [cursor=pointer]:
+        - /url: Gemini_Generated_Image_xb6fz4xb6fz4xb6f_%281%29_1779885037996.png
+    - listitem [ref=e17]:
+      - link "Gemini_Generated_Image_xb6fz4xb6fz4xb6f_1779885037996.png" [ref=e18] [cursor=pointer]:
+        - /url: Gemini_Generated_Image_xb6fz4xb6fz4xb6f_1779885037996.png
+    - listitem [ref=e19]:
+      - link "generated_images/" [ref=e20] [cursor=pointer]:
+        - /url: generated_images/
+    - listitem [ref=e21]:
+      - link "image_1779927366261.png" [ref=e22] [cursor=pointer]:
+        - /url: image_1779927366261.png
+    - listitem [ref=e23]:
+      - link "Papi_Foundation2_1779885073768.html" [ref=e24] [cursor=pointer]:
+        - /url: Papi_Foundation2_1779885073768.html
+    - listitem [ref=e25]:
+      - link "Pasted-Great-vision-what-you-re-trying-to-build-for-Papi-Found_1779813155634.txt" [ref=e26] [cursor=pointer]:
+        - /url: Pasted-Great-vision-what-you-re-trying-to-build-for-Papi-Found_1779813155634.txt
+    - listitem [ref=e27]:
+      - link "team_lawyer_nobg.png" [ref=e28] [cursor=pointer]:
+        - /url: team_lawyer_nobg.png
+    - listitem [ref=e29]:
+      - link "team_young_man_nobg.png" [ref=e30] [cursor=pointer]:
+        - /url: team_young_man_nobg.png
+    - listitem [ref=e31]:
+      - link "team_young_man_nobg2.png" [ref=e32] [cursor=pointer]:
+        - /url: team_young_man_nobg2.png
+    - listitem [ref=e33]:
+      - link "WhatsApp_Image_2026-05-26_at_10.33.05_PM_(1)_1780670580464.jpeg" [ref=e34] [cursor=pointer]:
+        - /url: WhatsApp_Image_2026-05-26_at_10.33.05_PM_%281%29_1780670580464.jpeg
+    - listitem [ref=e35]:
+      - link "WhatsApp_Image_2026-05-26_at_10.33.05_PM_1780483871204.jpeg" [ref=e36] [cursor=pointer]:
+        - /url: WhatsApp_Image_2026-05-26_at_10.33.05_PM_1780483871204.jpeg
+    - listitem [ref=e37]:
+      - link "WhatsApp_Image_2026-05-26_at_10.33.05_PM_1780492915222.jpeg" [ref=e38] [cursor=pointer]:
+        - /url: WhatsApp_Image_2026-05-26_at_10.33.05_PM_1780492915222.jpeg
+    - listitem [ref=e39]:
+      - link "WhatsApp_Image_2026-05-26_at_11.16.22_PM_(1)_1779885261318.jpeg" [ref=e40] [cursor=pointer]:
+        - /url: WhatsApp_Image_2026-05-26_at_11.16.22_PM_%281%29_1779885261318.jpeg
+    - listitem [ref=e41]:
+      - link "WhatsApp_Image_2026-05-26_at_11.16.22_PM_1779885037995.jpeg" [ref=e42] [cursor=pointer]:
+        - /url: WhatsApp_Image_2026-05-26_at_11.16.22_PM_1779885037995.jpeg
+    - listitem [ref=e43]:
+      - link "WhatsApp_Image_2026-05-26_at_4.53.17_PM_1779813178413.jpeg" [ref=e44] [cursor=pointer]:
+        - /url: WhatsApp_Image_2026-05-26_at_4.53.17_PM_1779813178413.jpeg
+    - listitem [ref=e45]:
+      - link "WhatsApp_Image_2026-06-03_at_9.32.48_PM_(1)_1780671584551.jpeg" [ref=e46] [cursor=pointer]:
+        - /url: WhatsApp_Image_2026-06-03_at_9.32.48_PM_%281%29_1780671584551.jpeg
+    - listitem [ref=e47]:
+      - link "WhatsApp_Image_2026-06-05_at_3.55.55_PM_1780671584550.jpeg" [ref=e48] [cursor=pointer]:
+        - /url: WhatsApp_Image_2026-06-05_at_3.55.55_PM_1780671584550.jpeg
+    - listitem [ref=e49]:
+      - link "WhatsApp_Image_2026-06-05_at_5.50.44_PM_(1)_1780681048306.jpeg" [ref=e50] [cursor=pointer]:
+        - /url: WhatsApp_Image_2026-06-05_at_5.50.44_PM_%281%29_1780681048306.jpeg
+    - listitem [ref=e51]:
+      - link "WhatsApp_Image_2026-06-05_at_5.50.44_PM_1780681048307.jpeg" [ref=e52] [cursor=pointer]:
+        - /url: WhatsApp_Image_2026-06-05_at_5.50.44_PM_1780681048307.jpeg
+    - listitem [ref=e53]:
+      - link "WhatsApp_Image_2026-06-05_at_5.50.45_PM_(1)_1780681048305.jpeg" [ref=e54] [cursor=pointer]:
+        - /url: WhatsApp_Image_2026-06-05_at_5.50.45_PM_%281%29_1780681048305.jpeg
+    - listitem [ref=e55]:
+      - link "WhatsApp_Image_2026-06-05_at_5.50.45_PM_1780681048306.jpeg" [ref=e56] [cursor=pointer]:
+        - /url: WhatsApp_Image_2026-06-05_at_5.50.45_PM_1780681048306.jpeg
+    - listitem [ref=e57]:
+      - link "WhatsApp_Ptt_2026-05-26_at_5.32.26_PM_1779814149356.ogg" [ref=e58] [cursor=pointer]:
+        - /url: WhatsApp_Ptt_2026-05-26_at_5.32.26_PM_1779814149356.ogg
+  - separator [ref=e59]

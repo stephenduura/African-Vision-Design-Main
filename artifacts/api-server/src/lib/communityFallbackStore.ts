@@ -1,0 +1,504 @@
+import { readFile, writeFile, mkdir } from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
+import type {
+  CommunityMember,
+  CommunityPost,
+  PostComment,
+  PostReaction,
+  CommentReaction,
+  InsertCommunityMember,
+} from "@workspace/db";
+import {
+  COMMUNITY_MEMBER_SEEDS,
+} from "@workspace/db/seed/communityMembers";
+import { COMMUNITY_POST_SEEDS } from "@workspace/db/seed/communityPosts";
+import {
+  COMMUNITY_COMMENT_REACTION_SEEDS,
+  COMMUNITY_COMMENT_SEEDS,
+  COMMUNITY_REACTION_SEEDS,
+} from "@workspace/db/seed/communityReactions";
+
+const STORE_PATH = path.join(
+  process.env.TEMP ?? os.tmpdir(),
+  "papi-community-fallback-store.json",
+);
+
+type StoredDate = string;
+
+type StoredCommunityMember = Omit<CommunityMember, "joinedAt"> & {
+  joinedAt: StoredDate;
+};
+
+type StoredCommunityPost = Omit<CommunityPost, "createdAt"> & {
+  createdAt: StoredDate;
+};
+
+type StoredPostReaction = Omit<PostReaction, "createdAt"> & {
+  createdAt: StoredDate;
+};
+
+type StoredPostComment = Omit<PostComment, "createdAt"> & {
+  createdAt: StoredDate;
+};
+
+type StoredCommentReaction = Omit<CommentReaction, "createdAt"> & {
+  createdAt: StoredDate;
+};
+
+type CommunityFallbackStore = {
+  nextIds: {
+    member: number;
+    post: number;
+    postReaction: number;
+    comment: number;
+    commentReaction: number;
+  };
+  members: StoredCommunityMember[];
+  posts: StoredCommunityPost[];
+  postReactions: StoredPostReaction[];
+  comments: StoredPostComment[];
+  commentReactions: StoredCommentReaction[];
+};
+
+const DAY = 24 * 60 * 60 * 1000;
+
+function clone<T>(value: T): T {
+  return globalThis.structuredClone
+    ? globalThis.structuredClone(value)
+    : (JSON.parse(JSON.stringify(value)) as T);
+}
+
+function iso(offsetDays: number): string {
+  return new Date(Date.now() - offsetDays * DAY).toISOString();
+}
+
+function buildSeedStore(): CommunityFallbackStore {
+  const members: StoredCommunityMember[] = COMMUNITY_MEMBER_SEEDS.map(
+    (member, index) => ({
+      id: index + 1,
+      name: member.name,
+      email: member.email,
+      country: member.country,
+      memberType: member.memberType ?? "individual",
+      bio: member.bio ?? null,
+      avatarUrl: member.avatarUrl ?? null,
+      joinedAt: iso(40 - index),
+    }),
+  );
+
+  const posts: StoredCommunityPost[] = COMMUNITY_POST_SEEDS.map((post, index) => ({
+    id: index + 1,
+    authorId: post.authorId,
+    authorName: post.authorName,
+    authorImageUrl: post.authorImageUrl ?? null,
+    content: post.content,
+    imageUrl: post.imageUrl ?? null,
+    createdAt: iso(12 - index),
+  }));
+
+  const comments: StoredPostComment[] = COMMUNITY_COMMENT_SEEDS.map((comment, index) => ({
+    id: index + 1,
+    postId: (comment.postIndex ?? 0) + 1,
+    authorId: comment.authorId,
+    authorName: comment.authorName,
+    authorImageUrl: comment.authorImageUrl ?? null,
+    content: comment.content,
+    createdAt: iso(5 - index),
+  }));
+
+  const postReactions: StoredPostReaction[] = COMMUNITY_REACTION_SEEDS.map((reaction, index) => ({
+    id: index + 1,
+    postId: (reaction.postIndex ?? 0) + 1,
+    userId: reaction.userId,
+    type: reaction.type,
+    createdAt: iso(10 - index),
+  }));
+
+  const commentReactions: StoredCommentReaction[] =
+    COMMUNITY_COMMENT_REACTION_SEEDS.map((reaction, index) => ({
+      id: index + 1,
+      commentId: (reaction.commentIndex ?? 0) + 1,
+      userId: reaction.userId,
+      type: reaction.type,
+      createdAt: iso(4 - index),
+    }));
+
+  return {
+    nextIds: {
+      member: members.length + 1,
+      post: posts.length + 1,
+      postReaction: postReactions.length + 1,
+      comment: comments.length + 1,
+      commentReaction: commentReactions.length + 1,
+    },
+    members,
+    posts,
+    postReactions,
+    comments,
+    commentReactions,
+  };
+}
+
+let cache: CommunityFallbackStore | null = null;
+
+async function ensureStoreDir(): Promise<void> {
+  await mkdir(path.dirname(STORE_PATH), { recursive: true });
+}
+
+async function loadStore(): Promise<CommunityFallbackStore> {
+  if (cache) return clone(cache);
+
+  try {
+    const raw = await readFile(STORE_PATH, "utf8");
+    cache = JSON.parse(raw) as CommunityFallbackStore;
+    return clone(cache);
+  } catch {
+    cache = buildSeedStore();
+    await persistStore(cache);
+    return clone(cache);
+  }
+}
+
+async function persistStore(store: CommunityFallbackStore): Promise<void> {
+  await ensureStoreDir();
+  cache = clone(store);
+  await writeFile(STORE_PATH, JSON.stringify(store, null, 2), "utf8");
+}
+
+async function updateStore<T>(
+  updater: (store: CommunityFallbackStore) => T | Promise<T>,
+): Promise<T> {
+  const store = await loadStore();
+  const result = await updater(store);
+  await persistStore(store);
+  return result;
+}
+
+function toMember(row: StoredCommunityMember): CommunityMember {
+  return {
+    ...row,
+    joinedAt: new Date(row.joinedAt),
+  };
+}
+
+function toPost(row: StoredCommunityPost): CommunityPost {
+  return {
+    ...row,
+    createdAt: new Date(row.createdAt),
+  };
+}
+
+function toPostReaction(row: StoredPostReaction): PostReaction {
+  return {
+    ...row,
+    createdAt: new Date(row.createdAt),
+  };
+}
+
+function toComment(row: StoredPostComment): PostComment {
+  return {
+    ...row,
+    createdAt: new Date(row.createdAt),
+  };
+}
+
+function toCommentReaction(row: StoredCommentReaction): CommentReaction {
+  return {
+    ...row,
+    createdAt: new Date(row.createdAt),
+  };
+}
+
+export async function listLocalCommunityMembers(): Promise<CommunityMember[]> {
+  const store = await loadStore();
+  return store.members
+    .map(toMember)
+    .sort((a, b) => b.joinedAt.getTime() - a.joinedAt.getTime());
+}
+
+export async function getLocalCommunityStats(): Promise<{
+  totalMembers: number;
+  countries: number;
+  volunteers: number;
+  organizations: number;
+}> {
+  const members = await listLocalCommunityMembers();
+  const countries = new Set(members.map((m) => m.country)).size;
+  const volunteers = members.filter((m) => m.memberType === "volunteer").length;
+  const organizations = members.filter((m) => m.memberType === "organization").length;
+  return {
+    totalMembers: members.length,
+    countries,
+    volunteers,
+    organizations,
+  };
+}
+
+export async function createLocalCommunityMember(
+  data: InsertCommunityMember,
+): Promise<CommunityMember> {
+  return updateStore(async (store) => {
+    const existing = store.members.find(
+      (member) => member.email.toLowerCase() === data.email.toLowerCase(),
+    );
+    if (existing) {
+      throw new Error("duplicate-email");
+    }
+
+    const member: StoredCommunityMember = {
+      id: store.nextIds.member++,
+      name: data.name,
+      email: data.email,
+      country: data.country,
+      memberType: data.memberType ?? "individual",
+      bio: data.bio ?? null,
+      avatarUrl: data.avatarUrl ?? null,
+      joinedAt: new Date().toISOString(),
+    };
+    store.members.push(member);
+    return toMember(member);
+  });
+}
+
+function reactionCounts(): Record<PostReaction["type"], number> {
+  return { like: 0, love: 0, celebrate: 0, support: 0, insightful: 0 };
+}
+
+function normalizeReactionType(type: string): PostReaction["type"] {
+  return type as PostReaction["type"];
+}
+
+export async function listLocalCommunityPosts(me: string | null) {
+  const store = await loadStore();
+  return store.posts
+    .slice()
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+    .map((post) => {
+      const counts = reactionCounts();
+      let myReaction: PostReaction["type"] | null = null;
+      const reactions = store.postReactions.filter((r) => r.postId === post.id);
+      for (const reaction of reactions) {
+        counts[reaction.type as keyof typeof counts] += 1;
+        if (me && reaction.userId === me) {
+          myReaction = normalizeReactionType(reaction.type);
+        }
+      }
+      const commentCount = store.comments.filter((comment) => comment.postId === post.id).length;
+      return {
+        ...toPost(post),
+        reactions: counts,
+        totalReactions: Object.values(counts).reduce((sum, value) => sum + value, 0),
+        myReaction,
+        commentCount,
+      };
+    });
+}
+
+export async function createLocalCommunityPost(args: {
+  authorId: string;
+  authorName: string;
+  authorImageUrl: string | null;
+  content: string;
+  imageUrl: string | null;
+}) {
+  return updateStore(async (store) => {
+    const post: StoredCommunityPost = {
+      id: store.nextIds.post++,
+      authorId: args.authorId,
+      authorName: args.authorName,
+      authorImageUrl: args.authorImageUrl,
+      content: args.content,
+      imageUrl: args.imageUrl,
+      createdAt: new Date().toISOString(),
+    };
+    store.posts.push(post);
+    return toPost(post);
+  });
+}
+
+export async function deleteLocalCommunityPost(
+  id: number,
+  me: string,
+): Promise<"deleted" | "not_found" | "forbidden"> {
+  return updateStore(async (store) => {
+    const postIndex = store.posts.findIndex((post) => post.id === id);
+    if (postIndex < 0) return "not_found";
+    if (store.posts[postIndex]!.authorId !== me) return "forbidden";
+
+    store.posts.splice(postIndex, 1);
+    store.postReactions = store.postReactions.filter((reaction) => reaction.postId !== id);
+    const removedComments = new Set(
+      store.comments.filter((comment) => comment.postId === id).map((comment) => comment.id),
+    );
+    store.comments = store.comments.filter((comment) => comment.postId !== id);
+    store.commentReactions = store.commentReactions.filter(
+      (reaction) => !removedComments.has(reaction.commentId),
+    );
+    return "deleted";
+  });
+}
+
+export async function reactToLocalPost(args: {
+  postId: number;
+  userId: string;
+  type: PostReaction["type"];
+}): Promise<{
+  post: CommunityPost;
+  counts: ReturnType<typeof reactionCounts>;
+  myReaction: PostReaction["type"] | null;
+  commentCount: number;
+} | null> {
+  return updateStore(async (store) => {
+    const post = store.posts.find((item) => item.id === args.postId);
+    if (!post) return null;
+
+    const existing = store.postReactions.find(
+      (reaction) => reaction.postId === args.postId && reaction.userId === args.userId,
+    );
+    if (existing && existing.type === args.type) {
+      store.postReactions = store.postReactions.filter(
+        (reaction) => reaction.id !== existing.id,
+      );
+    } else if (existing) {
+      existing.type = args.type;
+      existing.createdAt = new Date().toISOString();
+    } else {
+      store.postReactions.push({
+        id: store.nextIds.postReaction++,
+        postId: args.postId,
+        userId: args.userId,
+        type: args.type,
+        createdAt: new Date().toISOString(),
+      });
+    }
+
+    const reactions = store.postReactions.filter((reaction) => reaction.postId === args.postId);
+    const counts = reactionCounts();
+    let myReaction: PostReaction["type"] | null = null;
+    for (const reaction of reactions) {
+      counts[reaction.type as keyof typeof counts] += 1;
+      if (reaction.userId === args.userId) myReaction = reaction.type as PostReaction["type"];
+    }
+    const commentCount = store.comments.filter((comment) => comment.postId === args.postId).length;
+    return {
+      post: toPost(post),
+      counts,
+      myReaction,
+      commentCount,
+    };
+  });
+}
+
+export async function listLocalPostComments(postId: number, me: string | null) {
+  const store = await loadStore();
+  return store.comments
+    .filter((comment) => comment.postId === postId)
+    .sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
+    .map((comment) => {
+      const reactions = store.commentReactions.filter((reaction) => reaction.commentId === comment.id);
+      const counts = reactionCounts();
+      let myReaction: PostReaction["type"] | null = null;
+      for (const reaction of reactions) {
+        counts[reaction.type as keyof typeof counts] += 1;
+        if (me && reaction.userId === me) {
+          myReaction = reaction.type as PostReaction["type"];
+        }
+      }
+      return {
+        ...toComment(comment),
+        reactions: counts,
+        totalReactions: Object.values(counts).reduce((sum, value) => sum + value, 0),
+        myReaction,
+      };
+    });
+}
+
+export async function createLocalPostComment(args: {
+  postId: number;
+  authorId: string;
+  authorName: string;
+  authorImageUrl: string | null;
+  content: string;
+}) {
+  return updateStore(async (store) => {
+    const comment: StoredPostComment = {
+      id: store.nextIds.comment++,
+      postId: args.postId,
+      authorId: args.authorId,
+      authorName: args.authorName,
+      authorImageUrl: args.authorImageUrl,
+      content: args.content,
+      createdAt: new Date().toISOString(),
+    };
+    store.comments.push(comment);
+    return toComment(comment);
+  });
+}
+
+export async function deleteLocalPostComment(
+  id: number,
+  me: string,
+): Promise<"deleted" | "not_found" | "forbidden"> {
+  return updateStore(async (store) => {
+    const commentIndex = store.comments.findIndex((comment) => comment.id === id);
+    if (commentIndex < 0) return "not_found";
+    if (store.comments[commentIndex]!.authorId !== me) return "forbidden";
+    store.comments.splice(commentIndex, 1);
+    store.commentReactions = store.commentReactions.filter(
+      (reaction) => reaction.commentId !== id,
+    );
+    return "deleted";
+  });
+}
+
+export async function reactToLocalComment(args: {
+  commentId: number;
+  userId: string;
+  type: CommentReaction["type"];
+}): Promise<{
+  comment: PostComment;
+  counts: ReturnType<typeof reactionCounts>;
+  myReaction: CommentReaction["type"] | null;
+} | null> {
+  return updateStore(async (store) => {
+    const comment = store.comments.find((item) => item.id === args.commentId);
+    if (!comment) return null;
+
+    const existing = store.commentReactions.find(
+      (reaction) => reaction.commentId === args.commentId && reaction.userId === args.userId,
+    );
+    if (existing && existing.type === args.type) {
+      store.commentReactions = store.commentReactions.filter(
+        (reaction) => reaction.id !== existing.id,
+      );
+    } else if (existing) {
+      existing.type = args.type;
+      existing.createdAt = new Date().toISOString();
+    } else {
+      store.commentReactions.push({
+        id: store.nextIds.commentReaction++,
+        commentId: args.commentId,
+        userId: args.userId,
+        type: args.type,
+        createdAt: new Date().toISOString(),
+      });
+    }
+
+    const reactions = store.commentReactions.filter(
+      (reaction) => reaction.commentId === args.commentId,
+    );
+    const counts = reactionCounts();
+    let myReaction: CommentReaction["type"] | null = null;
+    for (const reaction of reactions) {
+      counts[reaction.type as keyof typeof counts] += 1;
+      if (reaction.userId === args.userId) myReaction = reaction.type as CommentReaction["type"];
+    }
+
+    return {
+      comment: toComment(comment),
+      counts,
+      myReaction,
+    };
+  });
+}

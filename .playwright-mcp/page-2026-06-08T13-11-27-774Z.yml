@@ -1,0 +1,415 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e8]:
+            - img [ref=e9]
+            - text: info@papifoundation.net
+          - generic [ref=e12]:
+            - img [ref=e13]
+            - text: +31 6 42032437
+        - generic [ref=e15]:
+          - link "Facebook" [ref=e16] [cursor=pointer]:
+            - /url: https://facebook.com
+          - link "Twitter" [ref=e17] [cursor=pointer]:
+            - /url: https://twitter.com
+          - link "LinkedIn" [ref=e18] [cursor=pointer]:
+            - /url: https://linkedin.com
+          - link "Instagram" [ref=e19] [cursor=pointer]:
+            - /url: https://www.instagram.com/official_papifoundation
+          - link "YouTube" [ref=e20] [cursor=pointer]:
+            - /url: https://youtube.com
+      - generic [ref=e21]:
+        - link "Papi Foundation PAPI FOUNDATION Building Africa by Africans" [ref=e22] [cursor=pointer]:
+          - /url: /
+          - img "Papi Foundation" [ref=e23]
+          - generic [ref=e24]:
+            - generic [ref=e25]: PAPI FOUNDATION
+            - generic [ref=e26]: Building Africa by Africans
+        - button [ref=e27]:
+          - img [ref=e28]
+    - main [ref=e29]:
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - generic [ref=e34]:
+            - generic [ref=e35]:
+              - generic [ref=e38]: Building Africa by Africans
+              - heading "Empowering Africa's Future, Together." [level=1] [ref=e39]:
+                - text: Empowering
+                - text: Africa's
+                - emphasis [ref=e40]: Future,
+                - text: Together.
+              - paragraph [ref=e41]: A world-class foundation funding education, clean water, healthcare, and economic development across Africa — with full transparency and a €13.8B global network.
+              - generic [ref=e42]:
+                - link "Donate Now" [ref=e43] [cursor=pointer]:
+                  - /url: /donate
+                  - text: Donate Now
+                  - img [ref=e44]
+                - link "Our Mission" [ref=e46] [cursor=pointer]:
+                  - /url: /about
+                  - text: Our Mission
+                  - img [ref=e47]
+            - img "Africa" [ref=e80]
+          - generic [ref=e81]:
+            - generic [ref=e82]: Scroll
+            - img [ref=e83]
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - generic [ref=e90]: €450,000+
+            - generic [ref=e91]: Raised
+          - generic [ref=e92]:
+            - generic [ref=e94]: 15,000+
+            - generic [ref=e95]: Beneficiaries
+          - generic [ref=e96]:
+            - generic [ref=e98]: "5"
+            - generic [ref=e99]: Countries Active
+          - generic [ref=e100]:
+            - generic [ref=e102]: 20+
+            - generic [ref=e103]: Partners Worldwide
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - img "Papi Foundation community gathering" [ref=e108]
+            - generic [ref=e110]:
+              - generic [ref=e111]: 230M+
+              - generic [ref=e112]: Network members united by one mission
+          - generic [ref=e113]:
+            - generic [ref=e114]: Our Community
+            - heading "A Movement Built on Purpose" [level=2] [ref=e115]:
+              - text: A Movement Built
+              - text: on Purpose
+            - paragraph [ref=e116]: The Papi Foundation community provides a unique opportunity to network with investors, development partners, field experts, and community leaders who are committed to transforming Africa. We connect purpose with resources — bridging Europe and Africa in meaningful, measurable ways.
+            - paragraph [ref=e117]: Our members span entrepreneurs, NGOs, government bodies, and individuals who believe that Africa's future must be built by Africans — with the support of a connected global community.
+            - generic [ref=e118]:
+              - generic [ref=e119]:
+                - img [ref=e120]
+                - generic [ref=e125]:
+                  - generic [ref=e126]: 230M+
+                  - generic [ref=e127]: Network Members
+              - generic [ref=e128]:
+                - img [ref=e129]
+                - generic [ref=e132]:
+                  - generic [ref=e133]: €13.8B
+                  - generic [ref=e134]: Investment Capacity
+              - generic [ref=e135]:
+                - img [ref=e136]
+                - generic [ref=e139]:
+                  - generic [ref=e140]: 47+
+                  - generic [ref=e141]: Countries Connected
+              - generic [ref=e142]:
+                - img [ref=e143]
+                - generic [ref=e147]:
+                  - generic [ref=e148]: 6 Sectors
+                  - generic [ref=e149]: Active Investment
+            - link "Join the Community" [ref=e151] [cursor=pointer]:
+              - /url: /community
+              - text: Join the Community
+              - img [ref=e152]
+        - generic [ref=e156]:
+          - generic [ref=e157]:
+            - generic [ref=e158]: The Power of Our Network
+            - heading "Papi Foundation Network" [level=2] [ref=e159]
+            - paragraph [ref=e160]: Our network is made of over 230 million connected members with a combined investment capacity of €13.8 billion — mobilised within nine months of our founding.
+          - generic [ref=e161]:
+            - generic [ref=e162]:
+              - generic [ref=e163]: 230M+
+              - generic [ref=e164]: Network Members
+              - generic [ref=e165]: Across 47 African countries and the global diaspora
+            - generic [ref=e166]:
+              - generic [ref=e167]: €13.8B
+              - generic [ref=e168]: Euros in Capacity
+              - generic [ref=e169]: Collective investment potential mobilised within 9 months
+            - generic [ref=e170]:
+              - generic [ref=e171]: 9 Months
+              - generic [ref=e172]: Time to Scale
+              - generic [ref=e173]: The fastest-growing African humanitarian network in history
+        - generic [ref=e175]:
+          - generic [ref=e176]:
+            - generic [ref=e177]: Where We Invest
+            - heading "Sectors of Impact" [level=2] [ref=e178]
+            - paragraph [ref=e179]: Seven key sectors driving Africa's economic growth and community resilience — backed by our €13.8B network.
+          - generic [ref=e180]:
+            - generic [ref=e181]:
+              - img "Livestock" [ref=e183]
+              - generic [ref=e185]:
+                - img [ref=e186]
+                - generic [ref=e192]: Livestock
+            - generic [ref=e193]:
+              - img "Agri-trading & Agricultural Machinery" [ref=e195]
+              - generic [ref=e197]:
+                - img [ref=e198]
+                - generic [ref=e204]: Agri-trading & Agricultural Machinery
+            - generic [ref=e205]:
+              - img "Business & Financial Services" [ref=e207]
+              - generic [ref=e209]:
+                - img [ref=e210]
+                - generic [ref=e212]: Business & Financial Services
+            - generic [ref=e213]:
+              - img "Construction & Engineering" [ref=e215]
+              - generic [ref=e217]:
+                - img [ref=e218]
+                - generic [ref=e222]: Construction & Engineering
+            - generic [ref=e223]:
+              - img "Transportation & Logistics" [ref=e225]
+              - generic [ref=e227]:
+                - img [ref=e228]
+                - generic [ref=e233]: Transportation & Logistics
+            - generic [ref=e234]:
+              - img "Marine & Offshore" [ref=e236]
+              - generic [ref=e238]:
+                - img [ref=e239]
+                - generic [ref=e243]: Marine & Offshore
+            - generic [ref=e244]:
+              - img "Retail" [ref=e246]
+              - generic [ref=e248]:
+                - img [ref=e249]
+                - generic [ref=e252]: Retail
+            - generic [ref=e253]:
+              - img [ref=e254]
+              - link "Explore All Opportunities" [ref=e256] [cursor=pointer]:
+                - /url: /doing-business
+        - generic [ref=e259]:
+          - generic [ref=e260]:
+            - generic [ref=e261]: For the African Diaspora
+            - heading "Ready to Come Home and Build?" [level=2] [ref=e262]:
+              - text: Ready to Come Home
+              - text: and Build?
+            - paragraph [ref=e263]: Are you in the diaspora and ready to invest in Africa — to build businesses, create jobs, and grow the continent? Papi Foundation is your bridge. We connect you with the right partners, the right projects, and the right opportunities to make your investment count.
+            - generic [ref=e264]:
+              - generic [ref=e267]: Market research and investment intelligence
+              - generic [ref=e270]: Trade facilitation and logistics support
+              - generic [ref=e273]: Investment promotion and partner matching
+              - generic [ref=e276]: Legal guidance for cross-border projects
+              - generic [ref=e279]: Connections to government and NGO networks
+            - generic [ref=e280]:
+              - link "Business in Africa" [ref=e281] [cursor=pointer]:
+                - /url: /doing-business
+              - link "Join the Network" [ref=e282] [cursor=pointer]:
+                - /url: /community
+          - generic [ref=e283]:
+            - img "Papi Foundation team meeting" [ref=e284]
+            - generic [ref=e286]:
+              - generic [ref=e287]: €13.8B
+              - generic [ref=e288]: Network capacity
+        - generic [ref=e290]:
+          - generic [ref=e291]:
+            - generic [ref=e292]: Full Transparency
+            - heading "Live Donation Tracker" [level=2] [ref=e293]
+            - paragraph [ref=e294]: Every donation is visible. Every euro is tracked. Real-time accountability — because transparency builds trust.
+          - generic [ref=e295]:
+            - generic [ref=e296]:
+              - generic [ref=e297]: €450.0K
+              - generic [ref=e298]: Total Raised
+              - generic [ref=e299]: Updated in real-time
+            - generic [ref=e300]:
+              - generic [ref=e301]: "250"
+              - generic [ref=e302]: Total Donors
+              - generic [ref=e303]: From 18 countries
+            - generic [ref=e304]:
+              - generic [ref=e305]: €4.5K
+              - generic [ref=e306]: Monthly Recurring
+              - generic [ref=e307]: From committed supporters
+        - generic [ref=e311]:
+          - generic [ref=e312]:
+            - img "Tedum Henry Paago — Founder/President" [ref=e313]
+            - generic [ref=e315]:
+              - generic [ref=e316]: Tedum Henry Paago
+              - generic [ref=e317]: Founder / President
+          - generic [ref=e318]:
+            - generic [ref=e319]: Contact the Visionary
+            - heading "Reach Our Founder & President" [level=2] [ref=e320]
+            - paragraph [ref=e321]: Have a partnership proposal, investment discussion, or a question about our mission? Tedum is personally committed to growing the Papi Foundation network. Reach out directly.
+            - generic [ref=e322]:
+              - generic [ref=e323]:
+                - img [ref=e324]
+                - link "president@papifoundation.net" [ref=e327] [cursor=pointer]:
+                  - /url: mailto:president@papifoundation.net
+              - generic [ref=e328]:
+                - img [ref=e329]
+                - link "+31 6 42032437" [ref=e331] [cursor=pointer]:
+                  - /url: tel:+31642032437
+              - generic [ref=e332]:
+                - img [ref=e333]
+                - generic [ref=e336]: Berlin, Germany
+            - link "Send a Message" [ref=e337] [cursor=pointer]:
+              - /url: /contact
+              - text: Send a Message
+              - img [ref=e338]
+        - generic [ref=e341]:
+          - generic [ref=e342]:
+            - generic [ref=e343]: Where We Are
+            - heading "Our Offices" [level=2] [ref=e344]
+          - generic [ref=e345]:
+            - generic [ref=e346]:
+              - img [ref=e347]
+              - generic [ref=e350]: Abuja
+              - generic [ref=e351]: Nigeria (HQ)
+              - generic [ref=e352]: +31 6 42032437
+            - generic [ref=e353]:
+              - img [ref=e354]
+              - generic [ref=e357]: Lagos
+              - generic [ref=e358]: Nigeria
+              - generic [ref=e359]: +234 80 000 0000
+            - generic [ref=e360]:
+              - img [ref=e361]
+              - generic [ref=e364]: Accra
+              - generic [ref=e365]: Ghana
+              - generic [ref=e366]: +233 20 000 0000
+            - generic [ref=e367]:
+              - img [ref=e368]
+              - generic [ref=e371]: Nairobi
+              - generic [ref=e372]: Kenya
+              - generic [ref=e373]: +254 70 000 0000
+            - generic [ref=e374]:
+              - img [ref=e375]
+              - generic [ref=e378]: Kigali
+              - generic [ref=e379]: Rwanda
+              - generic [ref=e380]: +250 78 000 0000
+          - link "Full Office Directory" [ref=e382] [cursor=pointer]:
+            - /url: /office
+        - generic [ref=e387]:
+          - generic [ref=e388]: Join the Movement
+          - heading "Every Contribution Changes a Life" [level=2] [ref=e389]
+          - paragraph [ref=e390]: Whether you donate, partner, or become a member — your involvement matters. Together we are Building Africa by Africans.
+          - generic [ref=e391]:
+            - link "Donate Now" [ref=e392] [cursor=pointer]:
+              - /url: /donate
+            - link "Become a Member" [ref=e393] [cursor=pointer]:
+              - /url: /community
+    - contentinfo [ref=e394]:
+      - generic [ref=e396]:
+        - generic [ref=e397]:
+          - generic [ref=e398]:
+            - img "Papi Foundation" [ref=e399]
+            - generic [ref=e400]:
+              - generic [ref=e401]: PAPI FOUNDATION
+              - generic [ref=e402]: Building Africa by Africans
+          - paragraph [ref=e403]: A global African humanitarian foundation investing in education, clean water, healthcare, and community empowerment across Africa.
+          - generic [ref=e404]:
+            - link "Facebook" [ref=e405] [cursor=pointer]:
+              - /url: https://facebook.com
+              - img [ref=e406]
+            - link "Twitter" [ref=e408] [cursor=pointer]:
+              - /url: https://twitter.com
+              - img [ref=e409]
+            - link "LinkedIn" [ref=e411] [cursor=pointer]:
+              - /url: https://linkedin.com
+              - img [ref=e412]
+            - link "Instagram" [ref=e416] [cursor=pointer]:
+              - /url: https://www.instagram.com/official_papifoundation
+              - img [ref=e417]
+            - link "YouTube" [ref=e420] [cursor=pointer]:
+              - /url: https://youtube.com
+              - img [ref=e421]
+        - generic [ref=e424]:
+          - heading "Quick Links" [level=4] [ref=e425]
+          - list [ref=e426]:
+            - listitem [ref=e427]:
+              - link "About Us" [ref=e428] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e429]:
+              - link "Doing Business in Africa" [ref=e430] [cursor=pointer]:
+                - /url: /doing-business
+            - listitem [ref=e431]:
+              - link "African Insights" [ref=e432] [cursor=pointer]:
+                - /url: /african-insights
+            - listitem [ref=e433]:
+              - link "Projects" [ref=e434] [cursor=pointer]:
+                - /url: /projects
+            - listitem [ref=e435]:
+              - link "Partners" [ref=e436] [cursor=pointer]:
+                - /url: /partners
+            - listitem [ref=e437]:
+              - link "Our Team" [ref=e438] [cursor=pointer]:
+                - /url: /team
+            - listitem [ref=e439]:
+              - link "Vacancies" [ref=e440] [cursor=pointer]:
+                - /url: /vacancies
+            - listitem [ref=e441]:
+              - link "News" [ref=e442] [cursor=pointer]:
+                - /url: /news
+            - listitem [ref=e443]:
+              - link "Events & Training" [ref=e444] [cursor=pointer]:
+                - /url: /events
+            - listitem [ref=e445]:
+              - link "Donate" [ref=e446] [cursor=pointer]:
+                - /url: /donate
+            - listitem [ref=e447]:
+              - link "Community" [ref=e448] [cursor=pointer]:
+                - /url: /community
+            - listitem [ref=e449]:
+              - link "Roadmap" [ref=e450] [cursor=pointer]:
+                - /url: /roadmap
+        - generic [ref=e451]:
+          - heading "Our Offices" [level=4] [ref=e452]
+          - generic [ref=e453]:
+            - generic [ref=e454]:
+              - generic [ref=e455]: Nigeria (HQ)
+              - generic [ref=e456]:
+                - img [ref=e457]
+                - text: Flat 2 Bahamas Estate, Opposite Grandpela, Durumi District, Abuja, Nigeria
+              - generic [ref=e460]:
+                - img [ref=e461]
+                - text: +31 6 42032437
+            - generic [ref=e463]:
+              - generic [ref=e464]: Nigeria
+              - generic [ref=e465]:
+                - img [ref=e466]
+                - text: Lagos, Nigeria
+              - generic [ref=e469]:
+                - img [ref=e470]
+                - text: +234 80 000 0000
+            - generic [ref=e472]:
+              - generic [ref=e473]: Ghana
+              - generic [ref=e474]:
+                - img [ref=e475]
+                - text: Accra, Ghana
+              - generic [ref=e478]:
+                - img [ref=e479]
+                - text: +233 20 000 0000
+            - generic [ref=e481]:
+              - generic [ref=e482]: Kenya
+              - generic [ref=e483]:
+                - img [ref=e484]
+                - text: Nairobi, Kenya
+              - generic [ref=e487]:
+                - img [ref=e488]
+                - text: +254 70 000 0000
+            - generic [ref=e490]:
+              - generic [ref=e491]: Rwanda
+              - generic [ref=e492]:
+                - img [ref=e493]
+                - text: Kigali, Rwanda
+              - generic [ref=e496]:
+                - img [ref=e497]
+                - text: +250 78 000 0000
+            - generic [ref=e499]:
+              - generic [ref=e500]:
+                - img [ref=e501]
+                - link "info@papifoundation.net" [ref=e504] [cursor=pointer]:
+                  - /url: mailto:info@papifoundation.net
+              - generic [ref=e505]:
+                - img [ref=e506]
+                - generic [ref=e508]: +31 6 42032437
+        - generic [ref=e509]:
+          - heading "Monthly Newsletter" [level=4] [ref=e510]
+          - paragraph [ref=e511]: Stay up to date with our latest projects, impact reports, and events from across Africa.
+          - generic [ref=e512]:
+            - textbox "Your name" [ref=e513]
+            - textbox "Your email address" [ref=e514]
+            - button "Subscribe" [ref=e515]:
+              - img [ref=e516]
+              - text: Subscribe
+      - generic [ref=e520]:
+        - generic [ref=e521]: "© 2026 Papi Foundation. All rights reserved. KvK: 00000000"
+        - generic [ref=e522]:
+          - link "Terms & Conditions" [ref=e523] [cursor=pointer]:
+            - /url: /terms
+          - link "Privacy Policy" [ref=e524] [cursor=pointer]:
+            - /url: /privacy
+          - link "Disclaimer" [ref=e525] [cursor=pointer]:
+            - /url: /disclaimer
+          - link "Sitemap" [ref=e526] [cursor=pointer]:
+            - /url: /sitemap
+  - region "Notifications (F8)":
+    - list

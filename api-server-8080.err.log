@@ -1,0 +1,98 @@
+
+  dist\index.mjs                   3.3mb
+  dist\pino-worker.mjs           153.5kb
+  dist\pino-file.mjs             142.1kb
+  dist\pino-pretty.mjs           114.6kb
+  dist\thread-stream-worker.mjs    7.3kb
+  ...and 5 more output files...
+
+Done in 1593ms
+StripePermissionError: The provided key 'rk_live_*********************************************************************************************3VS8B7' does not have the required permissions for this endpoint on account 'acct_1TeClSQifUmBC3DR'. Having the 'rak_accounts_kyc_basic_read' permission would allow this request to continue.
+    at generateV1Error (C:\Users\user\Downloads\African-Vision-Design-main (2)\African-Vision-Design-main\node_modules\.pnpm\stripe@22.2.0_@types+node@25.6.2\node_modules\stripe\src\Error.ts:35:12)
+    at <anonymous> (C:\Users\user\Downloads\African-Vision-Design-main (2)\African-Vision-Design-main\node_modules\.pnpm\stripe@22.2.0_@types+node@25.6.2\node_modules\stripe\src\RequestSender.ts:205:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+Originating from:
+    at AccountResource._makeRequest (C:\Users\user\Downloads\African-Vision-Design-main (2)\African-Vision-Design-main\node_modules\.pnpm\stripe@22.2.0_@types+node@25.6.2\node_modules\stripe\src\StripeResource.ts:98:27)
+    at AccountResource.retrieve (C:\Users\user\Downloads\African-Vision-Design-main (2)\African-Vision-Design-main\node_modules\.pnpm\stripe@22.2.0_@types+node@25.6.2\node_modules\stripe\src\resources\Accounts.ts:60:19)
+    at Proxy.<anonymous> (file:///C:/Users/user/Downloads/African-Vision-Design-main%20(2)/African-Vision-Design-main/node_modules/.pnpm/stripe-replit-sync@1.0.0_stripe@22.2.0_@types+node@25.6.2_/node_modules/stripe-replit-sync/dist/index.js:501:35)
+    at StripeSync.getAccountId (file:///C:/Users/user/Downloads/African-Vision-Design-main%20(2)/African-Vision-Design-main/node_modules/.pnpm/stripe-replit-sync@1.0.0_stripe@22.2.0_@types+node@25.6.2_/node_modules/stripe-replit-sync/dist/index.js:596:115)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async StripeSync.getCurrentAccount (file:///C:/Users/user/Downloads/African-Vision-Design-main%20(2)/African-Vision-Design-main/node_modules/.pnpm/stripe-replit-sync@1.0.0_stripe@22.2.0_@types+node@25.6.2_/node_modules/stripe-replit-sync/dist/index.js:632:5)
+    at async StripeSync.syncBackfill (file:///C:/Users/user/Downloads/African-Vision-Design-main%20(2)/African-Vision-Design-main/node_modules/.pnpm/stripe-replit-sync@1.0.0_stripe@22.2.0_@types+node@25.6.2_/node_modules/stripe-replit-sync/dist/index.js:1160:5)
+    at async initStripe (C:\Users\user\Downloads\African-Vision-Design-main (2)\African-Vision-Design-main\artifacts\api-server\src\index.ts:54:3) {
+  type: 'StripePermissionError',
+  raw: {
+    message: "The provided key 'rk_live_*********************************************************************************************3VS8B7' does not have the required permissions for this endpoint on account 'acct_1TeClSQifUmBC3DR'. Having the 'rak_accounts_kyc_basic_read' permission would allow this request to continue.",
+    request_log_url: 'https://dashboard.stripe.com/acct_1TeClSQifUmBC3DR/workbench/logs?object=req_8PBEsfCJFCXWF3',
+    type: 'invalid_request_error',
+    headers: {
+      server: 'nginx',
+      date: 'Tue, 09 Jun 2026 15:40:13 GMT',
+      'content-type': 'application/json',
+      'content-length': '503',
+      connection: 'keep-alive',
+      'access-control-allow-credentials': 'true',
+      'access-control-allow-methods': 'GET, HEAD, PUT, PATCH, POST, DELETE',
+      'access-control-allow-origin': '*',
+      'access-control-expose-headers': 'Request-Id, Stripe-Manage-Version, Stripe-Should-Retry, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required',
+      'access-control-max-age': '300',
+      'cache-control': 'no-cache, no-store',
+      'content-security-policy': "base-uri 'none'; default-src 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self'; script-src 'self' 'report-sample'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests; report-uri https://q.stripe.com/csp-violation?q=Vjiaes5fTLdQiW0BLWxW63GqYtME_Z248WLQCgJVWhGI2QVJ5IGKxh62T6eecTnyFVnbZmHYMVf5s48M; report-to csp",
+      'report-to': '{"group":"csp","max_age":8640,"endpoints":[{"url":"https://q.stripe.com/csp-report-v2?q=Vjiaes5fTLdQiW0BLWxW63GqYtME_Z248WLQCgJVWhGI2QVJ5IGKxh62T6eecTnyFVnbZmHYMVf5s48M&t=1"}],"include_subdomains":true}',
+      'reporting-endpoints': 'csp="https://q.stripe.com/csp-report-v2?q=Vjiaes5fTLdQiW0BLWxW63GqYtME_Z248WLQCgJVWhGI2QVJ5IGKxh62T6eecTnyFVnbZmHYMVf5s48M&t=1"',
+      'request-id': 'req_8PBEsfCJFCXWF3',
+      'stripe-version': '2026-05-27.dahlia',
+      vary: 'Origin',
+      'x-stripe-priority-routing-enabled': 'true',
+      'x-stripe-routing-context-priority-tier': 'livemode',
+      'x-wc': '3c3',
+      'strict-transport-security': 'max-age=63072000; includeSubDomains; preload'
+    },
+    statusCode: 403,
+    requestId: 'req_8PBEsfCJFCXWF3'
+  },
+  rawType: 'invalid_request_error',
+  code: undefined,
+  doc_url: undefined,
+  param: undefined,
+  detail: undefined,
+  headers: {
+    server: 'nginx',
+    date: 'Tue, 09 Jun 2026 15:40:13 GMT',
+    'content-type': 'application/json',
+    'content-length': '503',
+    connection: 'keep-alive',
+    'access-control-allow-credentials': 'true',
+    'access-control-allow-methods': 'GET, HEAD, PUT, PATCH, POST, DELETE',
+    'access-control-allow-origin': '*',
+    'access-control-expose-headers': 'Request-Id, Stripe-Manage-Version, Stripe-Should-Retry, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required',
+    'access-control-max-age': '300',
+    'cache-control': 'no-cache, no-store',
+    'content-security-policy': "base-uri 'none'; default-src 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self'; script-src 'self' 'report-sample'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests; report-uri https://q.stripe.com/csp-violation?q=Vjiaes5fTLdQiW0BLWxW63GqYtME_Z248WLQCgJVWhGI2QVJ5IGKxh62T6eecTnyFVnbZmHYMVf5s48M; report-to csp",
+    'report-to': '{"group":"csp","max_age":8640,"endpoints":[{"url":"https://q.stripe.com/csp-report-v2?q=Vjiaes5fTLdQiW0BLWxW63GqYtME_Z248WLQCgJVWhGI2QVJ5IGKxh62T6eecTnyFVnbZmHYMVf5s48M&t=1"}],"include_subdomains":true}',
+    'reporting-endpoints': 'csp="https://q.stripe.com/csp-report-v2?q=Vjiaes5fTLdQiW0BLWxW63GqYtME_Z248WLQCgJVWhGI2QVJ5IGKxh62T6eecTnyFVnbZmHYMVf5s48M&t=1"',
+    'request-id': 'req_8PBEsfCJFCXWF3',
+    'stripe-version': '2026-05-27.dahlia',
+    vary: 'Origin',
+    'x-stripe-priority-routing-enabled': 'true',
+    'x-stripe-routing-context-priority-tier': 'livemode',
+    'x-wc': '3c3',
+    'strict-transport-security': 'max-age=63072000; includeSubDomains; preload'
+  },
+  requestId: 'req_8PBEsfCJFCXWF3',
+  statusCode: 403,
+  userMessage: undefined,
+  charge: undefined,
+  decline_code: undefined,
+  payment_intent: undefined,
+  payment_method: undefined,
+  payment_method_type: undefined,
+  setup_intent: undefined,
+  source: undefined
+} Failed to retrieve account from Stripe API
+Error: Failed query: select "id", "name", "role", "bio", "image_url", "linkedin_url", "category", "order", "created_at" from "team_members" order by "team_members"."order" asc
+params: 
+    at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\African-Vision-Design-main (2)\African-Vision-Design-main\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async <anonymous> (C:\Users\user\Downloads\African-Vision-Design-main (2)\African-Vision-Design-main\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+    at async <anonymous> (C:\Users\user\Downloads\African-Vision-Design-main (2)\African-Vision-Design-main\artifacts\api-server\src\routes\team.ts:10:19)

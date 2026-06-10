@@ -1,0 +1,38 @@
+{
+  "name": "@workspace/db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./supabase": "./src/supabase.ts",
+    "./schema": "./src/schema/index.ts",
+    "./seed/teamRoster": "./src/seed/teamRoster.ts",
+    "./seed/projects": "./src/seed/projects.ts",
+    "./seed/partners": "./src/seed/partners.ts",
+    "./seed/events": "./src/seed/events.ts",
+    "./seed/blogPosts": "./src/seed/blogPosts.ts",
+    "./seed/communityMembers": "./src/seed/communityMembers.ts",
+    "./seed/communityPosts": "./src/seed/communityPosts.ts",
+    "./seed/contactSubmissions": "./src/seed/contactSubmissions.ts",
+    "./seed/donations": "./src/seed/donations.ts",
+    "./seed/newsletterSubscribers": "./src/seed/newsletterSubscribers.ts",
+    "./seed/communityReactions": "./src/seed/communityReactions.ts",
+    "./seed/projectVariants": "./src/seed/projectVariants.ts"
+  },
+  "scripts": {
+    "push": "drizzle-kit push --config ./drizzle.config.ts",
+    "push-force": "drizzle-kit push --force --config ./drizzle.config.ts"
+  },
+  "dependencies": {
+    "drizzle-orm": "catalog:",
+    "drizzle-zod": "^0.8.3",
+    "pg": "^8.20.0",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@types/pg": "^8.20.0",
+    "drizzle-kit": "^0.31.10"
+  }
+}

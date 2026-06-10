@@ -1,0 +1,341 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e8]:
+            - img [ref=e9]
+            - text: info@papifoundation.net
+          - generic [ref=e12]:
+            - img [ref=e13]
+            - text: +31 6 42032437
+        - generic [ref=e15]:
+          - link "Facebook" [ref=e16] [cursor=pointer]:
+            - /url: https://facebook.com
+          - link "Twitter" [ref=e17] [cursor=pointer]:
+            - /url: https://twitter.com
+          - link "LinkedIn" [ref=e18] [cursor=pointer]:
+            - /url: https://linkedin.com
+          - link "Instagram" [ref=e19] [cursor=pointer]:
+            - /url: https://www.instagram.com/official_papifoundation
+          - link "YouTube" [ref=e20] [cursor=pointer]:
+            - /url: https://youtube.com
+      - generic [ref=e21]:
+        - link "Papi Foundation PAPI FOUNDATION Building Africa by Africans" [ref=e22] [cursor=pointer]:
+          - /url: /
+          - img "Papi Foundation" [ref=e23]
+          - generic [ref=e24]:
+            - generic [ref=e25]: PAPI FOUNDATION
+            - generic [ref=e26]: Building Africa by Africans
+        - navigation [ref=e27]:
+          - link "Doing Business in Africa" [ref=e28] [cursor=pointer]:
+            - /url: /doing-business
+          - link "African Insights" [ref=e29] [cursor=pointer]:
+            - /url: /african-insights
+          - button "About Papi" [ref=e31]:
+            - text: About Papi
+            - img [ref=e32]
+          - link "News & Events" [ref=e34] [cursor=pointer]:
+            - /url: /news
+          - link "Community" [ref=e35] [cursor=pointer]:
+            - /url: /community
+          - link "Office" [ref=e36] [cursor=pointer]:
+            - /url: /office
+        - generic [ref=e37]:
+          - button "S stephen" [ref=e39]:
+            - generic [ref=e40]: S
+            - text: stephen
+            - img [ref=e41]
+          - link "Donate" [ref=e43] [cursor=pointer]:
+            - /url: /donate
+    - main [ref=e44]:
+      - generic [ref=e45]:
+        - generic [ref=e50]:
+          - generic [ref=e51]:
+            - generic [ref=e54]: Our People
+            - heading "Join Our Community" [level=1] [ref=e55]:
+              - text: Join Our
+              - text: Community
+            - paragraph [ref=e56]: "A network of over 230 million Africans and Africa-supporters united by a single conviction: that Africa's future belongs to Africans."
+            - generic [ref=e57]:
+              - link "Become a Member" [ref=e58] [cursor=pointer]:
+                - /url: "#join"
+                - text: Become a Member
+                - img [ref=e59]
+              - link "Explore the Feed" [ref=e61] [cursor=pointer]:
+                - /url: "#feed"
+            - generic [ref=e64]:
+              - generic [ref=e65]: 230M+
+              - generic [ref=e66]: members across 47 countries
+          - generic [ref=e67]:
+            - img "Community gathering" [ref=e69]
+            - img "Community members together" [ref=e72]
+            - generic [ref=e73]:
+              - generic [ref=e74]:
+                - img [ref=e75]
+                - generic [ref=e77]: 15K+
+              - generic [ref=e78]: Lives changed together
+        - generic [ref=e82]:
+          - generic [ref=e83]:
+            - img [ref=e84]
+            - generic [ref=e89]: "0"
+            - generic [ref=e90]: Network Members
+          - generic [ref=e91]:
+            - img [ref=e92]
+            - generic [ref=e95]: 47+
+            - generic [ref=e96]: Countries
+          - generic [ref=e97]:
+            - img [ref=e98]
+            - generic [ref=e100]: "3"
+            - generic [ref=e101]: Member Types
+          - generic [ref=e102]:
+            - img [ref=e103]
+            - generic [ref=e108]: 15K+
+            - generic [ref=e109]: Direct Beneficiaries
+        - generic [ref=e112]:
+          - generic [ref=e113]:
+            - generic [ref=e114]: Community Feed
+            - heading "Voices of the Movement" [level=2] [ref=e115]
+            - paragraph [ref=e116]: Share updates, celebrate milestones, and connect with members across the continent and the diaspora.
+          - generic [ref=e117]:
+            - generic [ref=e118]:
+              - generic [ref=e119]: S
+              - textbox "Share something with the community, stephen..." [ref=e120]
+            - generic [ref=e121]:
+              - button "Add image" [ref=e122]:
+                - img [ref=e123]
+                - text: Add image
+              - button "Post" [disabled] [ref=e127]
+          - article [ref=e346]:
+            - generic [ref=e347]:
+              - generic [ref=e348]: S
+              - generic [ref=e349]:
+                - generic [ref=e350]: stephen paago
+                - generic [ref=e351]: 6m ago
+              - button "Delete post" [ref=e352]:
+                - img [ref=e353]
+            - paragraph [ref=e356]: Testing community image upload fix from the browser.
+            - img "Post attachment" [ref=e358]
+            - generic [ref=e359]:
+              - generic [ref=e360]:
+                - button "Like" [active] [ref=e361]:
+                  - img [ref=e362]
+                - button "Love" [ref=e364]:
+                  - img [ref=e365]
+                - button "Celebrate" [ref=e367]:
+                  - img [ref=e368]
+                - button "Support" [ref=e374]:
+                  - img [ref=e375]
+                - button "Insightful" [ref=e380]:
+                  - img [ref=e381]
+              - button "0 comments" [ref=e383]:
+                - img [ref=e384]
+                - text: 0 comments
+        - generic [ref=e131]:
+          - generic [ref=e132]:
+            - img "Community meeting" [ref=e133]
+            - generic [ref=e135]:
+              - generic [ref=e136]: 230M+
+              - generic [ref=e137]: Members building Africa together
+          - generic [ref=e138]:
+            - generic [ref=e139]: Why Join
+            - heading "Be Part of Something Bigger Than Yourself" [level=2] [ref=e140]:
+              - text: Be Part of Something
+              - text: Bigger Than Yourself
+            - paragraph [ref=e141]: Our community is not a mailing list — it is a living network of change-makers, investors, volunteers, and advocates who show up for Africa every day. When you join, you gain access to one of the most powerful development networks on earth.
+            - generic [ref=e142]:
+              - generic [ref=e145]: Access to members-only impact reports and project data
+              - generic [ref=e148]: Invitations to Foundation events, webinars, and field visits
+              - generic [ref=e151]: A direct line to investors, partners, and on-ground experts
+              - generic [ref=e154]: Opportunities to volunteer, co-invest, or sponsor programs
+              - generic [ref=e157]: Monthly updates on every active project and use of funds
+        - generic [ref=e159]:
+          - generic [ref=e160]:
+            - generic [ref=e161]: Membership
+            - heading "How You Can Contribute" [level=2] [ref=e162]
+          - generic [ref=e163]:
+            - generic [ref=e164]:
+              - generic [ref=e165]:
+                - img "Individual" [ref=e166]
+                - generic [ref=e168]: Individual
+              - generic [ref=e169]:
+                - heading "Individual Membership" [level=3] [ref=e170]
+                - paragraph [ref=e171]: Join as an individual supporter, advocate, or diaspora member. Follow projects, donate, receive updates, and connect with the network.
+            - generic [ref=e172]:
+              - generic [ref=e173]:
+                - img "Organization" [ref=e174]
+                - generic [ref=e176]: Organization
+              - generic [ref=e177]:
+                - heading "Organization Membership" [level=3] [ref=e178]
+                - paragraph [ref=e179]: Register your company, NGO, or institution as a partner organisation. Co-invest, sponsor programs, or align your CSR with our impact goals.
+            - generic [ref=e180]:
+              - generic [ref=e181]:
+                - img "Volunteer" [ref=e182]
+                - generic [ref=e184]: Volunteer
+              - generic [ref=e185]:
+                - heading "Volunteer Membership" [level=3] [ref=e186]
+                - paragraph [ref=e187]: Offer your time, skills, and expertise directly to our field programs. We need lawyers, doctors, teachers, engineers, and communicators.
+        - generic [ref=e190]:
+          - generic [ref=e191]:
+            - generic [ref=e192]: Become a Member
+            - heading "Join Us Today" [level=2] [ref=e193]
+            - paragraph [ref=e194]: Membership is free and open to everyone who shares our vision of a prosperous, self-determining Africa. Fill in the form and we will be in touch within 48 hours.
+            - img "Community gathering" [ref=e196]
+          - generic [ref=e199]:
+            - generic [ref=e200]:
+              - text: Full Name
+              - textbox "Full Name" [ref=e201]:
+                - /placeholder: Your full name
+            - generic [ref=e202]:
+              - text: Email Address
+              - textbox "Email Address" [ref=e203]:
+                - /placeholder: your@email.com
+            - generic [ref=e204]:
+              - text: Country
+              - textbox "Country" [ref=e205]:
+                - /placeholder: Your country
+            - generic [ref=e206]:
+              - text: Membership Type
+              - combobox "Membership Type" [ref=e207]:
+                - generic: Individual
+                - img [ref=e208]
+              - combobox [ref=e210]
+            - generic [ref=e211]:
+              - text: About You (Optional)
+              - textbox "About You (Optional)" [ref=e212]:
+                - /placeholder: Tell us a little about yourself and why you want to join
+            - button "Join the Community" [ref=e213]
+    - contentinfo [ref=e214]:
+      - generic [ref=e216]:
+        - generic [ref=e217]:
+          - generic [ref=e218]:
+            - img "Papi Foundation" [ref=e219]
+            - generic [ref=e220]:
+              - generic [ref=e221]: PAPI FOUNDATION
+              - generic [ref=e222]: Building Africa by Africans
+          - paragraph [ref=e223]: A global African humanitarian foundation investing in education, clean water, healthcare, and community empowerment across Africa.
+          - generic [ref=e224]:
+            - link "Facebook" [ref=e225] [cursor=pointer]:
+              - /url: https://facebook.com
+              - img [ref=e226]
+            - link "Twitter" [ref=e228] [cursor=pointer]:
+              - /url: https://twitter.com
+              - img [ref=e229]
+            - link "LinkedIn" [ref=e231] [cursor=pointer]:
+              - /url: https://linkedin.com
+              - img [ref=e232]
+            - link "Instagram" [ref=e236] [cursor=pointer]:
+              - /url: https://www.instagram.com/official_papifoundation
+              - img [ref=e237]
+            - link "YouTube" [ref=e240] [cursor=pointer]:
+              - /url: https://youtube.com
+              - img [ref=e241]
+        - generic [ref=e244]:
+          - heading "Quick Links" [level=4] [ref=e245]
+          - list [ref=e246]:
+            - listitem [ref=e247]:
+              - link "About Us" [ref=e248] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e249]:
+              - link "Doing Business in Africa" [ref=e250] [cursor=pointer]:
+                - /url: /doing-business
+            - listitem [ref=e251]:
+              - link "African Insights" [ref=e252] [cursor=pointer]:
+                - /url: /african-insights
+            - listitem [ref=e253]:
+              - link "Projects" [ref=e254] [cursor=pointer]:
+                - /url: /projects
+            - listitem [ref=e255]:
+              - link "Our Team" [ref=e256] [cursor=pointer]:
+                - /url: /team
+            - listitem [ref=e257]:
+              - link "Vacancies" [ref=e258] [cursor=pointer]:
+                - /url: /vacancies
+            - listitem [ref=e259]:
+              - link "News" [ref=e260] [cursor=pointer]:
+                - /url: /news
+            - listitem [ref=e261]:
+              - link "Events & Training" [ref=e262] [cursor=pointer]:
+                - /url: /events
+            - listitem [ref=e263]:
+              - link "Donate" [ref=e264] [cursor=pointer]:
+                - /url: /donate
+            - listitem [ref=e265]:
+              - link "Community" [ref=e266] [cursor=pointer]:
+                - /url: /community
+            - listitem [ref=e267]:
+              - link "Roadmap" [ref=e268] [cursor=pointer]:
+                - /url: /roadmap
+        - generic [ref=e269]:
+          - heading "Our Offices" [level=4] [ref=e270]
+          - generic [ref=e271]:
+            - generic [ref=e272]:
+              - generic [ref=e273]: Nigeria (HQ)
+              - generic [ref=e274]:
+                - img [ref=e275]
+                - text: Flat 2 Bahamas Estate, Opposite Grandpela, Durumi District, Abuja, Nigeria
+              - generic [ref=e278]:
+                - img [ref=e279]
+                - text: +31 6 42032437
+            - generic [ref=e281]:
+              - generic [ref=e282]: Nigeria
+              - generic [ref=e283]:
+                - img [ref=e284]
+                - text: Lagos, Nigeria
+              - generic [ref=e287]:
+                - img [ref=e288]
+                - text: +234 80 000 0000
+            - generic [ref=e290]:
+              - generic [ref=e291]: Ghana
+              - generic [ref=e292]:
+                - img [ref=e293]
+                - text: Accra, Ghana
+              - generic [ref=e296]:
+                - img [ref=e297]
+                - text: +233 20 000 0000
+            - generic [ref=e299]:
+              - generic [ref=e300]: Kenya
+              - generic [ref=e301]:
+                - img [ref=e302]
+                - text: Nairobi, Kenya
+              - generic [ref=e305]:
+                - img [ref=e306]
+                - text: +254 70 000 0000
+            - generic [ref=e308]:
+              - generic [ref=e309]: Rwanda
+              - generic [ref=e310]:
+                - img [ref=e311]
+                - text: Kigali, Rwanda
+              - generic [ref=e314]:
+                - img [ref=e315]
+                - text: +250 78 000 0000
+            - generic [ref=e317]:
+              - generic [ref=e318]:
+                - img [ref=e319]
+                - link "info@papifoundation.net" [ref=e322] [cursor=pointer]:
+                  - /url: mailto:info@papifoundation.net
+              - generic [ref=e323]:
+                - img [ref=e324]
+                - generic [ref=e326]: +31 6 42032437
+        - generic [ref=e327]:
+          - heading "Monthly Newsletter" [level=4] [ref=e328]
+          - paragraph [ref=e329]: Stay up to date with our latest projects, impact reports, and events from across Africa.
+          - generic [ref=e330]:
+            - textbox "Your name" [ref=e331]
+            - textbox "Your email address" [ref=e332]
+            - button "Subscribe" [ref=e333]:
+              - img [ref=e334]
+              - text: Subscribe
+      - generic [ref=e338]:
+        - generic [ref=e339]: "© 2026 Papi Foundation. All rights reserved. KvK: 00000000"
+        - generic [ref=e340]:
+          - link "Terms & Conditions" [ref=e341] [cursor=pointer]:
+            - /url: /terms
+          - link "Privacy Policy" [ref=e342] [cursor=pointer]:
+            - /url: /privacy
+          - link "Disclaimer" [ref=e343] [cursor=pointer]:
+            - /url: /disclaimer
+          - link "Sitemap" [ref=e344] [cursor=pointer]:
+            - /url: /sitemap
+  - region "Notifications (F8)":
+    - list

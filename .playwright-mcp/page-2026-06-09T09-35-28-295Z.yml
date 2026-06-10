@@ -1,0 +1,247 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e8]:
+            - img [ref=e9]
+            - text: info@papifoundation.net
+          - generic [ref=e12]:
+            - img [ref=e13]
+            - text: +31 6 42032437
+        - generic [ref=e15]:
+          - link "Facebook" [ref=e16] [cursor=pointer]:
+            - /url: https://facebook.com
+          - link "Twitter" [ref=e17] [cursor=pointer]:
+            - /url: https://twitter.com
+          - link "LinkedIn" [ref=e18] [cursor=pointer]:
+            - /url: https://linkedin.com
+          - link "Instagram" [ref=e19] [cursor=pointer]:
+            - /url: https://www.instagram.com/official_papifoundation
+          - link "YouTube" [ref=e20] [cursor=pointer]:
+            - /url: https://youtube.com
+      - generic [ref=e21]:
+        - link "Papi Foundation PAPI FOUNDATION Building Africa by Africans" [ref=e22] [cursor=pointer]:
+          - /url: /
+          - img "Papi Foundation" [ref=e23]
+          - generic [ref=e24]:
+            - generic [ref=e25]: PAPI FOUNDATION
+            - generic [ref=e26]: Building Africa by Africans
+        - navigation [ref=e27]:
+          - link "Doing Business in Africa" [ref=e28] [cursor=pointer]:
+            - /url: /doing-business
+          - link "African Insights" [ref=e29] [cursor=pointer]:
+            - /url: /african-insights
+          - button "About Papi" [ref=e31]:
+            - text: About Papi
+            - img [ref=e32]
+          - link "News & Events" [ref=e34] [cursor=pointer]:
+            - /url: /news
+          - link "Community" [ref=e35] [cursor=pointer]:
+            - /url: /community
+          - link "Office" [ref=e36] [cursor=pointer]:
+            - /url: /office
+        - generic [ref=e37]:
+          - link "Sign In" [ref=e38] [cursor=pointer]:
+            - /url: /sign-in
+            - img [ref=e39]
+            - text: Sign In
+          - link "Donate" [ref=e42] [cursor=pointer]:
+            - /url: /donate
+    - main [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e49]:
+          - generic [ref=e52]: Our Coalition
+          - heading "Stronger, Together" [level=1] [ref=e53]:
+            - text: Stronger,
+            - text: Together
+          - paragraph [ref=e54]: Systemic change is never built alone. We stand alongside the institutions, governments, and enterprises who share one conviction — that Africa's future is built by Africans, backed by the world.
+          - generic [ref=e55]:
+            - link "Meet the Coalition" [ref=e56] [cursor=pointer]:
+              - /url: "#coalition"
+              - text: Meet the Coalition
+              - img [ref=e57]
+            - link "Become a Partner" [ref=e59] [cursor=pointer]:
+              - /url: /contact
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - generic [ref=e63]: The Coalition in Numbers
+            - heading "A Network Built on Trust" [level=2] [ref=e64]
+          - generic [ref=e65]:
+            - generic [ref=e66]:
+              - generic [ref=e67]: "0"
+              - generic [ref=e68]: World-class partners
+            - generic [ref=e69]:
+              - generic [ref=e70]: "0"
+              - generic [ref=e71]: Categories of collaboration
+            - generic [ref=e72]:
+              - generic [ref=e73]: "0"
+              - generic [ref=e74]: Countries represented
+            - generic [ref=e75]:
+              - generic [ref=e77]: 0%
+              - generic [ref=e78]: Mission-aligned commitment
+        - generic [ref=e80]:
+          - generic [ref=e81]:
+            - generic [ref=e82]: The Value of the Alliance
+            - heading "Why the World's Best Partner With Us" [level=2] [ref=e83]
+          - generic [ref=e84]:
+            - generic [ref=e85]:
+              - img [ref=e87]
+              - heading "Authentic Local Roots" [level=3] [ref=e90]
+              - paragraph [ref=e91]: Decades of lived experience and deep community relationships across the continent — partnership that is genuinely African-led, not parachuted in.
+            - generic [ref=e92]:
+              - img [ref=e94]
+              - heading "Radical Transparency" [level=3] [ref=e99]
+              - paragraph [ref=e100]: Every euro tracked, every milestone published. Our partners see exactly where capital flows and the measurable lives it changes.
+            - generic [ref=e101]:
+              - img [ref=e103]
+              - heading "Scalable Infrastructure" [level=3] [ref=e107]
+              - paragraph [ref=e108]: A professional platform built to deploy programs, manage risk, and report impact at national scale — investor-grade from day one.
+        - generic [ref=e111]:
+          - generic [ref=e112]: Those Who Stand With Us
+          - heading "The Coalition" [level=2] [ref=e113]
+        - generic [ref=e119]:
+          - generic [ref=e122]: Join the Coalition
+          - heading "Let's Build the Future Together" [level=2] [ref=e123]
+          - paragraph [ref=e124]: Whether you bring capital, expertise, infrastructure, or reach, there is a place for you in this coalition. Partner with us to turn ambition into measurable, lasting impact across Africa.
+          - generic [ref=e125]:
+            - link "Become a Partner" [ref=e126] [cursor=pointer]:
+              - /url: /contact
+              - text: Become a Partner
+              - img [ref=e127]
+            - link "See Our Impact" [ref=e129] [cursor=pointer]:
+              - /url: /impact
+    - contentinfo [ref=e130]:
+      - generic [ref=e132]:
+        - generic [ref=e133]:
+          - generic [ref=e134]:
+            - img "Papi Foundation" [ref=e135]
+            - generic [ref=e136]:
+              - generic [ref=e137]: PAPI FOUNDATION
+              - generic [ref=e138]: Building Africa by Africans
+          - paragraph [ref=e139]: A global African humanitarian foundation investing in education, clean water, healthcare, and community empowerment across Africa.
+          - generic [ref=e140]:
+            - link "Facebook" [ref=e141] [cursor=pointer]:
+              - /url: https://facebook.com
+              - img [ref=e142]
+            - link "Twitter" [ref=e144] [cursor=pointer]:
+              - /url: https://twitter.com
+              - img [ref=e145]
+            - link "LinkedIn" [ref=e147] [cursor=pointer]:
+              - /url: https://linkedin.com
+              - img [ref=e148]
+            - link "Instagram" [ref=e152] [cursor=pointer]:
+              - /url: https://www.instagram.com/official_papifoundation
+              - img [ref=e153]
+            - link "YouTube" [ref=e156] [cursor=pointer]:
+              - /url: https://youtube.com
+              - img [ref=e157]
+        - generic [ref=e160]:
+          - heading "Quick Links" [level=4] [ref=e161]
+          - list [ref=e162]:
+            - listitem [ref=e163]:
+              - link "About Us" [ref=e164] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e165]:
+              - link "Doing Business in Africa" [ref=e166] [cursor=pointer]:
+                - /url: /doing-business
+            - listitem [ref=e167]:
+              - link "African Insights" [ref=e168] [cursor=pointer]:
+                - /url: /african-insights
+            - listitem [ref=e169]:
+              - link "Projects" [ref=e170] [cursor=pointer]:
+                - /url: /projects
+            - listitem [ref=e171]:
+              - link "Our Team" [ref=e172] [cursor=pointer]:
+                - /url: /team
+            - listitem [ref=e173]:
+              - link "Vacancies" [ref=e174] [cursor=pointer]:
+                - /url: /vacancies
+            - listitem [ref=e175]:
+              - link "News" [ref=e176] [cursor=pointer]:
+                - /url: /news
+            - listitem [ref=e177]:
+              - link "Events & Training" [ref=e178] [cursor=pointer]:
+                - /url: /events
+            - listitem [ref=e179]:
+              - link "Donate" [ref=e180] [cursor=pointer]:
+                - /url: /donate
+            - listitem [ref=e181]:
+              - link "Community" [ref=e182] [cursor=pointer]:
+                - /url: /community
+            - listitem [ref=e183]:
+              - link "Roadmap" [ref=e184] [cursor=pointer]:
+                - /url: /roadmap
+        - generic [ref=e185]:
+          - heading "Our Offices" [level=4] [ref=e186]
+          - generic [ref=e187]:
+            - generic [ref=e188]:
+              - generic [ref=e189]: Nigeria (HQ)
+              - generic [ref=e190]:
+                - img [ref=e191]
+                - text: Flat 2 Bahamas Estate, Opposite Grandpela, Durumi District, Abuja, Nigeria
+              - generic [ref=e194]:
+                - img [ref=e195]
+                - text: +31 6 42032437
+            - generic [ref=e197]:
+              - generic [ref=e198]: Nigeria
+              - generic [ref=e199]:
+                - img [ref=e200]
+                - text: Lagos, Nigeria
+              - generic [ref=e203]:
+                - img [ref=e204]
+                - text: +234 80 000 0000
+            - generic [ref=e206]:
+              - generic [ref=e207]: Ghana
+              - generic [ref=e208]:
+                - img [ref=e209]
+                - text: Accra, Ghana
+              - generic [ref=e212]:
+                - img [ref=e213]
+                - text: +233 20 000 0000
+            - generic [ref=e215]:
+              - generic [ref=e216]: Kenya
+              - generic [ref=e217]:
+                - img [ref=e218]
+                - text: Nairobi, Kenya
+              - generic [ref=e221]:
+                - img [ref=e222]
+                - text: +254 70 000 0000
+            - generic [ref=e224]:
+              - generic [ref=e225]: Rwanda
+              - generic [ref=e226]:
+                - img [ref=e227]
+                - text: Kigali, Rwanda
+              - generic [ref=e230]:
+                - img [ref=e231]
+                - text: +250 78 000 0000
+            - generic [ref=e233]:
+              - generic [ref=e234]:
+                - img [ref=e235]
+                - link "info@papifoundation.net" [ref=e238] [cursor=pointer]:
+                  - /url: mailto:info@papifoundation.net
+              - generic [ref=e239]:
+                - img [ref=e240]
+                - generic [ref=e242]: +31 6 42032437
+        - generic [ref=e243]:
+          - heading "Monthly Newsletter" [level=4] [ref=e244]
+          - paragraph [ref=e245]: Stay up to date with our latest projects, impact reports, and events from across Africa.
+          - generic [ref=e246]:
+            - textbox "Your name" [ref=e247]
+            - textbox "Your email address" [ref=e248]
+            - button "Subscribe" [ref=e249]:
+              - img [ref=e250]
+              - text: Subscribe
+      - generic [ref=e254]:
+        - generic [ref=e255]: "© 2026 Papi Foundation. All rights reserved. KvK: 00000000"
+        - generic [ref=e256]:
+          - link "Terms & Conditions" [ref=e257] [cursor=pointer]:
+            - /url: /terms
+          - link "Privacy Policy" [ref=e258] [cursor=pointer]:
+            - /url: /privacy
+          - link "Disclaimer" [ref=e259] [cursor=pointer]:
+            - /url: /disclaimer
+          - link "Sitemap" [ref=e260] [cursor=pointer]:
+            - /url: /sitemap
+  - region "Notifications (F8)":
+    - list
