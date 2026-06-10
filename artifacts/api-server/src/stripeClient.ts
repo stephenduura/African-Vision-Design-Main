@@ -1,6 +1,8 @@
-import Stripe from "stripe";
+import StripePackage from "stripe";
 import { StripeSync } from "stripe-replit-sync";
 import { getSupabaseDatabaseUrl } from "@workspace/db";
+
+type StripeClient = InstanceType<typeof StripePackage>;
 
 function isUsableStripeKey(key: string | undefined): key is string {
   if (!key) return false;
@@ -33,8 +35,8 @@ function getStripeWebhookSecret(): string {
  * Returns a fresh authenticated Stripe client.
  * Not cached -- fetches credentials on every call so rotated keys are picked up.
  */
-export async function getUncachableStripeClient(): Promise<Stripe> {
-  return new Stripe(getStripeSecretKey());
+export async function getUncachableStripeClient(): Promise<StripeClient> {
+  return new StripePackage(getStripeSecretKey());
 }
 
 /**
