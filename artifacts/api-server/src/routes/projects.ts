@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { db, projectsTable, type Project } from "@workspace/db";
+import { db, projectsTable } from "@workspace/db";
 import { eq, count, sql } from "drizzle-orm";
 import {
   ListProjectsQueryParams,
@@ -10,7 +10,7 @@ import {
 const router = Router();
 
 router.get("/projects/stats", async (req, res): Promise<void> => {
-  const all: Project[] = await db.select().from(projectsTable);
+  const all = await db.select().from(projectsTable);
   const ongoing = all.filter((p) => p.status === "ongoing").length;
   const completed = all.filter((p) => p.status === "completed").length;
   const upcoming = all.filter((p) => p.status === "upcoming").length;
@@ -30,7 +30,7 @@ router.get("/projects/stats", async (req, res): Promise<void> => {
 
 router.get("/projects", async (req, res): Promise<void> => {
   const parsed = ListProjectsQueryParams.safeParse(req.query);
-  const all: Project[] = await db.select().from(projectsTable);
+  const all = await db.select().from(projectsTable);
   let filtered = all;
   if (parsed.success) {
     if (parsed.data.status) {
