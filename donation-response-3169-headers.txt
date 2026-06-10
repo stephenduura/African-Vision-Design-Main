@@ -1,7 +1,0 @@
-transfer-encoding: chunked
-access-control-allow-origin: http://127.0.0.1:24545
-keep-alive: timeout=5
-date: Tue, 09 Jun 2026 15:29:40 GMT
-content-type: text/plain
-vary: Origin
-connection: keep-alive

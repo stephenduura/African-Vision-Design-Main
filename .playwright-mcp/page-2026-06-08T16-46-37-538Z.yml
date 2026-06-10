@@ -1,6 +1,0 @@
-- generic [ref=e2]:
-  - generic [ref=e4]:
-    - generic [ref=e5]: Sign in is unavailable in local preview
-    - paragraph [ref=e6]: The live design is loading without Clerk so the layout stays intact while you preview the site locally.
-  - region "Notifications (F8)":
-    - list
