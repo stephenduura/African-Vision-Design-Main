@@ -3,8 +3,7 @@ import { db } from "@workspace/db";
 import { donationsTable } from "@workspace/db";
 import { CreateDonationBody, CreateDonationCheckoutBody } from "@workspace/api-zod";
 import { desc } from "drizzle-orm";
-import type Stripe from "stripe";
-import { getUncachableStripeClient } from "../stripeClient";
+import { getUncachableStripeClient, type StripeClient } from "../stripeClient";
 
 const router = Router();
 
@@ -32,7 +31,15 @@ function getAppBaseUrl(req: Request): string {
   return `${proto}://${host}`;
 }
 
-function getCheckoutBranding(baseUrl: string): Stripe.Checkout.SessionCreateParams.BrandingSettings {
+type StripeCheckoutSessionCreateParams = NonNullable<
+  Parameters<StripeClient["checkout"]["sessions"]["create"]>[0]
+>;
+type StripeCheckoutBrandingSettings = NonNullable<
+  StripeCheckoutSessionCreateParams["branding_settings"]
+>;
+type StripeCheckoutSubmitType = NonNullable<StripeCheckoutSessionCreateParams["submit_type"]>;
+
+function getCheckoutBranding(baseUrl: string): StripeCheckoutBrandingSettings {
   const publicAppUrl = process.env["PUBLIC_APP_URL"]?.trim();
   const logoUrl = publicAppUrl ? `${publicAppUrl.replace(/\/$/, "")}/logo.svg` : null;
 
@@ -112,12 +119,12 @@ router.post("/donations/checkout", async (req, res): Promise<void> => {
 
   try {
     const stripe = await getUncachableStripeClient();
-    const submitType: Stripe.Checkout.SessionCreateParams.SubmitType = isMonthly
+    const submitType: StripeCheckoutSubmitType = isMonthly
       ? "subscribe"
       : "donate";
 
     const brandingSettings = getCheckoutBranding(baseUrl);
-    const params: Stripe.Checkout.SessionCreateParams = {
+    const params: StripeCheckoutSessionCreateParams = {
       mode: isMonthly ? "subscription" : "payment",
       submit_type: submitType,
       branding_settings: brandingSettings,

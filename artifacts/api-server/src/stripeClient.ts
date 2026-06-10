@@ -2,7 +2,7 @@ import StripePackage from "stripe";
 import { StripeSync } from "stripe-replit-sync";
 import { getSupabaseDatabaseUrl } from "@workspace/db";
 
-type StripeClient = InstanceType<typeof StripePackage>;
+export type StripeClient = InstanceType<typeof StripePackage>;
 
 function isUsableStripeKey(key: string | undefined): key is string {
   if (!key) return false;
