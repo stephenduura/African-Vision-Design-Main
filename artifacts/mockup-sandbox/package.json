@@ -7,7 +7,7 @@
     "dev": "vite dev",
     "build": "vite build --configLoader native",
     "preview": "vite preview",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "node --max-old-space-size=4096 --max-semi-space-size=1024 ../../node_modules/typescript/bin/tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.10.0",

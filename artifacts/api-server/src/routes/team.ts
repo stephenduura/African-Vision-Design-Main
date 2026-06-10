@@ -1,14 +1,16 @@
 import { Router } from "express";
-import { db } from "@workspace/db";
-import { teamMembersTable } from "@workspace/db";
+import { db, teamMembersTable, type TeamMember } from "@workspace/db";
 import { CreateTeamMemberBody } from "@workspace/api-zod";
 import { asc } from "drizzle-orm";
 
 const router = Router();
 
 router.get("/team", async (req, res): Promise<void> => {
-  const members = await db.select().from(teamMembersTable).orderBy(asc(teamMembersTable.order));
-  res.json(members.map((m) => ({ ...m, createdAt: undefined })));
+  const members: TeamMember[] = await db
+    .select()
+    .from(teamMembersTable)
+    .orderBy(asc(teamMembersTable.order));
+  res.json(members.map((m: TeamMember) => ({ ...m, createdAt: undefined })));
 });
 
 router.post("/team", async (req, res): Promise<void> => {

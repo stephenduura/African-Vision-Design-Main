@@ -10,7 +10,7 @@ const TEAM_SEED_LOCK_KEY = 727274001;
  * single transaction so readers always see a complete, consistent set.
  */
 export async function seedTeam(): Promise<void> {
-  await db.transaction(async (tx) => {
+  await db.transaction(async (tx: Parameters<Parameters<typeof db.transaction>[0]>[0]) => {
     await tx.execute(sql`SELECT pg_advisory_xact_lock(${TEAM_SEED_LOCK_KEY})`);
     await tx.delete(teamMembersTable);
     await tx.insert(teamMembersTable).values(TEAM_ROSTER);

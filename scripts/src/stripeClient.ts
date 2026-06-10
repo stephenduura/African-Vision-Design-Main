@@ -1,9 +1,13 @@
 import Stripe from "stripe";
 import { StripeSync } from "stripe-replit-sync";
-import { getSupabaseDatabaseUrl } from "../../lib/supabase";
+import { getSupabaseDatabaseUrl } from "@workspace/db";
 
 function isUsableStripeKey(key: string | undefined): key is string {
-  return Boolean(key?.trim()) && /^(sk|rk)_[A-Za-z0-9_]+$/.test(key.trim());
+  const trimmed = key?.trim();
+  if (!trimmed) {
+    return false;
+  }
+  return /^(sk|rk)_[A-Za-z0-9_]+$/.test(trimmed);
 }
 
 function getStripeSecretKey(): string {
