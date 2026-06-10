@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { db, projectsTable } from "@workspace/db";
-import { eq, count, sql } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 
 const router = Router();
 
@@ -15,7 +15,7 @@ function getSingleQueryValue(value: unknown): string | undefined {
 }
 
 router.get("/projects/stats", async (req, res): Promise<void> => {
-  const all = await db.select().from(projectsTable);
+  const all: any[] = await db.select().from(projectsTable);
   const ongoing = all.filter((p) => p.status === "ongoing").length;
   const completed = all.filter((p) => p.status === "completed").length;
   const upcoming = all.filter((p) => p.status === "upcoming").length;
@@ -34,8 +34,8 @@ router.get("/projects/stats", async (req, res): Promise<void> => {
 });
 
 router.get("/projects", async (req, res): Promise<void> => {
-  const all = await db.select().from(projectsTable);
-  let filtered = all;
+  const all: any[] = await db.select().from(projectsTable);
+  let filtered: any[] = all;
   const status = getSingleQueryValue(req.query.status);
   const country = getSingleQueryValue(req.query.country);
 
@@ -47,7 +47,7 @@ router.get("/projects", async (req, res): Promise<void> => {
       p.country.toLowerCase().includes(country.toLowerCase())
     );
   }
-  const result = filtered.map((p) => ({
+  const result: any[] = filtered.map((p) => ({
     ...p,
     progressPercent: p.goalAmount > 0 ? Math.round((p.raisedAmount / p.goalAmount) * 100) : 0,
     createdAt: p.createdAt.toISOString(),
@@ -61,7 +61,7 @@ router.get("/projects/:id", async (req, res): Promise<void> => {
     res.status(400).json({ error: "Invalid id" });
     return;
   }
-  const [project] = await db.select().from(projectsTable).where(eq(projectsTable.id, id));
+  const [project]: any[] = await db.select().from(projectsTable).where(eq(projectsTable.id, id));
   if (!project) {
     res.status(404).json({ error: "Not found" });
     return;
@@ -89,7 +89,7 @@ router.post("/projects", async (req, res): Promise<void> => {
     res.status(400).json({ error: "Invalid project payload" });
     return;
   }
-  const [project] = await db.insert(projectsTable).values({
+  const newProject: any = {
     title: body.title,
     description: body.description,
     status: body.status === "ongoing" || body.status === "completed" || body.status === "upcoming"
@@ -106,7 +106,8 @@ router.post("/projects", async (req, res): Promise<void> => {
     location: typeof body.location === "string" ? body.location : null,
     lat: typeof body.lat === "number" ? body.lat : null,
     lng: typeof body.lng === "number" ? body.lng : null,
-  }).returning();
+  };
+  const [project]: any[] = await db.insert(projectsTable).values(newProject).returning();
   res.status(201).json({
     ...project,
     progressPercent: project.goalAmount > 0 ? Math.round((project.raisedAmount / project.goalAmount) * 100) : 0,
