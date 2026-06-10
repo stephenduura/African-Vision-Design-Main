@@ -1,13 +1,18 @@
 import { Router } from "express";
 import { db, projectsTable } from "@workspace/db";
 import { eq, count, sql } from "drizzle-orm";
-import {
-  ListProjectsQueryParams,
-  CreateProjectBody,
-  GetProjectParams,
-} from "@workspace/api-zod";
 
 const router = Router();
+
+function getSingleQueryValue(value: unknown): string | undefined {
+  if (typeof value === "string") {
+    return value;
+  }
+  if (Array.isArray(value) && typeof value[0] === "string") {
+    return value[0];
+  }
+  return undefined;
+}
 
 router.get("/projects/stats", async (req, res): Promise<void> => {
   const all = await db.select().from(projectsTable);
@@ -29,18 +34,18 @@ router.get("/projects/stats", async (req, res): Promise<void> => {
 });
 
 router.get("/projects", async (req, res): Promise<void> => {
-  const parsed = ListProjectsQueryParams.safeParse(req.query);
   const all = await db.select().from(projectsTable);
   let filtered = all;
-  if (parsed.success) {
-    if (parsed.data.status) {
-      filtered = filtered.filter((p) => p.status === parsed.data.status);
-    }
-    if (parsed.data.country) {
-      filtered = filtered.filter((p) =>
-        p.country.toLowerCase().includes((parsed.data.country ?? "").toLowerCase())
-      );
-    }
+  const status = getSingleQueryValue(req.query.status);
+  const country = getSingleQueryValue(req.query.country);
+
+  if (status === "ongoing" || status === "completed" || status === "upcoming") {
+    filtered = filtered.filter((p) => p.status === status);
+  }
+  if (country) {
+    filtered = filtered.filter((p) =>
+      p.country.toLowerCase().includes(country.toLowerCase())
+    );
   }
   const result = filtered.map((p) => ({
     ...p,
@@ -51,12 +56,12 @@ router.get("/projects", async (req, res): Promise<void> => {
 });
 
 router.get("/projects/:id", async (req, res): Promise<void> => {
-  const parsed = GetProjectParams.safeParse({ id: Number(req.params.id) });
-  if (!parsed.success) {
+  const id = Number(req.params.id);
+  if (!Number.isFinite(id) || id <= 0) {
     res.status(400).json({ error: "Invalid id" });
     return;
   }
-  const [project] = await db.select().from(projectsTable).where(eq(projectsTable.id, parsed.data.id));
+  const [project] = await db.select().from(projectsTable).where(eq(projectsTable.id, id));
   if (!project) {
     res.status(404).json({ error: "Not found" });
     return;
@@ -69,12 +74,39 @@ router.get("/projects/:id", async (req, res): Promise<void> => {
 });
 
 router.post("/projects", async (req, res): Promise<void> => {
-  const parsed = CreateProjectBody.safeParse(req.body);
-  if (!parsed.success) {
-    res.status(400).json({ error: parsed.error.message });
+  const body = req.body as Record<string, unknown>;
+  const requiredFields = ["title", "description", "status", "country", "category", "goalAmount", "imageUrl"];
+  if (
+    requiredFields.some((field) => body[field] == null) ||
+    typeof body.title !== "string" ||
+    typeof body.description !== "string" ||
+    typeof body.status !== "string" ||
+    typeof body.country !== "string" ||
+    typeof body.category !== "string" ||
+    typeof body.goalAmount !== "number" ||
+    typeof body.imageUrl !== "string"
+  ) {
+    res.status(400).json({ error: "Invalid project payload" });
     return;
   }
-  const [project] = await db.insert(projectsTable).values(parsed.data).returning();
+  const [project] = await db.insert(projectsTable).values({
+    title: body.title,
+    description: body.description,
+    status: body.status === "ongoing" || body.status === "completed" || body.status === "upcoming"
+      ? body.status
+      : "upcoming",
+    country: body.country,
+    category: body.category,
+    goalAmount: body.goalAmount,
+    raisedAmount: typeof body.raisedAmount === "number" ? body.raisedAmount : 0,
+    imageUrl: body.imageUrl,
+    beforeImageUrl: typeof body.beforeImageUrl === "string" ? body.beforeImageUrl : null,
+    afterImageUrl: typeof body.afterImageUrl === "string" ? body.afterImageUrl : null,
+    beneficiaries: typeof body.beneficiaries === "number" ? body.beneficiaries : null,
+    location: typeof body.location === "string" ? body.location : null,
+    lat: typeof body.lat === "number" ? body.lat : null,
+    lng: typeof body.lng === "number" ? body.lng : null,
+  }).returning();
   res.status(201).json({
     ...project,
     progressPercent: project.goalAmount > 0 ? Math.round((project.raisedAmount / project.goalAmount) * 100) : 0,
