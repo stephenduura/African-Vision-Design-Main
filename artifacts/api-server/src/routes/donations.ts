@@ -8,10 +8,47 @@ import { getUncachableStripeClient } from "../stripeClient";
 
 const router = Router();
 
+function isLocalhostUrl(value: string): boolean {
+  try {
+    const url = new URL(value);
+    return ["localhost", "127.0.0.1", "::1"].includes(url.hostname);
+  } catch {
+    return false;
+  }
+}
+
+function getRequestOrigin(req: Request): string | null {
+  const originHeader = req.headers.origin;
+  if (typeof originHeader === "string" && originHeader.trim()) {
+    return originHeader.trim().replace(/\/$/, "");
+  }
+
+  const refererHeader = req.headers.referer;
+  if (typeof refererHeader === "string" && refererHeader.trim()) {
+    try {
+      return new URL(refererHeader.trim()).origin;
+    } catch {
+      return null;
+    }
+  }
+
+  return null;
+}
+
 function getAppBaseUrl(req: Request): string {
   const configured = process.env["PUBLIC_APP_URL"]?.trim();
+  const requestOrigin = getRequestOrigin(req);
+
   if (configured) {
+    if (requestOrigin && isLocalhostUrl(configured) && isLocalhostUrl(requestOrigin)) {
+      return requestOrigin;
+    }
+
     return configured.replace(/\/$/, "");
+  }
+
+  if (requestOrigin) {
+    return requestOrigin;
   }
 
   const hostHeader = req.headers["x-forwarded-host"];
@@ -34,7 +71,10 @@ function getAppBaseUrl(req: Request): string {
 
 function getCheckoutBranding() {
   const publicAppUrl = process.env["PUBLIC_APP_URL"]?.trim();
-  const logoUrl = publicAppUrl ? `${publicAppUrl.replace(/\/$/, "")}/logo.svg` : null;
+  const logoUrl =
+    publicAppUrl && !isLocalhostUrl(publicAppUrl)
+      ? `${publicAppUrl.replace(/\/$/, "")}/logo.svg`
+      : null;
 
   return {
     display_name: "PAPI FOUNDATION",

@@ -36,7 +36,9 @@ minimumReleaseAgeExclude:
 
 packages:
   - artifacts/*
-  - lib/*
+  - lib/db
+  - lib/api-zod
+  - lib/api-client-react
   - lib/integrations/*
   - scripts
 

@@ -6,7 +6,7 @@
   "scripts": {
     "hello": "tsx ./src/hello.ts",
     "seed:supabase": "tsx ./src/supabaseSeed.ts",
-    "typecheck": "node --max-old-space-size=4096 --max-semi-space-size=1024 ../node_modules/typescript/bin/tsc -p tsconfig.json --noEmit"
+    "typecheck": "node --max-old-space-size=2048 ../node_modules/typescript/bin/tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@workspace/db": "workspace:*"

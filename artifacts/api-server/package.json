@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm run build && pnpm run start",
-    "build": "node --max-old-space-size=4096 --max-semi-space-size=1024 ../../node_modules/typescript/bin/tsc -p tsconfig.json --noEmit",
+    "build": "node --max-old-space-size=2048 ../../node_modules/typescript/bin/tsc -p tsconfig.json --noEmit",
     "start": "node --env-file=.env --import tsx ./src/index.ts",
-    "typecheck": "node --max-old-space-size=4096 --max-semi-space-size=1024 ../../node_modules/typescript/bin/tsc -p tsconfig.json --noEmit"
+    "typecheck": "node --max-old-space-size=2048 ../../node_modules/typescript/bin/tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@clerk/express": "^2.1.23",
