@@ -1,3 +1,4 @@
+const express = require("express");
 let appPromise;
 
 async function loadApp() {
@@ -9,6 +10,7 @@ async function loadApp() {
 }
 
 module.exports = async function appHandler(req, res) {
+  void express;
   const app = await loadApp();
   return app(req, res);
 };
