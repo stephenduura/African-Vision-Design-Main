@@ -1,3 +1,1 @@
-import app from "./artifacts/api-server/src/app.js";
-
-export default app;
+module.exports = require("./app.js");
