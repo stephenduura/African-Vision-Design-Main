@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "packageManager": "pnpm@10.28.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "pnpm run build && pnpm run start",
     "build": "node --max-old-space-size=2048 ../../node_modules/typescript/bin/tsc -p tsconfig.json --noEmit",
