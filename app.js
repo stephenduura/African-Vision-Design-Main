@@ -1,16 +1,6 @@
-const express = require("express");
-let appPromise;
+import express from "express";
+import app from "./artifacts/api-server/src/app.js";
 
-async function loadApp() {
-  if (!appPromise) {
-    appPromise = import("./artifacts/api-server/src/app.js").then((mod) => mod.default ?? mod);
-  }
+void express;
 
-  return appPromise;
-}
-
-module.exports = async function appHandler(req, res) {
-  void express;
-  const app = await loadApp();
-  return app(req, res);
-};
+export default app;
