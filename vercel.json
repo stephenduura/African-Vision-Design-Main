@@ -1,4 +1,4 @@
 {
-  "installCommand": "pnpm install --filter @workspace/api-server...",
+  "installCommand": "pnpm install --no-frozen-lockfile --filter @workspace/api-server...",
   "buildCommand": "pnpm --filter @workspace/api-server run build"
 }
