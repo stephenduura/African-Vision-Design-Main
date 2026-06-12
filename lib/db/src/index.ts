@@ -1,4 +1,4 @@
-import { drizzle, type NodePgDatabase } from "drizzle-orm/node-postgres";
+import { drizzle } from "drizzle-orm/node-postgres";
 import { sql } from "drizzle-orm";
 import pg from "pg";
 import * as schema from "./schema";
@@ -6,10 +6,8 @@ import { getSupabasePoolConfig } from "./supabase";
 
 const { Pool } = pg;
 
-type Database = NodePgDatabase<typeof schema>;
-
 let poolInstance: pg.Pool | undefined;
-let dbInstance: Database | undefined;
+let dbInstance: any;
 
 function getPool(): pg.Pool {
   if (!poolInstance) {
@@ -19,7 +17,7 @@ function getPool(): pg.Pool {
   return poolInstance;
 }
 
-function getDb(): Database {
+function getDb(): any {
   if (!dbInstance) {
     dbInstance = drizzle(getPool(), { schema });
   }
@@ -27,19 +25,19 @@ function getDb(): Database {
   return dbInstance;
 }
 
-export const pool = new Proxy({} as pg.Pool, {
+export const pool: any = new Proxy({}, {
   get(_target, prop) {
     const value = getPool()[prop as keyof pg.Pool];
     return typeof value === "function" ? value.bind(getPool()) : value;
   },
-}) as pg.Pool;
+});
 
-export const db = new Proxy({} as Database, {
+export const db: any = new Proxy({}, {
   get(_target, prop) {
-    const value = getDb()[prop as keyof Database];
+    const value = getDb()[prop as keyof typeof dbInstance];
     return typeof value === "function" ? value.bind(getDb()) : value;
   },
-}) as Database;
+});
 
 export { sql };
 export * from "./schema";
