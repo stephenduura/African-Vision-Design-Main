@@ -7,7 +7,7 @@ const router = Router();
 
 router.get("/partners", async (req, res): Promise<void> => {
   const partners = await db.select().from(partnersTable);
-  res.json(partners.map((p) => ({ ...p, createdAt: undefined })));
+  res.json(partners.map((p: any) => ({ ...p, createdAt: undefined })));
 });
 
 router.post("/partners", async (req, res): Promise<void> => {

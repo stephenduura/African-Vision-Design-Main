@@ -8,7 +8,7 @@ const router = Router();
 
 router.get("/blog", async (req, res): Promise<void> => {
   const posts = await db.select().from(blogPostsTable).orderBy(desc(blogPostsTable.publishedAt));
-  res.json(posts.map((p) => ({ ...p, publishedAt: p.publishedAt.toISOString() })));
+  res.json(posts.map((p: any) => ({ ...p, publishedAt: p.publishedAt.toISOString() })));
 });
 
 router.get("/blog/:id", async (req, res): Promise<void> => {

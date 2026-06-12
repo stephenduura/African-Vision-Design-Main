@@ -124,7 +124,7 @@ function serializePost(
   myReaction: ReactionType | null,
   commentCount: number,
 ) {
-  const totalReactions = REACTION_TYPES.reduce((sum, t) => sum + counts[t], 0);
+  const totalReactions = REACTION_TYPES.reduce((sum: number, t) => sum + counts[t], 0);
   return {
     id: p.id,
     authorId: p.authorId,
@@ -145,7 +145,7 @@ function serializeComment(
   counts: ReactionCounts,
   myReaction: ReactionType | null,
 ) {
-  const totalReactions = REACTION_TYPES.reduce((sum, t) => sum + counts[t], 0);
+  const totalReactions = REACTION_TYPES.reduce((sum: number, t) => sum + counts[t], 0);
   return {
     id: c.id,
     postId: c.postId,
@@ -167,7 +167,7 @@ async function buildPost(p: CommunityPostRow, me: string | null) {
     .where(eq(postReactionsTable.postId, p.id));
   const counts = emptyCounts();
   let myReaction: ReactionType | null = null;
-  for (const r of reactions) {
+  for (const r of reactions as any[]) {
     counts[r.type as ReactionType] += 1;
     if (me && r.userId === me) myReaction = r.type as ReactionType;
   }
@@ -185,7 +185,7 @@ async function buildComment(c: PostCommentRow, me: string | null) {
     .where(eq(commentReactionsTable.commentId, c.id));
   const counts = emptyCounts();
   let myReaction: ReactionType | null = null;
-  for (const r of reactions) {
+  for (const r of reactions as any[]) {
     counts[r.type as ReactionType] += 1;
     if (me && r.userId === me) myReaction = r.type as ReactionType;
   }
@@ -238,7 +238,7 @@ router.get("/community/posts", async (req, res): Promise<void> => {
       .select()
       .from(communityPostsTable)
       .orderBy(desc(communityPostsTable.createdAt));
-    const ids = posts.map((p) => p.id);
+    const ids = posts.map((p: any) => p.id);
 
     const reactions = ids.length
       ? await db
@@ -255,7 +255,7 @@ router.get("/community/posts", async (req, res): Promise<void> => {
 
     const countsByPost = new Map<number, ReactionCounts>();
     const myByPost = new Map<number, ReactionType>();
-    for (const r of reactions) {
+    for (const r of reactions as any[]) {
       let c = countsByPost.get(r.postId);
       if (!c) {
         c = emptyCounts();
@@ -265,12 +265,12 @@ router.get("/community/posts", async (req, res): Promise<void> => {
       if (me && r.userId === me) myByPost.set(r.postId, r.type as ReactionType);
     }
     const commentCountByPost = new Map<number, number>();
-    for (const c of comments) {
+    for (const c of comments as any[]) {
       commentCountByPost.set(c.postId, (commentCountByPost.get(c.postId) ?? 0) + 1);
     }
 
     res.json(
-      posts.map((p) =>
+      posts.map((p: any) =>
         serializePost(
           p,
           countsByPost.get(p.id) ?? emptyCounts(),
@@ -477,7 +477,7 @@ router.get("/community/posts/:id/comments", async (req, res): Promise<void> => {
       .from(postCommentsTable)
       .where(eq(postCommentsTable.postId, postId))
       .orderBy(asc(postCommentsTable.createdAt));
-    const ids = comments.map((c) => c.id);
+    const ids = comments.map((c: any) => c.id);
     const reactions = ids.length
       ? await db
           .select()
@@ -486,7 +486,7 @@ router.get("/community/posts/:id/comments", async (req, res): Promise<void> => {
       : [];
     const countsByComment = new Map<number, ReactionCounts>();
     const myByComment = new Map<number, ReactionType>();
-    for (const r of reactions) {
+    for (const r of reactions as any[]) {
       let c = countsByComment.get(r.commentId);
       if (!c) {
         c = emptyCounts();
@@ -496,7 +496,7 @@ router.get("/community/posts/:id/comments", async (req, res): Promise<void> => {
       if (me && r.userId === me) myByComment.set(r.commentId, r.type as ReactionType);
     }
     res.json(
-      comments.map((c) =>
+      comments.map((c: any) =>
         serializeComment(
           c,
           countsByComment.get(c.id) ?? emptyCounts(),

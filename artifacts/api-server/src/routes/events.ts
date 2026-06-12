@@ -8,12 +8,12 @@ const router = Router();
 
 router.get("/events/recent", async (req, res): Promise<void> => {
   const events = await db.select().from(eventsTable).orderBy(desc(eventsTable.createdAt)).limit(6);
-  res.json(events.map((e) => ({ ...e, createdAt: e.createdAt.toISOString() })));
+  res.json(events.map((e: any) => ({ ...e, createdAt: e.createdAt.toISOString() })));
 });
 
 router.get("/events", async (req, res): Promise<void> => {
   const events = await db.select().from(eventsTable).orderBy(desc(eventsTable.createdAt));
-  res.json(events.map((e) => ({ ...e, createdAt: e.createdAt.toISOString() })));
+  res.json(events.map((e: any) => ({ ...e, createdAt: e.createdAt.toISOString() })));
 });
 
 router.get("/events/:id", async (req, res): Promise<void> => {

@@ -11,10 +11,10 @@ router.get("/impact", async (req, res): Promise<void> => {
     db.select().from(communityMembersTable),
     db.select().from(partnersTable),
   ]);
-  const totalRaised = donations.reduce((sum, d) => sum + d.amount, 0);
-  const projectsCompleted = projects.filter((p) => p.status === "completed").length;
-  const beneficiaries = projects.reduce((sum, p) => sum + (p.beneficiaries ?? 0), 0);
-  const countriesReached = new Set(projects.map((p) => p.country)).size;
+  const totalRaised = donations.reduce((sum: number, d: any) => sum + d.amount, 0);
+  const projectsCompleted = projects.filter((p: any) => p.status === "completed").length;
+  const beneficiaries = projects.reduce((sum: number, p: any) => sum + (p.beneficiaries ?? 0), 0);
+  const countriesReached = new Set(projects.map((p: any) => p.country)).size;
   res.json({
     totalRaised,
     projectsCompleted,

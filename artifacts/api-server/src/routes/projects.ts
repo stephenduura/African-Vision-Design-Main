@@ -17,12 +17,12 @@ function getSingleQueryValue(value: unknown): string | undefined {
 
 router.get("/projects/stats", async (req, res): Promise<void> => {
   const all: any[] = await db.select().from(projectsTable);
-  const ongoing = all.filter((p) => p.status === "ongoing").length;
-  const completed = all.filter((p) => p.status === "completed").length;
-  const upcoming = all.filter((p) => p.status === "upcoming").length;
-  const totalRaised = all.reduce((sum, p) => sum + (p.raisedAmount ?? 0), 0);
-  const totalBeneficiaries = all.reduce((sum, p) => sum + (p.beneficiaries ?? 0), 0);
-  const countries = new Set(all.map((p) => p.country)).size;
+  const ongoing = all.filter((p: any) => p.status === "ongoing").length;
+  const completed = all.filter((p: any) => p.status === "completed").length;
+  const upcoming = all.filter((p: any) => p.status === "upcoming").length;
+  const totalRaised = all.reduce((sum: number, p: any) => sum + (p.raisedAmount ?? 0), 0);
+  const totalBeneficiaries = all.reduce((sum: number, p: any) => sum + (p.beneficiaries ?? 0), 0);
+  const countries = new Set(all.map((p: any) => p.country)).size;
   res.json({
     total: all.length,
     ongoing,
@@ -41,14 +41,14 @@ router.get("/projects", async (req, res): Promise<void> => {
   const country = getSingleQueryValue(req.query.country);
 
   if (status === "ongoing" || status === "completed" || status === "upcoming") {
-    filtered = filtered.filter((p) => p.status === status);
+    filtered = filtered.filter((p: any) => p.status === status);
   }
   if (country) {
-    filtered = filtered.filter((p) =>
+    filtered = filtered.filter((p: any) =>
       p.country.toLowerCase().includes(country.toLowerCase())
     );
   }
-  const result: any[] = filtered.map((p) => ({
+  const result: any[] = filtered.map((p: any) => ({
     ...p,
     progressPercent: p.goalAmount > 0 ? Math.round((p.raisedAmount / p.goalAmount) * 100) : 0,
     createdAt: p.createdAt.toISOString(),

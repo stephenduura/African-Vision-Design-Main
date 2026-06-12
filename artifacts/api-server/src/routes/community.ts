@@ -49,9 +49,9 @@ router.get("/community/stats", async (req, res): Promise<void> => {
 
   try {
     const all = await db.select().from(communityMembersTable);
-    const countries = new Set(all.map((m) => m.country)).size;
-    const volunteers = all.filter((m) => m.memberType === "volunteer").length;
-    const organizations = all.filter((m) => m.memberType === "organization").length;
+    const countries = new Set(all.map((m: any) => m.country)).size;
+    const volunteers = all.filter((m: any) => m.memberType === "volunteer").length;
+    const organizations = all.filter((m: any) => m.memberType === "organization").length;
     res.json({ totalMembers: all.length, countries, volunteers, organizations });
   } catch {
     communityMode = "local";
@@ -63,7 +63,7 @@ router.get("/community/members", async (req, res): Promise<void> => {
   const storageMode = await resolveCommunityMode();
   if (storageMode === "local") {
     const members = await listLocalCommunityMembers();
-    res.json(members.map((m) => ({ ...m, joinedAt: m.joinedAt.toISOString() })));
+    res.json(members.map((m: any) => ({ ...m, joinedAt: m.joinedAt.toISOString() })));
     return;
   }
 
@@ -72,11 +72,11 @@ router.get("/community/members", async (req, res): Promise<void> => {
       .select()
       .from(communityMembersTable)
       .orderBy(desc(communityMembersTable.joinedAt));
-    res.json(members.map((m) => ({ ...m, joinedAt: m.joinedAt.toISOString() })));
+    res.json(members.map((m: any) => ({ ...m, joinedAt: m.joinedAt.toISOString() })));
   } catch {
     communityMode = "local";
     const members = await listLocalCommunityMembers();
-    res.json(members.map((m) => ({ ...m, joinedAt: m.joinedAt.toISOString() })));
+      res.json(members.map((m: any) => ({ ...m, joinedAt: m.joinedAt.toISOString() })));
   }
 });
 
