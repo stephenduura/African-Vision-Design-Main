@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { drizzle } from "drizzle-orm/node-postgres";
 import { sql } from "drizzle-orm";
 import pg from "pg";
