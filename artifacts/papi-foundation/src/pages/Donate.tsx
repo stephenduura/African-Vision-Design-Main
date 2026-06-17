@@ -111,7 +111,7 @@ export default function Donate() {
         onError: (error: any) => {
           toast({
             title: "Error",
-            description: error instanceof Error ? error.message : "Could not start secure checkout. Please try again.",
+            description: error?.message || "Could not start secure checkout. Please try again.",
             variant: "destructive",
           });
         },
