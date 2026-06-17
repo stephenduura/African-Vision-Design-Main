@@ -48,3 +48,7 @@ Thumbs.db
 .cache/
 .local/
 .env
+
+# Vercel generated API files
+/api
+
