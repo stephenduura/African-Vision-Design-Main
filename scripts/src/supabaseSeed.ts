@@ -61,7 +61,7 @@ const TEAM_SEED_LOCK_KEY = 727274001;
 const CONTENT_SEED_LOCK_KEY = 727274002;
 
 async function ensureCompatibilitySchema(): Promise<void> {
-  await db.transaction(async (tx) => {
+  await db.transaction(async (tx: any) => {
     await tx.execute(
       sql`create table if not exists newsletter_subscribers (
         id serial primary key,
@@ -224,7 +224,7 @@ async function ensureCompatibilitySchema(): Promise<void> {
 }
 
 async function seedTeamRoster(): Promise<void> {
-  await db.transaction(async (tx) => {
+  await db.transaction(async (tx: any) => {
     await tx.execute(sql`SELECT pg_advisory_xact_lock(${TEAM_SEED_LOCK_KEY})`);
     await tx.delete(teamMembersTable);
     await tx.insert(teamMembersTable).values(TEAM_ROSTER);
@@ -232,7 +232,7 @@ async function seedTeamRoster(): Promise<void> {
 }
 
 async function seedContentTables(): Promise<void> {
-  await db.transaction(async (tx) => {
+  await db.transaction(async (tx: any) => {
     await tx.execute(sql`SELECT pg_advisory_xact_lock(${CONTENT_SEED_LOCK_KEY})`);
     await tx.delete(contactSubmissionsTable);
     await tx.delete(communityPostsTable);
@@ -248,7 +248,7 @@ async function seedContentTables(): Promise<void> {
     await tx.delete(projectsTable);
 
     const projects = await tx.insert(projectsTable).values([...PROJECT_SEEDS, ...EXTRA_PROJECT_SEEDS]).returning();
-    const projectIdByTitle = new Map(projects.map((project) => [project.title, project.id]));
+    const projectIdByTitle = new Map(projects.map((project: any) => [project.title, project.id]));
 
     await tx.insert(partnersTable).values(PARTNER_SEEDS);
     await tx.insert(eventsTable).values([...EVENT_SEEDS, ...EXTRA_EVENT_SEEDS]);
@@ -257,7 +257,7 @@ async function seedContentTables(): Promise<void> {
     await tx.insert(newsletterSubscribersTable).values(NEWSLETTER_SUBSCRIBER_SEEDS);
 
     const communityPosts = await tx.insert(communityPostsTable).values(COMMUNITY_POST_SEEDS).returning();
-    const postIdByIndex = new Map(communityPosts.map((post, index) => [index, post.id]));
+    const postIdByIndex = new Map(communityPosts.map((post: any, index: number) => [index, post.id]));
 
     await tx.insert(postCommentsTable).values(
       COMMUNITY_COMMENT_SEEDS.map((comment) => ({
@@ -274,7 +274,7 @@ async function seedContentTables(): Promise<void> {
       .from(postCommentsTable)
       .orderBy(postCommentsTable.id);
     const commentIdByIndex = new Map(
-      insertedComments.slice(0, COMMUNITY_COMMENT_SEEDS.length).map((comment, index) => [index, comment.id]),
+      insertedComments.slice(0, COMMUNITY_COMMENT_SEEDS.length).map((comment: any, index: number) => [index, comment.id]),
     );
 
     await tx.insert(postReactionsTable).values(
@@ -304,7 +304,7 @@ async function seedContentTables(): Promise<void> {
 }
 
 async function main(): Promise<void> {
-  await ensureCompatibilitySchema();
+  // await ensureCompatibilitySchema();
   await seedTeamRoster();
   await seedContentTables();
   console.log(

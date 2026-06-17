@@ -16,20 +16,8 @@ import {
   ReactToCommentBody,
 } from "@workspace/api-zod";
 import { and, desc, asc, eq, inArray } from "drizzle-orm";
-import {
-  createLocalCommunityPost,
-  createLocalPostComment,
-  deleteLocalCommunityPost,
-  deleteLocalPostComment,
-  listLocalCommunityPosts,
-  listLocalPostComments,
-  reactToLocalComment,
-  reactToLocalPost,
-} from "../lib/communityFallbackStore";
 
 const router = Router();
-let communityStorageMode: "db" | "local" | null = null;
-let communityStorageModePromise: Promise<"db" | "local"> | null = null;
 
 const REACTION_TYPES = ["like", "love", "celebrate", "support", "insightful"] as const;
 type ReactionType = (typeof REACTION_TYPES)[number];
@@ -52,6 +40,9 @@ function getUserId(req: Request): string | null {
 function getLocalPreviewIdentity(
   req: Request,
 ): { id: string; name: string; imageUrl: string | null } | null {
+  if (process.env.NODE_ENV === "production") {
+    return null;
+  }
   const authorization = req.headers.authorization;
   const token =
     typeof authorization === "string" && authorization.startsWith("Bearer ")
@@ -192,47 +183,10 @@ async function buildComment(c: PostCommentRow, me: string | null) {
   return serializeComment(c, counts, myReaction);
 }
 
-function switchToLocalCommunityStorage() {
-  communityStorageMode = "local";
-}
-
-async function resolveCommunityStorageMode(): Promise<"db" | "local"> {
-  if (communityStorageMode) return communityStorageMode;
-  if (!communityStorageModePromise) {
-    communityStorageModePromise = (async () => {
-      if (process.env["COMMUNITY_FORCE_LOCAL"] === "1") {
-        return "local";
-      }
-
-      const dbProbe = db
-        .select({ id: communityPostsTable.id })
-        .from(communityPostsTable)
-        .limit(1)
-        .then(() => "db" as const)
-        .catch(() => "local" as const);
-
-      const timeout = new Promise<"local">((resolve) => {
-        setTimeout(() => resolve("local"), 1200);
-      });
-
-      return Promise.race([dbProbe, timeout]);
-    })();
-  }
-
-  communityStorageMode = await communityStorageModePromise;
-  return communityStorageMode;
-}
-
 // ── POSTS ──────────────────────────────────────────────────────────────────
 
-router.get("/community/posts", async (req, res): Promise<void> => {
+router.get("/community/posts", async (req, res, next): Promise<void> => {
   const me = getUserId(req);
-  const storageMode = await resolveCommunityStorageMode();
-  if (storageMode === "local") {
-    res.json(await listLocalCommunityPosts(me));
-    return;
-  }
-
   try {
     const posts = await db
       .select()
@@ -279,13 +233,12 @@ router.get("/community/posts", async (req, res): Promise<void> => {
         ),
       ),
     );
-  } catch {
-    switchToLocalCommunityStorage();
-    res.json(await listLocalCommunityPosts(me));
+  } catch (error) {
+    next(error);
   }
 });
 
-router.post("/community/posts", async (req, res): Promise<void> => {
+router.post("/community/posts", async (req, res, next): Promise<void> => {
   const me = getUserId(req);
   if (!me) {
     res.status(401).json({ error: "Unauthorized" });
@@ -301,21 +254,9 @@ router.post("/community/posts", async (req, res): Promise<void> => {
     res.status(400).json({ error: "Post content cannot be empty" });
     return;
   }
-  const { name: authorName, imageUrl: authorImageUrl } = await resolveIdentity(req, me);
-  const storageMode = await resolveCommunityStorageMode();
-  if (storageMode === "local") {
-    const post = await createLocalCommunityPost({
-      authorId: me,
-      authorName,
-      authorImageUrl,
-      content,
-      imageUrl: sanitizeImageUrl(parsed.data.imageUrl),
-    });
-    res.status(201).json(serializePost(post, emptyCounts(), null, 0));
-    return;
-  }
 
   try {
+    const { name: authorName, imageUrl: authorImageUrl } = await resolveIdentity(req, me);
     const [post] = await db
       .insert(communityPostsTable)
       .values({
@@ -327,20 +268,12 @@ router.post("/community/posts", async (req, res): Promise<void> => {
       })
       .returning();
     res.status(201).json(serializePost(post!, emptyCounts(), null, 0));
-  } catch {
-    switchToLocalCommunityStorage();
-    const post = await createLocalCommunityPost({
-      authorId: me,
-      authorName,
-      authorImageUrl,
-      content,
-      imageUrl: sanitizeImageUrl(parsed.data.imageUrl),
-    });
-    res.status(201).json(serializePost(post, emptyCounts(), null, 0));
+  } catch (error) {
+    next(error);
   }
 });
 
-router.delete("/community/posts/:id", async (req, res): Promise<void> => {
+router.delete("/community/posts/:id", async (req, res, next): Promise<void> => {
   const me = getUserId(req);
   if (!me) {
     res.status(401).json({ error: "Unauthorized" });
@@ -349,18 +282,6 @@ router.delete("/community/posts/:id", async (req, res): Promise<void> => {
   const id = Number(req.params.id);
   if (!Number.isInteger(id)) {
     res.status(400).json({ error: "Invalid id" });
-    return;
-  }
-  const storageMode = await resolveCommunityStorageMode();
-  if (storageMode === "local") {
-    const result = await deleteLocalCommunityPost(id, me);
-    if (result === "deleted") {
-      res.status(204).end();
-    } else if (result === "forbidden") {
-      res.status(403).json({ error: "Forbidden" });
-    } else {
-      res.status(404).json({ error: "Not found" });
-    }
     return;
   }
 
@@ -379,20 +300,12 @@ router.delete("/community/posts/:id", async (req, res): Promise<void> => {
     }
     await db.delete(communityPostsTable).where(eq(communityPostsTable.id, id));
     res.status(204).end();
-  } catch {
-    switchToLocalCommunityStorage();
-    const result = await deleteLocalCommunityPost(id, me);
-    if (result === "deleted") {
-      res.status(204).end();
-    } else if (result === "forbidden") {
-      res.status(403).json({ error: "Forbidden" });
-    } else {
-      res.status(404).json({ error: "Not found" });
-    }
+  } catch (error) {
+    next(error);
   }
 });
 
-router.put("/community/posts/:id/reaction", async (req, res): Promise<void> => {
+router.put("/community/posts/:id/reaction", async (req, res, next): Promise<void> => {
   const me = getUserId(req);
   if (!me) {
     res.status(401).json({ error: "Unauthorized" });
@@ -409,16 +322,6 @@ router.put("/community/posts/:id/reaction", async (req, res): Promise<void> => {
     return;
   }
   const type = parsed.data.type as ReactionType;
-  const storageMode = await resolveCommunityStorageMode();
-  if (storageMode === "local") {
-    const result = await reactToLocalPost({ postId: id, userId: me, type });
-    if (!result) {
-      res.status(404).json({ error: "Not found" });
-      return;
-    }
-    res.json(serializePost(result.post, result.counts as ReactionCounts, result.myReaction, result.commentCount));
-    return;
-  }
 
   try {
     const [post] = await db
@@ -445,29 +348,18 @@ router.put("/community/posts/:id/reaction", async (req, res): Promise<void> => {
         });
     }
     res.json(await buildPost(post, me));
-  } catch {
-    switchToLocalCommunityStorage();
-    const result = await reactToLocalPost({ postId: id, userId: me, type });
-    if (!result) {
-      res.status(404).json({ error: "Not found" });
-      return;
-    }
-    res.json(serializePost(result.post, result.counts as ReactionCounts, result.myReaction, result.commentCount));
+  } catch (error) {
+    next(error);
   }
 });
 
 // ── COMMENTS ─────────────────────────────────────────────────────────────────
 
-router.get("/community/posts/:id/comments", async (req, res): Promise<void> => {
+router.get("/community/posts/:id/comments", async (req, res, next): Promise<void> => {
   const me = getUserId(req);
   const postId = Number(req.params.id);
   if (!Number.isInteger(postId)) {
     res.status(400).json({ error: "Invalid id" });
-    return;
-  }
-  const storageMode = await resolveCommunityStorageMode();
-  if (storageMode === "local") {
-    res.json(await listLocalPostComments(postId, me));
     return;
   }
 
@@ -504,13 +396,12 @@ router.get("/community/posts/:id/comments", async (req, res): Promise<void> => {
         ),
       ),
     );
-  } catch {
-    switchToLocalCommunityStorage();
-    res.json(await listLocalPostComments(postId, me));
+  } catch (error) {
+    next(error);
   }
 });
 
-router.post("/community/posts/:id/comments", async (req, res): Promise<void> => {
+router.post("/community/posts/:id/comments", async (req, res, next): Promise<void> => {
   const me = getUserId(req);
   if (!me) {
     res.status(401).json({ error: "Unauthorized" });
@@ -531,19 +422,6 @@ router.post("/community/posts/:id/comments", async (req, res): Promise<void> => 
     res.status(400).json({ error: "Comment cannot be empty" });
     return;
   }
-  const { name, imageUrl } = await resolveIdentity(req, me);
-  const storageMode = await resolveCommunityStorageMode();
-  if (storageMode === "local") {
-    const comment = await createLocalPostComment({
-      postId,
-      authorId: me,
-      authorName: name,
-      authorImageUrl: imageUrl,
-      content,
-    });
-    res.status(201).json(serializeComment(comment, emptyCounts(), null));
-    return;
-  }
 
   try {
     const [post] = await db
@@ -554,6 +432,7 @@ router.post("/community/posts/:id/comments", async (req, res): Promise<void> => 
       res.status(404).json({ error: "Not found" });
       return;
     }
+    const { name, imageUrl } = await resolveIdentity(req, me);
     const [comment] = await db
       .insert(postCommentsTable)
       .values({
@@ -565,20 +444,12 @@ router.post("/community/posts/:id/comments", async (req, res): Promise<void> => 
       })
       .returning();
     res.status(201).json(serializeComment(comment!, emptyCounts(), null));
-  } catch {
-    switchToLocalCommunityStorage();
-    const comment = await createLocalPostComment({
-      postId,
-      authorId: me,
-      authorName: name,
-      authorImageUrl: imageUrl,
-      content,
-    });
-    res.status(201).json(serializeComment(comment, emptyCounts(), null));
+  } catch (error) {
+    next(error);
   }
 });
 
-router.delete("/community/comments/:id", async (req, res): Promise<void> => {
+router.delete("/community/comments/:id", async (req, res, next): Promise<void> => {
   const me = getUserId(req);
   if (!me) {
     res.status(401).json({ error: "Unauthorized" });
@@ -587,18 +458,6 @@ router.delete("/community/comments/:id", async (req, res): Promise<void> => {
   const id = Number(req.params.id);
   if (!Number.isInteger(id)) {
     res.status(400).json({ error: "Invalid id" });
-    return;
-  }
-  const storageMode = await resolveCommunityStorageMode();
-  if (storageMode === "local") {
-    const result = await deleteLocalPostComment(id, me);
-    if (result === "deleted") {
-      res.status(204).end();
-    } else if (result === "forbidden") {
-      res.status(403).json({ error: "Forbidden" });
-    } else {
-      res.status(404).json({ error: "Not found" });
-    }
     return;
   }
 
@@ -617,20 +476,12 @@ router.delete("/community/comments/:id", async (req, res): Promise<void> => {
     }
     await db.delete(postCommentsTable).where(eq(postCommentsTable.id, id));
     res.status(204).end();
-  } catch {
-    switchToLocalCommunityStorage();
-    const result = await deleteLocalPostComment(id, me);
-    if (result === "deleted") {
-      res.status(204).end();
-    } else if (result === "forbidden") {
-      res.status(403).json({ error: "Forbidden" });
-    } else {
-      res.status(404).json({ error: "Not found" });
-    }
+  } catch (error) {
+    next(error);
   }
 });
 
-router.put("/community/comments/:id/reaction", async (req, res): Promise<void> => {
+router.put("/community/comments/:id/reaction", async (req, res, next): Promise<void> => {
   const me = getUserId(req);
   if (!me) {
     res.status(401).json({ error: "Unauthorized" });
@@ -647,16 +498,6 @@ router.put("/community/comments/:id/reaction", async (req, res): Promise<void> =
     return;
   }
   const type = parsed.data.type as ReactionType;
-  const storageMode = await resolveCommunityStorageMode();
-  if (storageMode === "local") {
-    const result = await reactToLocalComment({ commentId: id, userId: me, type });
-    if (!result) {
-      res.status(404).json({ error: "Not found" });
-      return;
-    }
-    res.json(serializeComment(result.comment, result.counts as ReactionCounts, result.myReaction));
-    return;
-  }
 
   try {
     const [comment] = await db
@@ -687,14 +528,8 @@ router.put("/community/comments/:id/reaction", async (req, res): Promise<void> =
         });
     }
     res.json(await buildComment(comment, me));
-  } catch {
-    switchToLocalCommunityStorage();
-    const result = await reactToLocalComment({ commentId: id, userId: me, type });
-    if (!result) {
-      res.status(404).json({ error: "Not found" });
-      return;
-    }
-    res.json(serializeComment(result.comment, result.counts as ReactionCounts, result.myReaction));
+  } catch (error) {
+    next(error);
   }
 });
 

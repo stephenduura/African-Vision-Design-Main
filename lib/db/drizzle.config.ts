@@ -11,7 +11,8 @@ if (!databaseUrl) {
 }
 
 export default defineConfig({
-  schema: path.join(__dirname, "./src/schema/index.ts"),
+  schema: "./src/schema/index.ts",
+  out: "./drizzle-migrations",
   dialect: "postgresql",
   dbCredentials: {
     url: databaseUrl,

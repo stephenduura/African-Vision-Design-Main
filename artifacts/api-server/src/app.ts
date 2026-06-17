@@ -1,5 +1,7 @@
 import express, { type Express } from "express";
 import cors from "cors";
+import helmet from "helmet";
+import { rateLimit } from "express-rate-limit";
 import { pinoHttp, type HttpLogger } from "pino-http";
 import type { IncomingMessage, ServerResponse } from "http";
 import { clerkMiddleware } from "@clerk/express";
@@ -82,6 +84,36 @@ if (clerkSecretKey) {
   );
 }
 
+// Apply security headers
+app.use(helmet());
+
+// Apply rate limiting to all standard API routes except webhooks (since Stripe sends webhooks in batch)
+const isProduction = process.env.NODE_ENV === "production";
+app.use(
+  "/api",
+  rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    limit: 150, // limit each IP to 150 requests per windowMs
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: "Too many requests, please try again later." },
+    skip: (req) => req.path.startsWith("/stripe/webhook"), // Do not rate limit stripe webhooks
+  })
+);
+
 app.use("/api", router);
+
+// Centralized global error handling middleware
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  req.log.error({ err }, "Unhandled application error");
+  
+  const statusCode = err.statusCode || err.status || 500;
+  const message = isProduction ? "Internal Server Error" : (err.message || "Internal Server Error");
+  
+  res.status(statusCode).json({
+    error: message,
+    ...(isProduction ? {} : { stack: err.stack }),
+  });
+});
 
 export default app;

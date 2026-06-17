@@ -45,7 +45,7 @@ import Dashboard from "@/pages/Dashboard";
 
 const queryClient = new QueryClient();
 
-const clerkPubKey = publishableKeyFromHost(
+const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY || publishableKeyFromHost(
   window.location.hostname,
   import.meta.env.VITE_CLERK_PUBLISHABLE_KEY,
 );
@@ -53,7 +53,7 @@ const clerkPubKey = publishableKeyFromHost(
 const isLocalPreviewHost = ["localhost", "127.0.0.1", "::1"].includes(
   window.location.hostname,
 );
-const clerkEnabled = Boolean(clerkPubKey) && !isLocalPreviewHost;
+const clerkEnabled = Boolean(clerkPubKey) && (!isLocalPreviewHost || import.meta.env.VITE_FORCE_CLERK === "true");
 
 const clerkProxyUrl = import.meta.env.VITE_CLERK_PROXY_URL;
 

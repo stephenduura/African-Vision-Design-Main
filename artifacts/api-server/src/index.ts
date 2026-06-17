@@ -37,12 +37,12 @@ async function initStripe(): Promise<void> {
   logger.info("Stripe schema ready");
 
   const explicitWebhookUrl =
-    process.env["SUPABASE_STRIPE_WEBHOOK_URL"]?.trim() ||
-    process.env["STRIPE_WEBHOOK_URL"]?.trim();
-  const supabaseWebhookBase = getSupabaseFunctionsBaseUrl();
+    process.env["STRIPE_WEBHOOK_URL"]?.trim() ||
+    process.env["SUPABASE_STRIPE_WEBHOOK_URL"]?.trim();
+  const publicAppUrl = process.env["PUBLIC_APP_URL"]?.trim();
   const webhookUrl =
     explicitWebhookUrl ||
-    (supabaseWebhookBase ? `${supabaseWebhookBase}/stripe-webhook` : "");
+    (publicAppUrl ? `${publicAppUrl.replace(/\/$/, "")}/api/stripe/webhook` : "");
 
   if (webhookUrl) {
     try {

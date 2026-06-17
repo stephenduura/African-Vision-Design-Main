@@ -1,4 +1,11 @@
 {
-  "installCommand": "pnpm install --no-frozen-lockfile --filter @workspace/api-server...",
-  "buildCommand": "pnpm --filter @workspace/api-server run build"
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "artifacts/papi-foundation/dist/public",
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ]
 }
