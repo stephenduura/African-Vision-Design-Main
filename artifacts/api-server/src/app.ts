@@ -1,3 +1,4 @@
+import "express-async-errors";
 import express, { type Express } from "express";
 import cors from "cors";
 import helmet from "helmet";
@@ -108,7 +109,8 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
   req.log.error({ err }, "Unhandled application error");
   
   const statusCode = err.statusCode || err.status || 500;
-  const message = isProduction ? "Internal Server Error" : (err.message || "Internal Server Error");
+  const isConfigError = err.message && (err.message.includes("must be set") || err.message.includes("Stripe") || err.message.includes("Clerk"));
+  const message = isProduction && !isConfigError ? "Internal Server Error" : (err.message || "Internal Server Error");
   
   res.status(statusCode).json({
     error: message,
