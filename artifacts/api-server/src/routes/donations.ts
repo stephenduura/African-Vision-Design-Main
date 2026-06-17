@@ -191,9 +191,9 @@ router.post("/donations/checkout", async (req, res): Promise<void> => {
     }
 
     res.json({ url: session.url });
-  } catch (err) {
+  } catch (err: any) {
     req.log.error({ err }, "Failed to create Stripe checkout session");
-    res.status(500).json({ error: "Failed to create checkout session" });
+    res.status(500).json({ error: err?.message || "Failed to create checkout session" });
   }
 });
 

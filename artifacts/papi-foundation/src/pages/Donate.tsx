@@ -108,8 +108,12 @@ export default function Donate() {
         onSuccess: (res) => {
           window.location.href = res.url;
         },
-        onError: () => {
-          toast({ title: "Error", description: "Could not start secure checkout. Please try again.", variant: "destructive" });
+        onError: (error: any) => {
+          toast({
+            title: "Error",
+            description: error instanceof Error ? error.message : "Could not start secure checkout. Please try again.",
+            variant: "destructive",
+          });
         },
       }
     );
