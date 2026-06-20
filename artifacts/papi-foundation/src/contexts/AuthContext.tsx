@@ -6,8 +6,8 @@ import {
   useCallback,
   type ReactNode,
 } from "react";
-import { useUser, useClerk } from "@clerk/react";
 import { setAuthTokenGetter } from "@workspace/api-client-react";
+import { supabase } from "@/lib/supabaseClient";
 
 export interface AuthUser {
   id: string;
@@ -47,33 +47,6 @@ const fallbackAuthContext: AuthContextValue = {
 };
 
 const AuthContext = createContext<AuthContextValue>(fallbackAuthContext);
-
-const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
-const LOCAL_USERS_KEY = "papi_local_users_v1";
-const LOCAL_SESSION_KEY = "papi_local_session_v1";
-
-type LocalStoredUser = AuthUser & {
-  password: string;
-};
-
-function readLocalUsers(): LocalStoredUser[] {
-  try {
-    const raw = localStorage.getItem(LOCAL_USERS_KEY);
-    const parsed = raw ? JSON.parse(raw) : [];
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
-}
-
-function writeLocalUsers(users: LocalStoredUser[]) {
-  localStorage.setItem(LOCAL_USERS_KEY, JSON.stringify(users));
-}
-
-function toPublicUser(user: LocalStoredUser): AuthUser {
-  const { password: _password, ...publicUser } = user;
-  return publicUser;
-}
 
 function AuthShell({
   children,
@@ -138,124 +111,90 @@ function AuthShell({
   );
 }
 
-function ClerkAuthProvider({ children }: { children: ReactNode }) {
-  const { user: clerkUser, isLoaded } = useUser();
-  const { signOut } = useClerk();
-
-  const user: AuthUser | null = clerkUser
-    ? {
-        id: clerkUser.id,
-        name:
-          clerkUser.fullName ||
-          clerkUser.username ||
-          clerkUser.primaryEmailAddress?.emailAddress?.split("@")[0] ||
-          "Member",
-        email: clerkUser.primaryEmailAddress?.emailAddress ?? "",
-        memberSince: clerkUser.createdAt
-          ? new Date(clerkUser.createdAt).toISOString().split("T")[0]
-          : new Date().toISOString().split("T")[0],
-        memberType: "individual",
-        imageUrl: clerkUser.imageUrl ?? null,
-      }
-    : null;
-
-  const logout = () => signOut({ redirectUrl: basePath || "/" });
-  const signIn: AuthContextValue["signIn"] = async () => ({
-    success: false,
-    error: "Use the hosted Clerk sign-in flow when Clerk is enabled.",
-  });
-  const signUp: AuthContextValue["signUp"] = async () => ({
-    success: false,
-    error: "Use the hosted Clerk sign-up flow when Clerk is enabled.",
-  });
-
-  return (
-    <AuthShell user={user} isLoaded={isLoaded} logout={logout} signIn={signIn} signUp={signUp}>
-      {children}
-    </AuthShell>
-  );
-}
-
-function LocalAuthProvider({ children }: { children: ReactNode }) {
+function SupabaseAuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    try {
-      const sessionUserId = localStorage.getItem(LOCAL_SESSION_KEY);
-      const users = readLocalUsers();
-      const active = users.find((u) => u.id === sessionUserId);
-      setUser(active ? toPublicUser(active) : null);
-    } finally {
+    // 1. Check current session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setUser({
+          id: session.user.id,
+          name: session.user.user_metadata?.name || session.user.email?.split("@")[0] || "Member",
+          email: session.user.email || "",
+          memberSince: session.user.created_at?.split("T")[0] || new Date().toISOString().split("T")[0],
+          memberType: session.user.user_metadata?.memberType || "individual",
+          imageUrl: session.user.user_metadata?.avatarUrl || null,
+        });
+      } else {
+        setUser(null);
+      }
       setIsLoaded(true);
-    }
+    });
+
+    // 2. Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setUser({
+          id: session.user.id,
+          name: session.user.user_metadata?.name || session.user.email?.split("@")[0] || "Member",
+          email: session.user.email || "",
+          memberSince: session.user.created_at?.split("T")[0] || new Date().toISOString().split("T")[0],
+          memberType: session.user.user_metadata?.memberType || "individual",
+          imageUrl: session.user.user_metadata?.avatarUrl || null,
+        });
+      } else {
+        setUser(null);
+      }
+      setIsLoaded(true);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
-  const persistUser = useCallback((nextUser: AuthUser | null) => {
-    setUser(nextUser);
-    if (nextUser) {
-      localStorage.setItem(LOCAL_SESSION_KEY, nextUser.id);
-    } else {
-      localStorage.removeItem(LOCAL_SESSION_KEY);
-    }
+  const logout = useCallback(async () => {
+    await supabase.auth.signOut();
   }, []);
-
-  const logout = useCallback(() => {
-    persistUser(null);
-  }, [persistUser]);
 
   const signIn: AuthContextValue["signIn"] = useCallback(async ({ email, password }) => {
-    const users = readLocalUsers();
-    const normalizedEmail = email.trim().toLowerCase();
-    const match = users.find((u) => u.email.toLowerCase() === normalizedEmail && u.password === password);
-    if (!match) {
-      return { success: false, error: "Invalid email or password." };
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) {
+      return { success: false, error: error.message };
     }
-    persistUser(toPublicUser(match));
     return { success: true };
-  }, [persistUser]);
+  }, []);
 
   const signUp: AuthContextValue["signUp"] = useCallback(async ({ name, email, password, memberType }) => {
-    const normalizedEmail = email.trim().toLowerCase();
-    const users = readLocalUsers();
-    if (users.some((u) => u.email.toLowerCase() === normalizedEmail)) {
-      return { success: false, error: "An account with this email already exists." };
-    }
-
-    const newUser: LocalStoredUser = {
-      id: globalThis.crypto?.randomUUID?.() ?? `local_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
-      name: name.trim(),
-      email: normalizedEmail,
+    const { error } = await supabase.auth.signUp({
+      email,
       password,
-      memberSince: new Date().toISOString().split("T")[0],
-      memberType,
-      imageUrl: null,
-    };
-
-    const nextUsers = [...users, newUser];
-    writeLocalUsers(nextUsers);
-    persistUser(toPublicUser(newUser));
+      options: {
+        data: {
+          name: name.trim(),
+          memberType,
+        },
+      },
+    });
+    if (error) {
+      return { success: false, error: error.message };
+    }
     return { success: true };
-  }, [persistUser]);
+  }, []);
 
+  // Sync token to API client
   useEffect(() => {
-    setAuthTokenGetter(() => {
-      if (!user) return null;
-      const payload = {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        imageUrl: user.imageUrl,
-        memberSince: user.memberSince,
-        memberType: user.memberType,
-      };
-      return `local:${encodeURIComponent(JSON.stringify(payload))}`;
+    setAuthTokenGetter(async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      return session?.access_token ?? null;
     });
 
     return () => {
       setAuthTokenGetter(null);
     };
-  }, [user]);
+  }, []);
 
   return (
     <AuthShell user={user} isLoaded={isLoaded} logout={logout} signIn={signIn} signUp={signUp}>
@@ -266,16 +205,11 @@ function LocalAuthProvider({ children }: { children: ReactNode }) {
 
 export function AuthProvider({
   children,
-  mode = "clerk",
 }: {
   children: ReactNode;
   mode?: "clerk" | "local";
 }) {
-  return mode === "clerk" ? (
-    <ClerkAuthProvider>{children}</ClerkAuthProvider>
-  ) : (
-    <LocalAuthProvider>{children}</LocalAuthProvider>
-  );
+  return <SupabaseAuthProvider>{children}</SupabaseAuthProvider>;
 }
 
 export function useAuth() {

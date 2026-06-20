@@ -2,18 +2,12 @@ import express, { type Express } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import { rateLimit } from "express-rate-limit";
-import { pinoHttp, type HttpLogger } from "pino-http";
+import { pinoHttp } from "pino-http";
 import type { IncomingMessage, ServerResponse } from "http";
-import { clerkMiddleware } from "@clerk/express";
-import { publishableKeyFromHost } from "@clerk/shared/keys";
-import {
-  CLERK_PROXY_PATH,
-  clerkProxyMiddleware,
-  getClerkProxyHost,
-} from "./middlewares/clerkProxyMiddleware";
 import router from "./routes";
 import { logger } from "./lib/logger";
 import { WebhookHandlers } from "./webhookHandlers";
+import { authMiddleware } from "./middlewares/authMiddleware";
 
 const app: Express = express();
 
@@ -36,9 +30,6 @@ app.use(
     },
   }),
 );
-
-// Clerk proxy streams raw bytes and must be mounted before any body parser.
-app.use(CLERK_PROXY_PATH, clerkProxyMiddleware());
 
 app.use(cors({ credentials: true, origin: true }));
 
@@ -69,20 +60,8 @@ app.post(
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-// Resolve the publishable key from the incoming request host so the same
-// server can serve multiple Clerk custom domains. Falls back to
-// CLERK_PUBLISHABLE_KEY when the host doesn't map to a custom domain.
-const clerkSecretKey = process.env.CLERK_SECRET_KEY?.trim();
-if (clerkSecretKey) {
-  app.use(
-    clerkMiddleware((req) => ({
-      publishableKey: publishableKeyFromHost(
-        getClerkProxyHost(req) ?? "",
-        process.env.CLERK_PUBLISHABLE_KEY,
-      ),
-    })),
-  );
-}
+// Mount Supabase authentication middleware
+app.use(authMiddleware as any);
 
 // Apply security headers
 app.use(helmet());
@@ -108,7 +87,7 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
   req.log.error({ err }, "Unhandled application error");
   
   const statusCode = err.statusCode || err.status || 500;
-  const isConfigError = err.message && (err.message.includes("must be set") || err.message.includes("Stripe") || err.message.includes("Clerk"));
+  const isConfigError = err.message && (err.message.includes("must be set") || err.message.includes("Stripe") || err.message.includes("Clerk") || err.message.includes("Supabase"));
   const message = isProduction && !isConfigError ? "Internal Server Error" : (err.message || "Internal Server Error");
   
   res.status(statusCode).json({

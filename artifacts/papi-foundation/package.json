@@ -78,6 +78,7 @@
     "@clerk/react": "^6.7.3",
     "@clerk/shared": "^4.15.0",
     "@clerk/themes": "^2.4.57",
+    "@supabase/supabase-js": "^2.108.2",
     "@tanstack/query-core": "catalog:",
     "@workspace/api-zod": "workspace:*",
     "dequal": "catalog:",

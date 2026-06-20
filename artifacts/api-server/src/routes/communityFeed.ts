@@ -1,5 +1,4 @@
 import { Router, type Request } from "express";
-import { getAuth, clerkClient } from "@clerk/express";
 import { db } from "@workspace/db";
 import {
   communityPostsTable,
@@ -16,6 +15,7 @@ import {
   ReactToCommentBody,
 } from "@workspace/api-zod";
 import { and, desc, asc, eq, inArray } from "drizzle-orm";
+import type { AuthenticatedRequest } from "../middlewares/authMiddleware";
 
 const router = Router();
 
@@ -28,46 +28,8 @@ function emptyCounts(): ReactionCounts {
 }
 
 function getUserId(req: Request): string | null {
-  try {
-    const auth = getAuth(req);
-    return auth?.userId ?? null;
-  } catch {
-    const preview = getLocalPreviewIdentity(req);
-    return preview?.id ?? null;
-  }
-}
-
-function getLocalPreviewIdentity(
-  req: Request,
-): { id: string; name: string; imageUrl: string | null } | null {
-  if (process.env.NODE_ENV === "production") {
-    return null;
-  }
-  const authorization = req.headers.authorization;
-  const token =
-    typeof authorization === "string" && authorization.startsWith("Bearer ")
-      ? authorization.slice("Bearer ".length).trim()
-      : null;
-  if (!token || !token.startsWith("local:")) {
-    return null;
-  }
-
-  try {
-    const raw = decodeURIComponent(token.slice("local:".length));
-    const parsed = JSON.parse(raw) as {
-      id?: string;
-      name?: string;
-      imageUrl?: string | null;
-    };
-    if (!parsed.id) return null;
-    return {
-      id: parsed.id,
-      name: parsed.name?.trim() || "Member",
-      imageUrl: parsed.imageUrl?.trim() || null,
-    };
-  } catch {
-    return null;
-  }
+  const authReq = req as AuthenticatedRequest;
+  return authReq.user?.id ?? null;
 }
 
 function sanitizeImageUrl(raw: string | null | undefined): string | null {
@@ -90,23 +52,11 @@ async function resolveIdentity(
   req: Request,
   userId: string,
 ): Promise<{ name: string; imageUrl: string | null }> {
-  const local = getLocalPreviewIdentity(req);
-  if (local && local.id === userId) {
-    return { name: local.name, imageUrl: local.imageUrl };
+  const authReq = req as AuthenticatedRequest;
+  if (authReq.user && authReq.user.id === userId) {
+    return { name: authReq.user.name, imageUrl: authReq.user.imageUrl };
   }
-
-  try {
-    const u = await clerkClient.users.getUser(userId);
-    const full = [u.firstName, u.lastName].filter(Boolean).join(" ").trim();
-    const name =
-      full ||
-      u.username ||
-      u.primaryEmailAddress?.emailAddress?.split("@")[0] ||
-      "Member";
-    return { name, imageUrl: u.imageUrl ?? null };
-  } catch {
-    return { name: "Member", imageUrl: null };
-  }
+  return { name: "Member", imageUrl: null };
 }
 
 function serializePost(

@@ -5127,47 +5127,6 @@ import cors from "cors";
 import helmet from "helmet";
 import { rateLimit } from "express-rate-limit";
 import { pinoHttp } from "pino-http";
-import { clerkMiddleware } from "@clerk/express";
-import { publishableKeyFromHost } from "@clerk/shared/keys";
-
-// artifacts/api-server/src/middlewares/clerkProxyMiddleware.ts
-import { createProxyMiddleware } from "http-proxy-middleware";
-var CLERK_FAPI = "https://frontend-api.clerk.dev";
-var CLERK_PROXY_PATH = "/api/__clerk";
-function getClerkProxyHost(req) {
-  const forwarded = req.headers["x-forwarded-host"];
-  const raw = Array.isArray(forwarded) ? forwarded[0] : forwarded;
-  const firstHop = raw?.split(",")[0]?.trim();
-  return firstHop || req.headers.host?.trim() || void 0;
-}
-function clerkProxyMiddleware() {
-  if (process.env.NODE_ENV !== "production") {
-    return (_req, _res, next) => next();
-  }
-  const secretKey = process.env.CLERK_SECRET_KEY;
-  if (!secretKey) {
-    return (_req, _res, next) => next();
-  }
-  return createProxyMiddleware({
-    target: CLERK_FAPI,
-    changeOrigin: true,
-    pathRewrite: (path) => path.replace(new RegExp(`^${CLERK_PROXY_PATH}`), ""),
-    on: {
-      proxyReq: (proxyReq, req) => {
-        const protocol = req.headers["x-forwarded-proto"] || "https";
-        const host = getClerkProxyHost(req) || "";
-        const proxyUrl = `${protocol}://${host}${CLERK_PROXY_PATH}`;
-        proxyReq.setHeader("Clerk-Proxy-Url", proxyUrl);
-        proxyReq.setHeader("Clerk-Secret-Key", secretKey);
-        const xff = req.headers["x-forwarded-for"];
-        const clientIp = (Array.isArray(xff) ? xff[0] : xff)?.split(",")[0]?.trim() || req.socket?.remoteAddress || "";
-        if (clientIp) {
-          proxyReq.setHeader("X-Forwarded-For", clientIp);
-        }
-      }
-    }
-  });
-}
 
 // artifacts/api-server/src/routes/index.ts
 import { Router as Router12 } from "express";
@@ -21599,7 +21558,6 @@ var community_default = router7;
 
 // artifacts/api-server/src/routes/communityFeed.ts
 import { Router as Router8 } from "express";
-import { getAuth, clerkClient } from "@clerk/express";
 import { and, desc as desc4, asc as asc2, eq as eq3, inArray } from "drizzle-orm";
 var router8 = Router8();
 var REACTION_TYPES = ["like", "love", "celebrate", "support", "insightful"];
@@ -21607,35 +21565,8 @@ function emptyCounts() {
   return { like: 0, love: 0, celebrate: 0, support: 0, insightful: 0 };
 }
 function getUserId(req) {
-  try {
-    const auth = getAuth(req);
-    return auth?.userId ?? null;
-  } catch {
-    const preview = getLocalPreviewIdentity(req);
-    return preview?.id ?? null;
-  }
-}
-function getLocalPreviewIdentity(req) {
-  if (process.env.NODE_ENV === "production") {
-    return null;
-  }
-  const authorization = req.headers.authorization;
-  const token = typeof authorization === "string" && authorization.startsWith("Bearer ") ? authorization.slice("Bearer ".length).trim() : null;
-  if (!token || !token.startsWith("local:")) {
-    return null;
-  }
-  try {
-    const raw = decodeURIComponent(token.slice("local:".length));
-    const parsed = JSON.parse(raw);
-    if (!parsed.id) return null;
-    return {
-      id: parsed.id,
-      name: parsed.name?.trim() || "Member",
-      imageUrl: parsed.imageUrl?.trim() || null
-    };
-  } catch {
-    return null;
-  }
+  const authReq = req;
+  return authReq.user?.id ?? null;
 }
 function sanitizeImageUrl(raw) {
   if (!raw) return null;
@@ -21653,18 +21584,11 @@ function sanitizeImageUrl(raw) {
   }
 }
 async function resolveIdentity(req, userId) {
-  const local = getLocalPreviewIdentity(req);
-  if (local && local.id === userId) {
-    return { name: local.name, imageUrl: local.imageUrl };
+  const authReq = req;
+  if (authReq.user && authReq.user.id === userId) {
+    return { name: authReq.user.name, imageUrl: authReq.user.imageUrl };
   }
-  try {
-    const u = await clerkClient.users.getUser(userId);
-    const full = [u.firstName, u.lastName].filter(Boolean).join(" ").trim();
-    const name = full || u.username || u.primaryEmailAddress?.emailAddress?.split("@")[0] || "Member";
-    return { name, imageUrl: u.imageUrl ?? null };
-  } catch {
-    return { name: "Member", imageUrl: null };
-  }
+  return { name: "Member", imageUrl: null };
 }
 function serializePost(p, counts, myReaction, commentCount) {
   const totalReactions = REACTION_TYPES.reduce((sum, t) => sum + counts[t], 0);
@@ -22198,6 +22122,55 @@ var WebhookHandlers = class {
   }
 };
 
+// artifacts/api-server/src/middlewares/authMiddleware.ts
+import { createClient } from "@supabase/supabase-js";
+var supabaseUrl = process.env.SUPABASE_URL || "https://kzfibfvfejutygenjfhs.supabase.co";
+var supabaseAnonKey = process.env.SUPABASE_ANON_KEY || "";
+var supabase = createClient(supabaseUrl, supabaseAnonKey);
+async function authMiddleware(req, res, next) {
+  const authorization = req.headers.authorization;
+  if (!authorization || !authorization.startsWith("Bearer ")) {
+    req.user = null;
+    return next();
+  }
+  const token = authorization.slice("Bearer ".length).trim();
+  if (process.env.NODE_ENV !== "production" && token.startsWith("local:")) {
+    try {
+      const raw = decodeURIComponent(token.slice("local:".length));
+      const parsed = JSON.parse(raw);
+      if (parsed.id) {
+        req.user = {
+          id: parsed.id,
+          name: parsed.name?.trim() || "Member",
+          email: parsed.email || "",
+          memberType: parsed.memberType || "individual",
+          imageUrl: parsed.imageUrl || null
+        };
+        return next();
+      }
+    } catch {
+    }
+  }
+  try {
+    const { data: { user }, error: error40 } = await supabase.auth.getUser(token);
+    if (error40 || !user) {
+      req.user = null;
+      return next();
+    }
+    req.user = {
+      id: user.id,
+      name: user.user_metadata?.name || user.email?.split("@")[0] || "Member",
+      email: user.email || "",
+      memberType: user.user_metadata?.memberType || "individual",
+      imageUrl: user.user_metadata?.avatarUrl || null
+    };
+    next();
+  } catch (err) {
+    req.user = null;
+    next();
+  }
+}
+
 // artifacts/api-server/src/app.ts
 var app = express();
 app.use(
@@ -22219,7 +22192,6 @@ app.use(
     }
   })
 );
-app.use(CLERK_PROXY_PATH, clerkProxyMiddleware());
 app.use(cors({ credentials: true, origin: true }));
 app.post(
   "/api/stripe/webhook",
@@ -22242,17 +22214,7 @@ app.post(
 );
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
-var clerkSecretKey = process.env.CLERK_SECRET_KEY?.trim();
-if (clerkSecretKey) {
-  app.use(
-    clerkMiddleware((req) => ({
-      publishableKey: publishableKeyFromHost(
-        getClerkProxyHost(req) ?? "",
-        process.env.CLERK_PUBLISHABLE_KEY
-      )
-    }))
-  );
-}
+app.use(authMiddleware);
 app.use(helmet());
 var isProduction2 = process.env.NODE_ENV === "production";
 app.use(
@@ -22273,7 +22235,7 @@ app.use("/api", routes_default);
 app.use((err, req, res, next) => {
   req.log.error({ err }, "Unhandled application error");
   const statusCode = err.statusCode || err.status || 500;
-  const isConfigError = err.message && (err.message.includes("must be set") || err.message.includes("Stripe") || err.message.includes("Clerk"));
+  const isConfigError = err.message && (err.message.includes("must be set") || err.message.includes("Stripe") || err.message.includes("Clerk") || err.message.includes("Supabase"));
   const message = isProduction2 && !isConfigError ? "Internal Server Error" : err.message || "Internal Server Error";
   res.status(statusCode).json({
     error: message,
