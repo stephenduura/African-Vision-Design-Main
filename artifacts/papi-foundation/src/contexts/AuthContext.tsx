@@ -172,7 +172,7 @@ function SupabaseAuthProvider({ children }: { children: ReactNode }) {
       email,
       password,
       options: {
-        emailRedirectTo: window.location.origin,
+        emailRedirectTo: typeof window !== "undefined" ? window.location.origin : undefined,
         data: {
           name: name.trim(),
           memberType,
