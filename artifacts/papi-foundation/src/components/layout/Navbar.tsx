@@ -46,10 +46,11 @@ export default function Navbar() {
           </span>
           <span className="flex items-center gap-4">
             {[
-              { label: "Facebook", href: "https://facebook.com" },
+              { label: "Facebook", href: "https://www.facebook.com/share/1FQTRSTCGS/?mibextid=wwXIfr" },
               { label: "Twitter", href: "https://twitter.com" },
               { label: "LinkedIn", href: "https://linkedin.com" },
               { label: "Instagram", href: "https://www.instagram.com/official_papifoundation" },
+              { label: "TikTok", href: "https://www.tiktok.com/@todayleaders1?_r=1&_t=ZG-97INfeJcD4q" },
               { label: "YouTube", href: "https://youtube.com" },
             ].map((s) => (
               <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">{s.label}</a>

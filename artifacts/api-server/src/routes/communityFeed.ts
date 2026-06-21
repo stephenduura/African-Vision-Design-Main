@@ -286,16 +286,19 @@ router.put("/community/posts/:id/reaction", async (req, res, next): Promise<void
       .select()
       .from(postReactionsTable)
       .where(and(eq(postReactionsTable.postId, id), eq(postReactionsTable.userId, me)));
-    if (existing && existing.type === type) {
-      await db.delete(postReactionsTable).where(eq(postReactionsTable.id, existing.id));
+    if (existing) {
+      if (existing.type === type) {
+        await db.delete(postReactionsTable).where(eq(postReactionsTable.id, existing.id));
+      } else {
+        await db
+          .update(postReactionsTable)
+          .set({ type })
+          .where(eq(postReactionsTable.id, existing.id));
+      }
     } else {
       await db
         .insert(postReactionsTable)
-        .values({ postId: id, userId: me, type })
-        .onConflictDoUpdate({
-          target: [postReactionsTable.postId, postReactionsTable.userId],
-          set: { type },
-        });
+        .values({ postId: id, userId: me, type });
     }
     res.json(await buildPost(post, me));
   } catch (error) {
@@ -464,18 +467,21 @@ router.put("/community/comments/:id/reaction", async (req, res, next): Promise<v
       .where(
         and(eq(commentReactionsTable.commentId, id), eq(commentReactionsTable.userId, me)),
       );
-    if (existing && existing.type === type) {
-      await db
-        .delete(commentReactionsTable)
-        .where(eq(commentReactionsTable.id, existing.id));
+    if (existing) {
+      if (existing.type === type) {
+        await db
+          .delete(commentReactionsTable)
+          .where(eq(commentReactionsTable.id, existing.id));
+      } else {
+        await db
+          .update(commentReactionsTable)
+          .set({ type })
+          .where(eq(commentReactionsTable.id, existing.id));
+      }
     } else {
       await db
         .insert(commentReactionsTable)
-        .values({ commentId: id, userId: me, type })
-        .onConflictDoUpdate({
-          target: [commentReactionsTable.commentId, commentReactionsTable.userId],
-          set: { type },
-        });
+        .values({ commentId: id, userId: me, type });
     }
     res.json(await buildComment(comment, me));
   } catch (error) {

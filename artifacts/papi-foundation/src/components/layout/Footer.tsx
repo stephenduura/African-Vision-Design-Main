@@ -4,6 +4,24 @@ import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, Youtube, S
 import { useSubscribeNewsletter } from "@workspace/api-client-react";
 import africaLogo from "@assets/africa_nobg.png";
 
+function TiktokIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </svg>
+  );
+}
+
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -49,7 +67,7 @@ export default function Footer() {
             </p>
             {/* Social icons */}
             <div className="flex items-center gap-4 pt-2">
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="text-secondary-foreground/60 hover:text-primary transition-colors" aria-label="Facebook">
+              <a href="https://www.facebook.com/share/1FQTRSTCGS/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="text-secondary-foreground/60 hover:text-primary transition-colors" aria-label="Facebook">
                 <Facebook size={18} />
               </a>
               <a href="https://twitter.com" target="_blank" rel="noreferrer" className="text-secondary-foreground/60 hover:text-primary transition-colors" aria-label="Twitter">
@@ -60,6 +78,9 @@ export default function Footer() {
               </a>
               <a href="https://www.instagram.com/official_papifoundation" target="_blank" rel="noreferrer" className="text-secondary-foreground/60 hover:text-primary transition-colors" aria-label="Instagram">
                 <Instagram size={18} />
+              </a>
+              <a href="https://www.tiktok.com/@todayleaders1?_r=1&_t=ZG-97INfeJcD4q" target="_blank" rel="noreferrer" className="text-secondary-foreground/60 hover:text-primary transition-colors" aria-label="TikTok">
+                <TiktokIcon size={18} />
               </a>
               <a href="https://youtube.com" target="_blank" rel="noreferrer" className="text-secondary-foreground/60 hover:text-primary transition-colors" aria-label="YouTube">
                 <Youtube size={18} />
