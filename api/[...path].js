@@ -1,1 +1,1 @@
-export { default } from "./index.js";
+module.exports = require("./index.js");

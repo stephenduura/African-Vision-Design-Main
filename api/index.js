@@ -1,16 +1,11 @@
+"use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
-  get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
-}) : x)(function(x) {
-  if (typeof require !== "undefined") return require.apply(this, arguments);
-  throw Error('Dynamic require of "' + x + '" is not supported');
-});
-var __commonJS = (cb, mod) => function __require2() {
+var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var __export = (target, all) => {
@@ -36,9 +31,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 
 // node_modules/.pnpm/postgres-array@2.0.0/node_modules/postgres-array/index.js
 var require_postgres_array = __commonJS({
-  "node_modules/.pnpm/postgres-array@2.0.0/node_modules/postgres-array/index.js"(exports) {
+  "node_modules/.pnpm/postgres-array@2.0.0/node_modules/postgres-array/index.js"(exports2) {
     "use strict";
-    exports.parse = function(source, transform2) {
+    exports2.parse = function(source, transform2) {
       return new ArrayParser(source, transform2).parse();
     };
     var ArrayParser = class _ArrayParser {
@@ -130,9 +125,9 @@ var require_postgres_array = __commonJS({
 
 // node_modules/.pnpm/pg-types@2.2.0/node_modules/pg-types/lib/arrayParser.js
 var require_arrayParser = __commonJS({
-  "node_modules/.pnpm/pg-types@2.2.0/node_modules/pg-types/lib/arrayParser.js"(exports, module) {
+  "node_modules/.pnpm/pg-types@2.2.0/node_modules/pg-types/lib/arrayParser.js"(exports2, module2) {
     var array2 = require_postgres_array();
-    module.exports = {
+    module2.exports = {
       create: function(source, transform2) {
         return {
           parse: function() {
@@ -146,13 +141,13 @@ var require_arrayParser = __commonJS({
 
 // node_modules/.pnpm/postgres-date@1.0.7/node_modules/postgres-date/index.js
 var require_postgres_date = __commonJS({
-  "node_modules/.pnpm/postgres-date@1.0.7/node_modules/postgres-date/index.js"(exports, module) {
+  "node_modules/.pnpm/postgres-date@1.0.7/node_modules/postgres-date/index.js"(exports2, module2) {
     "use strict";
     var DATE_TIME = /(\d{1,})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})(\.\d{1,})?.*?( BC)?$/;
     var DATE = /^(\d{1,})-(\d{2})-(\d{2})( BC)?$/;
     var TIME_ZONE = /([Z+-])(\d{2})?:?(\d{2})?:?(\d{2})?/;
     var INFINITY = /^-?infinity$/;
-    module.exports = function parseDate(isoDate) {
+    module2.exports = function parseDate(isoDate) {
       if (INFINITY.test(isoDate)) {
         return Number(isoDate.replace("i", "I"));
       }
@@ -233,8 +228,8 @@ var require_postgres_date = __commonJS({
 
 // node_modules/.pnpm/xtend@4.0.2/node_modules/xtend/mutable.js
 var require_mutable = __commonJS({
-  "node_modules/.pnpm/xtend@4.0.2/node_modules/xtend/mutable.js"(exports, module) {
-    module.exports = extend2;
+  "node_modules/.pnpm/xtend@4.0.2/node_modules/xtend/mutable.js"(exports2, module2) {
+    module2.exports = extend2;
     var hasOwnProperty = Object.prototype.hasOwnProperty;
     function extend2(target) {
       for (var i = 1; i < arguments.length; i++) {
@@ -252,10 +247,10 @@ var require_mutable = __commonJS({
 
 // node_modules/.pnpm/postgres-interval@1.2.0/node_modules/postgres-interval/index.js
 var require_postgres_interval = __commonJS({
-  "node_modules/.pnpm/postgres-interval@1.2.0/node_modules/postgres-interval/index.js"(exports, module) {
+  "node_modules/.pnpm/postgres-interval@1.2.0/node_modules/postgres-interval/index.js"(exports2, module2) {
     "use strict";
     var extend2 = require_mutable();
-    module.exports = PostgresInterval;
+    module2.exports = PostgresInterval;
     function PostgresInterval(raw) {
       if (!(this instanceof PostgresInterval)) {
         return new PostgresInterval(raw);
@@ -343,10 +338,10 @@ var require_postgres_interval = __commonJS({
 
 // node_modules/.pnpm/postgres-bytea@1.0.1/node_modules/postgres-bytea/index.js
 var require_postgres_bytea = __commonJS({
-  "node_modules/.pnpm/postgres-bytea@1.0.1/node_modules/postgres-bytea/index.js"(exports, module) {
+  "node_modules/.pnpm/postgres-bytea@1.0.1/node_modules/postgres-bytea/index.js"(exports2, module2) {
     "use strict";
     var bufferFrom = Buffer.from || Buffer;
-    module.exports = function parseBytea(input) {
+    module2.exports = function parseBytea(input) {
       if (/^\\x/.test(input)) {
         return bufferFrom(input.substr(2), "hex");
       }
@@ -379,7 +374,7 @@ var require_postgres_bytea = __commonJS({
 
 // node_modules/.pnpm/pg-types@2.2.0/node_modules/pg-types/lib/textParsers.js
 var require_textParsers = __commonJS({
-  "node_modules/.pnpm/pg-types@2.2.0/node_modules/pg-types/lib/textParsers.js"(exports, module) {
+  "node_modules/.pnpm/pg-types@2.2.0/node_modules/pg-types/lib/textParsers.js"(exports2, module2) {
     var array2 = require_postgres_array();
     var arrayParser = require_arrayParser();
     var parseDate = require_postgres_date();
@@ -571,7 +566,7 @@ var require_textParsers = __commonJS({
       register(1183, parseStringArray);
       register(1270, parseStringArray);
     };
-    module.exports = {
+    module2.exports = {
       init
     };
   }
@@ -579,7 +574,7 @@ var require_textParsers = __commonJS({
 
 // node_modules/.pnpm/pg-int8@1.0.1/node_modules/pg-int8/index.js
 var require_pg_int8 = __commonJS({
-  "node_modules/.pnpm/pg-int8@1.0.1/node_modules/pg-int8/index.js"(exports, module) {
+  "node_modules/.pnpm/pg-int8@1.0.1/node_modules/pg-int8/index.js"(exports2, module2) {
     "use strict";
     var BASE = 1e6;
     function readInt8(buffer) {
@@ -653,13 +648,13 @@ var require_pg_int8 = __commonJS({
         return sign + digits + result;
       }
     }
-    module.exports = readInt8;
+    module2.exports = readInt8;
   }
 });
 
 // node_modules/.pnpm/pg-types@2.2.0/node_modules/pg-types/lib/binaryParsers.js
 var require_binaryParsers = __commonJS({
-  "node_modules/.pnpm/pg-types@2.2.0/node_modules/pg-types/lib/binaryParsers.js"(exports, module) {
+  "node_modules/.pnpm/pg-types@2.2.0/node_modules/pg-types/lib/binaryParsers.js"(exports2, module2) {
     var parseInt64 = require_pg_int8();
     var parseBits = function(data, bits, offset, invert, callback) {
       offset = offset || 0;
@@ -851,7 +846,7 @@ var require_binaryParsers = __commonJS({
       register(1009, parseArray);
       register(25, parseText);
     };
-    module.exports = {
+    module2.exports = {
       init
     };
   }
@@ -859,8 +854,8 @@ var require_binaryParsers = __commonJS({
 
 // node_modules/.pnpm/pg-types@2.2.0/node_modules/pg-types/lib/builtins.js
 var require_builtins = __commonJS({
-  "node_modules/.pnpm/pg-types@2.2.0/node_modules/pg-types/lib/builtins.js"(exports, module) {
-    module.exports = {
+  "node_modules/.pnpm/pg-types@2.2.0/node_modules/pg-types/lib/builtins.js"(exports2, module2) {
+    module2.exports = {
       BOOL: 16,
       BYTEA: 17,
       CHAR: 18,
@@ -927,15 +922,15 @@ var require_builtins = __commonJS({
 
 // node_modules/.pnpm/pg-types@2.2.0/node_modules/pg-types/index.js
 var require_pg_types = __commonJS({
-  "node_modules/.pnpm/pg-types@2.2.0/node_modules/pg-types/index.js"(exports) {
+  "node_modules/.pnpm/pg-types@2.2.0/node_modules/pg-types/index.js"(exports2) {
     var textParsers = require_textParsers();
     var binaryParsers = require_binaryParsers();
     var arrayParser = require_arrayParser();
     var builtinTypes = require_builtins();
-    exports.getTypeParser = getTypeParser;
-    exports.setTypeParser = setTypeParser;
-    exports.arrayParser = arrayParser;
-    exports.builtins = builtinTypes;
+    exports2.getTypeParser = getTypeParser;
+    exports2.setTypeParser = setTypeParser;
+    exports2.arrayParser = arrayParser;
+    exports2.builtins = builtinTypes;
     var typeParsers = {
       text: {},
       binary: {}
@@ -968,14 +963,14 @@ var require_pg_types = __commonJS({
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/defaults.js
 var require_defaults = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/defaults.js"(exports, module) {
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/defaults.js"(exports2, module2) {
     "use strict";
     var user;
     try {
       user = process.platform === "win32" ? process.env.USERNAME : process.env.USER;
     } catch {
     }
-    module.exports = {
+    module2.exports = {
       // database host. defaults to localhost
       host: "localhost",
       // database user's name
@@ -1026,7 +1021,7 @@ var require_defaults = __commonJS({
     var pgTypes = require_pg_types();
     var parseBigInteger = pgTypes.getTypeParser(20, "text");
     var parseBigIntegerArray = pgTypes.getTypeParser(1016, "text");
-    module.exports.__defineSetter__("parseInt8", function(val) {
+    module2.exports.__defineSetter__("parseInt8", function(val) {
       pgTypes.setTypeParser(20, "text", val ? pgTypes.getTypeParser(23, "text") : parseBigInteger);
       pgTypes.setTypeParser(1016, "text", val ? pgTypes.getTypeParser(1007, "text") : parseBigIntegerArray);
     });
@@ -1035,10 +1030,10 @@ var require_defaults = __commonJS({
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/utils.js
 var require_utils = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/utils.js"(exports, module) {
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/utils.js"(exports2, module2) {
     "use strict";
     var defaults2 = require_defaults();
-    var { isDate } = __require("util/types");
+    var { isDate } = require("util/types");
     function escapeElement(elementRepresentation) {
       const escaped = elementRepresentation.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
       return '"' + escaped + '"';
@@ -1170,7 +1165,7 @@ var require_utils = __commonJS({
       }
       return escaped;
     };
-    module.exports = {
+    module2.exports = {
       prepareValue: function prepareValueWrapper(value) {
         return prepareValue(value);
       },
@@ -1183,9 +1178,9 @@ var require_utils = __commonJS({
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/crypto/utils.js
 var require_utils2 = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/crypto/utils.js"(exports, module) {
-    var nodeCrypto = __require("crypto");
-    module.exports = {
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/crypto/utils.js"(exports2, module2) {
+    var nodeCrypto = require("crypto");
+    module2.exports = {
       postgresMd5PasswordHash,
       randomBytes,
       deriveKey,
@@ -1234,7 +1229,7 @@ var require_utils2 = __commonJS({
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/crypto/cert-signatures.js
 var require_cert_signatures = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/crypto/cert-signatures.js"(exports, module) {
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/crypto/cert-signatures.js"(exports2, module2) {
     function x509Error(msg, cert) {
       return new Error("SASL channel binding: " + msg + " when parsing public certificate " + cert.toString("base64"));
     }
@@ -1341,13 +1336,13 @@ var require_cert_signatures = __commonJS({
       }
       throw x509Error("unknown OID " + oid, data);
     }
-    module.exports = { signatureAlgorithmHashFromCertificate };
+    module2.exports = { signatureAlgorithmHashFromCertificate };
   }
 });
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/crypto/sasl.js
 var require_sasl = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/crypto/sasl.js"(exports, module) {
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/crypto/sasl.js"(exports2, module2) {
     "use strict";
     var crypto = require_utils2();
     var { signatureAlgorithmHashFromCertificate } = require_cert_signatures();
@@ -1521,7 +1516,7 @@ var require_sasl = __commonJS({
       }
       return Buffer.from(a.map((_, i) => a[i] ^ b[i]));
     }
-    module.exports = {
+    module2.exports = {
       startSession,
       continueSession,
       finalizeSession,
@@ -1532,7 +1527,7 @@ var require_sasl = __commonJS({
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/type-overrides.js
 var require_type_overrides = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/type-overrides.js"(exports, module) {
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/type-overrides.js"(exports2, module2) {
     "use strict";
     var types2 = require_pg_types();
     function TypeOverrides2(userTypes) {
@@ -1561,13 +1556,13 @@ var require_type_overrides = __commonJS({
       format = format || "text";
       return this.getOverrides(format)[oid] || this._types.getTypeParser(oid, format);
     };
-    module.exports = TypeOverrides2;
+    module2.exports = TypeOverrides2;
   }
 });
 
 // node_modules/.pnpm/pg-connection-string@2.13.0/node_modules/pg-connection-string/index.js
 var require_pg_connection_string = __commonJS({
-  "node_modules/.pnpm/pg-connection-string@2.13.0/node_modules/pg-connection-string/index.js"(exports, module) {
+  "node_modules/.pnpm/pg-connection-string@2.13.0/node_modules/pg-connection-string/index.js"(exports2, module2) {
     "use strict";
     function parse3(str, options = {}) {
       if (str.charAt(0) === "/") {
@@ -1622,7 +1617,7 @@ var require_pg_connection_string = __commonJS({
       if (config2.sslcert || config2.sslkey || config2.sslrootcert || config2.sslmode) {
         config2.ssl = {};
       }
-      const fs = config2.sslcert || config2.sslkey || config2.sslrootcert ? __require("fs") : null;
+      const fs = config2.sslcert || config2.sslkey || config2.sslrootcert ? require("fs") : null;
       if (config2.sslcert) {
         config2.ssl.cert = fs.readFileSync(config2.sslcert).toString();
       }
@@ -1743,7 +1738,7 @@ To prepare for this change:
 See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.`);
       }
     }
-    module.exports = parse3;
+    module2.exports = parse3;
     parse3.parse = parse3;
     parse3.toClientConfig = toClientConfig;
     parse3.parseIntoClientConfig = parseIntoClientConfig;
@@ -1752,9 +1747,9 @@ See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode de
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/connection-parameters.js
 var require_connection_parameters = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/connection-parameters.js"(exports, module) {
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/connection-parameters.js"(exports2, module2) {
     "use strict";
-    var dns = __require("dns");
+    var dns = require("dns");
     var defaults2 = require_defaults();
     var parse3 = require_pg_connection_string().parse;
     var val = function(key, config2, envVar) {
@@ -1887,13 +1882,13 @@ var require_connection_parameters = __commonJS({
         });
       }
     };
-    module.exports = ConnectionParameters;
+    module2.exports = ConnectionParameters;
   }
 });
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/result.js
 var require_result = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/result.js"(exports, module) {
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/result.js"(exports2, module2) {
     "use strict";
     var types2 = require_pg_types();
     var matchRegexp = /^([A-Za-z]+)(?: (\d+))?(?: (\d+))?/;
@@ -1978,15 +1973,15 @@ var require_result = __commonJS({
         this._prebuiltEmptyResultObject = { ...row };
       }
     };
-    module.exports = Result2;
+    module2.exports = Result2;
   }
 });
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/query.js
 var require_query = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/query.js"(exports, module) {
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/query.js"(exports2, module2) {
     "use strict";
-    var { EventEmitter } = __require("events");
+    var { EventEmitter } = require("events");
     var Result2 = require_result();
     var utils = require_utils();
     var Query2 = class extends EventEmitter {
@@ -2175,45 +2170,45 @@ var require_query = __commonJS({
       handleCopyData(msg, connection) {
       }
     };
-    module.exports = Query2;
+    module2.exports = Query2;
   }
 });
 
 // node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/messages.js
 var require_messages = __commonJS({
-  "node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/messages.js"(exports) {
+  "node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/messages.js"(exports2) {
     "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.NoticeMessage = exports.DataRowMessage = exports.CommandCompleteMessage = exports.ReadyForQueryMessage = exports.NotificationResponseMessage = exports.BackendKeyDataMessage = exports.AuthenticationMD5Password = exports.ParameterStatusMessage = exports.ParameterDescriptionMessage = exports.RowDescriptionMessage = exports.Field = exports.CopyResponse = exports.CopyDataMessage = exports.DatabaseError = exports.copyDone = exports.emptyQuery = exports.replicationStart = exports.portalSuspended = exports.noData = exports.closeComplete = exports.bindComplete = exports.parseComplete = void 0;
-    exports.parseComplete = {
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.NoticeMessage = exports2.DataRowMessage = exports2.CommandCompleteMessage = exports2.ReadyForQueryMessage = exports2.NotificationResponseMessage = exports2.BackendKeyDataMessage = exports2.AuthenticationMD5Password = exports2.ParameterStatusMessage = exports2.ParameterDescriptionMessage = exports2.RowDescriptionMessage = exports2.Field = exports2.CopyResponse = exports2.CopyDataMessage = exports2.DatabaseError = exports2.copyDone = exports2.emptyQuery = exports2.replicationStart = exports2.portalSuspended = exports2.noData = exports2.closeComplete = exports2.bindComplete = exports2.parseComplete = void 0;
+    exports2.parseComplete = {
       name: "parseComplete",
       length: 5
     };
-    exports.bindComplete = {
+    exports2.bindComplete = {
       name: "bindComplete",
       length: 5
     };
-    exports.closeComplete = {
+    exports2.closeComplete = {
       name: "closeComplete",
       length: 5
     };
-    exports.noData = {
+    exports2.noData = {
       name: "noData",
       length: 5
     };
-    exports.portalSuspended = {
+    exports2.portalSuspended = {
       name: "portalSuspended",
       length: 5
     };
-    exports.replicationStart = {
+    exports2.replicationStart = {
       name: "replicationStart",
       length: 4
     };
-    exports.emptyQuery = {
+    exports2.emptyQuery = {
       name: "emptyQuery",
       length: 4
     };
-    exports.copyDone = {
+    exports2.copyDone = {
       name: "copyDone",
       length: 4
     };
@@ -2224,7 +2219,7 @@ var require_messages = __commonJS({
         this.name = name;
       }
     };
-    exports.DatabaseError = DatabaseError2;
+    exports2.DatabaseError = DatabaseError2;
     var CopyDataMessage = class {
       constructor(length, chunk) {
         this.length = length;
@@ -2232,7 +2227,7 @@ var require_messages = __commonJS({
         this.name = "copyData";
       }
     };
-    exports.CopyDataMessage = CopyDataMessage;
+    exports2.CopyDataMessage = CopyDataMessage;
     var CopyResponse = class {
       constructor(length, name, binary, columnCount) {
         this.length = length;
@@ -2241,7 +2236,7 @@ var require_messages = __commonJS({
         this.columnTypes = new Array(columnCount);
       }
     };
-    exports.CopyResponse = CopyResponse;
+    exports2.CopyResponse = CopyResponse;
     var Field = class {
       constructor(name, tableID, columnID, dataTypeID, dataTypeSize, dataTypeModifier, format) {
         this.name = name;
@@ -2253,7 +2248,7 @@ var require_messages = __commonJS({
         this.format = format;
       }
     };
-    exports.Field = Field;
+    exports2.Field = Field;
     var RowDescriptionMessage = class {
       constructor(length, fieldCount) {
         this.length = length;
@@ -2262,7 +2257,7 @@ var require_messages = __commonJS({
         this.fields = new Array(this.fieldCount);
       }
     };
-    exports.RowDescriptionMessage = RowDescriptionMessage;
+    exports2.RowDescriptionMessage = RowDescriptionMessage;
     var ParameterDescriptionMessage = class {
       constructor(length, parameterCount) {
         this.length = length;
@@ -2271,7 +2266,7 @@ var require_messages = __commonJS({
         this.dataTypeIDs = new Array(this.parameterCount);
       }
     };
-    exports.ParameterDescriptionMessage = ParameterDescriptionMessage;
+    exports2.ParameterDescriptionMessage = ParameterDescriptionMessage;
     var ParameterStatusMessage = class {
       constructor(length, parameterName, parameterValue) {
         this.length = length;
@@ -2280,7 +2275,7 @@ var require_messages = __commonJS({
         this.name = "parameterStatus";
       }
     };
-    exports.ParameterStatusMessage = ParameterStatusMessage;
+    exports2.ParameterStatusMessage = ParameterStatusMessage;
     var AuthenticationMD5Password = class {
       constructor(length, salt) {
         this.length = length;
@@ -2288,7 +2283,7 @@ var require_messages = __commonJS({
         this.name = "authenticationMD5Password";
       }
     };
-    exports.AuthenticationMD5Password = AuthenticationMD5Password;
+    exports2.AuthenticationMD5Password = AuthenticationMD5Password;
     var BackendKeyDataMessage = class {
       constructor(length, processID, secretKey) {
         this.length = length;
@@ -2297,7 +2292,7 @@ var require_messages = __commonJS({
         this.name = "backendKeyData";
       }
     };
-    exports.BackendKeyDataMessage = BackendKeyDataMessage;
+    exports2.BackendKeyDataMessage = BackendKeyDataMessage;
     var NotificationResponseMessage = class {
       constructor(length, processId, channel, payload) {
         this.length = length;
@@ -2307,7 +2302,7 @@ var require_messages = __commonJS({
         this.name = "notification";
       }
     };
-    exports.NotificationResponseMessage = NotificationResponseMessage;
+    exports2.NotificationResponseMessage = NotificationResponseMessage;
     var ReadyForQueryMessage = class {
       constructor(length, status) {
         this.length = length;
@@ -2315,7 +2310,7 @@ var require_messages = __commonJS({
         this.name = "readyForQuery";
       }
     };
-    exports.ReadyForQueryMessage = ReadyForQueryMessage;
+    exports2.ReadyForQueryMessage = ReadyForQueryMessage;
     var CommandCompleteMessage = class {
       constructor(length, text10) {
         this.length = length;
@@ -2323,7 +2318,7 @@ var require_messages = __commonJS({
         this.name = "commandComplete";
       }
     };
-    exports.CommandCompleteMessage = CommandCompleteMessage;
+    exports2.CommandCompleteMessage = CommandCompleteMessage;
     var DataRowMessage = class {
       constructor(length, fields) {
         this.length = length;
@@ -2332,7 +2327,7 @@ var require_messages = __commonJS({
         this.fieldCount = fields.length;
       }
     };
-    exports.DataRowMessage = DataRowMessage;
+    exports2.DataRowMessage = DataRowMessage;
     var NoticeMessage = class {
       constructor(length, message) {
         this.length = length;
@@ -2340,16 +2335,16 @@ var require_messages = __commonJS({
         this.name = "notice";
       }
     };
-    exports.NoticeMessage = NoticeMessage;
+    exports2.NoticeMessage = NoticeMessage;
   }
 });
 
 // node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/buffer-writer.js
 var require_buffer_writer = __commonJS({
-  "node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/buffer-writer.js"(exports) {
+  "node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/buffer-writer.js"(exports2) {
     "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.Writer = void 0;
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Writer = void 0;
     var Writer = class {
       constructor(size = 256) {
         this.size = size;
@@ -2421,16 +2416,16 @@ var require_buffer_writer = __commonJS({
         return result;
       }
     };
-    exports.Writer = Writer;
+    exports2.Writer = Writer;
   }
 });
 
 // node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/serializer.js
 var require_serializer = __commonJS({
-  "node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/serializer.js"(exports) {
+  "node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/serializer.js"(exports2) {
     "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.serialize = void 0;
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.serialize = void 0;
     var buffer_writer_1 = require_buffer_writer();
     var writer = new buffer_writer_1.Writer();
     var startup = (opts) => {
@@ -2638,16 +2633,16 @@ var require_serializer = __commonJS({
       copyFail,
       cancel
     };
-    exports.serialize = serialize;
+    exports2.serialize = serialize;
   }
 });
 
 // node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/buffer-reader.js
 var require_buffer_reader = __commonJS({
-  "node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/buffer-reader.js"(exports) {
+  "node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/buffer-reader.js"(exports2) {
     "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.BufferReader = void 0;
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.BufferReader = void 0;
     var BufferReader = class {
       constructor(offset = 0) {
         this.offset = offset;
@@ -2697,16 +2692,16 @@ var require_buffer_reader = __commonJS({
         return result;
       }
     };
-    exports.BufferReader = BufferReader;
+    exports2.BufferReader = BufferReader;
   }
 });
 
 // node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/parser.js
 var require_parser = __commonJS({
-  "node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/parser.js"(exports) {
+  "node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/parser.js"(exports2) {
     "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.Parser = void 0;
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Parser = void 0;
     var messages_1 = require_messages();
     var buffer_reader_1 = require_buffer_reader();
     var CODE_LENGTH = 1;
@@ -2856,7 +2851,7 @@ var require_parser = __commonJS({
         return message;
       }
     };
-    exports.Parser = Parser;
+    exports2.Parser = Parser;
     var parseReadyForQueryMessage = (reader) => {
       const status = reader.string(1);
       return new messages_1.ReadyForQueryMessage(LATEINIT_LENGTH, status);
@@ -3010,16 +3005,16 @@ var require_parser = __commonJS({
 
 // node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/index.js
 var require_dist = __commonJS({
-  "node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/index.js"(exports) {
+  "node_modules/.pnpm/pg-protocol@1.14.0/node_modules/pg-protocol/dist/index.js"(exports2) {
     "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.DatabaseError = exports.serialize = exports.parse = void 0;
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.DatabaseError = exports2.serialize = exports2.parse = void 0;
     var messages_1 = require_messages();
-    Object.defineProperty(exports, "DatabaseError", { enumerable: true, get: function() {
+    Object.defineProperty(exports2, "DatabaseError", { enumerable: true, get: function() {
       return messages_1.DatabaseError;
     } });
     var serializer_1 = require_serializer();
-    Object.defineProperty(exports, "serialize", { enumerable: true, get: function() {
+    Object.defineProperty(exports2, "serialize", { enumerable: true, get: function() {
       return serializer_1.serialize;
     } });
     var parser_1 = require_parser();
@@ -3028,24 +3023,24 @@ var require_dist = __commonJS({
       stream.on("data", (buffer) => parser.parse(buffer, callback));
       return new Promise((resolve) => stream.on("end", () => resolve()));
     }
-    exports.parse = parse3;
+    exports2.parse = parse3;
   }
 });
 
 // node_modules/.pnpm/pg-cloudflare@1.4.0/node_modules/pg-cloudflare/dist/empty.js
 var require_empty = __commonJS({
-  "node_modules/.pnpm/pg-cloudflare@1.4.0/node_modules/pg-cloudflare/dist/empty.js"(exports) {
+  "node_modules/.pnpm/pg-cloudflare@1.4.0/node_modules/pg-cloudflare/dist/empty.js"(exports2) {
     "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.default = {};
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.default = {};
   }
 });
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/stream.js
 var require_stream = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/stream.js"(exports, module) {
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/stream.js"(exports2, module2) {
     var { getStream, getSecureStream } = getStreamFuncs();
-    module.exports = {
+    module2.exports = {
       /**
        * Get a socket stream compatible with the current runtime environment.
        * @returns {Duplex}
@@ -3060,11 +3055,11 @@ var require_stream = __commonJS({
     };
     function getNodejsStreamFuncs() {
       function getStream2(ssl) {
-        const net = __require("net");
+        const net = require("net");
         return new net.Socket();
       }
       function getSecureStream2(options) {
-        const tls = __require("tls");
+        const tls = require("tls");
         return tls.connect(options);
       }
       return {
@@ -3109,9 +3104,9 @@ var require_stream = __commonJS({
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/connection.js
 var require_connection = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/connection.js"(exports, module) {
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/connection.js"(exports2, module2) {
     "use strict";
-    var EventEmitter = __require("events").EventEmitter;
+    var EventEmitter = require("events").EventEmitter;
     var { parse: parse3, serialize } = require_dist();
     var { getStream, getSecureStream } = require_stream();
     var flushBuffer = serialize.flush();
@@ -3183,7 +3178,7 @@ var require_connection = __commonJS({
               options.key = self.ssl.key;
             }
           }
-          const net = __require("net");
+          const net = require("net");
           if (net.isIP && net.isIP(host) === 0) {
             options.servername = host;
           }
@@ -3286,16 +3281,16 @@ var require_connection = __commonJS({
         this._send(serialize.copyFail(msg));
       }
     };
-    module.exports = Connection2;
+    module2.exports = Connection2;
   }
 });
 
 // node_modules/.pnpm/split2@4.2.0/node_modules/split2/index.js
 var require_split2 = __commonJS({
-  "node_modules/.pnpm/split2@4.2.0/node_modules/split2/index.js"(exports, module) {
+  "node_modules/.pnpm/split2@4.2.0/node_modules/split2/index.js"(exports2, module2) {
     "use strict";
-    var { Transform } = __require("stream");
-    var { StringDecoder } = __require("string_decoder");
+    var { Transform } = require("stream");
+    var { StringDecoder } = require("string_decoder");
     var kLast = /* @__PURE__ */ Symbol("last");
     var kDecoder = /* @__PURE__ */ Symbol("decoder");
     function transform2(chunk, enc, cb) {
@@ -3387,18 +3382,18 @@ var require_split2 = __commonJS({
       };
       return stream;
     }
-    module.exports = split;
+    module2.exports = split;
   }
 });
 
 // node_modules/.pnpm/pgpass@1.0.5/node_modules/pgpass/lib/helper.js
 var require_helper = __commonJS({
-  "node_modules/.pnpm/pgpass@1.0.5/node_modules/pgpass/lib/helper.js"(exports, module) {
+  "node_modules/.pnpm/pgpass@1.0.5/node_modules/pgpass/lib/helper.js"(exports2, module2) {
     "use strict";
-    var path = __require("path");
-    var Stream = __require("stream").Stream;
+    var path = require("path");
+    var Stream = require("stream").Stream;
     var split = require_split2();
-    var util2 = __require("util");
+    var util2 = require("util");
     var defaultPort = 5432;
     var isWin = process.platform === "win32";
     var warnStream = process.stderr;
@@ -3419,7 +3414,7 @@ var require_helper = __commonJS({
         warnStream.write(util2.format.apply(util2, args));
       }
     }
-    Object.defineProperty(module.exports, "isWin", {
+    Object.defineProperty(module2.exports, "isWin", {
       get: function() {
         return isWin;
       },
@@ -3427,17 +3422,17 @@ var require_helper = __commonJS({
         isWin = val;
       }
     });
-    module.exports.warnTo = function(stream) {
+    module2.exports.warnTo = function(stream) {
       var old = warnStream;
       warnStream = stream;
       return old;
     };
-    module.exports.getFileName = function(rawEnv) {
+    module2.exports.getFileName = function(rawEnv) {
       var env = rawEnv || process.env;
       var file2 = env.PGPASSFILE || (isWin ? path.join(env.APPDATA || "./", "postgresql", "pgpass.conf") : path.join(env.HOME || "./", ".pgpass"));
       return file2;
     };
-    module.exports.usePgPass = function(stats, fname) {
+    module2.exports.usePgPass = function(stats, fname) {
       if (Object.prototype.hasOwnProperty.call(process.env, "PGPASSWORD")) {
         return false;
       }
@@ -3455,7 +3450,7 @@ var require_helper = __commonJS({
       }
       return true;
     };
-    var matcher = module.exports.match = function(connInfo, entry) {
+    var matcher = module2.exports.match = function(connInfo, entry) {
       return fieldNames.slice(0, -1).reduce(function(prev, field, idx) {
         if (idx == 1) {
           if (Number(connInfo[field] || defaultPort) === Number(entry[field])) {
@@ -3465,7 +3460,7 @@ var require_helper = __commonJS({
         return prev && (entry[field] === "*" || entry[field] === connInfo[field]);
       }, true);
     };
-    module.exports.getPassword = function(connInfo, stream, cb) {
+    module2.exports.getPassword = function(connInfo, stream, cb) {
       var pass;
       var lineStream = stream.pipe(split());
       function onLine(line) {
@@ -3487,7 +3482,7 @@ var require_helper = __commonJS({
       stream.on("error", onErr);
       lineStream.on("data", onLine).on("end", onEnd).on("error", onErr);
     };
-    var parseLine = module.exports.parseLine = function(line) {
+    var parseLine = module2.exports.parseLine = function(line) {
       if (line.length < 11 || line.match(/^\s+#/)) {
         return null;
       }
@@ -3522,7 +3517,7 @@ var require_helper = __commonJS({
       obj = Object.keys(obj).length === nrOfFields ? obj : null;
       return obj;
     };
-    var isValidEntry = module.exports.isValidEntry = function(entry) {
+    var isValidEntry = module2.exports.isValidEntry = function(entry) {
       var rules = {
         // host
         0: function(x) {
@@ -3564,12 +3559,12 @@ var require_helper = __commonJS({
 
 // node_modules/.pnpm/pgpass@1.0.5/node_modules/pgpass/lib/index.js
 var require_lib = __commonJS({
-  "node_modules/.pnpm/pgpass@1.0.5/node_modules/pgpass/lib/index.js"(exports, module) {
+  "node_modules/.pnpm/pgpass@1.0.5/node_modules/pgpass/lib/index.js"(exports2, module2) {
     "use strict";
-    var path = __require("path");
-    var fs = __require("fs");
+    var path = require("path");
+    var fs = require("fs");
     var helper = require_helper();
-    module.exports = function(connInfo, cb) {
+    module2.exports = function(connInfo, cb) {
       var file2 = helper.getFileName();
       fs.stat(file2, function(err, stat) {
         if (err || !helper.usePgPass(stat, file2)) {
@@ -3579,16 +3574,16 @@ var require_lib = __commonJS({
         helper.getPassword(connInfo, st, cb);
       });
     };
-    module.exports.warnTo = helper.warnTo;
+    module2.exports.warnTo = helper.warnTo;
   }
 });
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/client.js
 var require_client = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/client.js"(exports, module) {
-    var EventEmitter = __require("events").EventEmitter;
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/client.js"(exports2, module2) {
+    var EventEmitter = require("events").EventEmitter;
     var utils = require_utils();
-    var nodeUtils = __require("util");
+    var nodeUtils = require("util");
     var sasl = require_sasl();
     var TypeOverrides2 = require_type_overrides();
     var ConnectionParameters = require_connection_parameters();
@@ -4217,15 +4212,15 @@ var require_client = __commonJS({
       }
     };
     Client2.Query = Query2;
-    module.exports = Client2;
+    module2.exports = Client2;
   }
 });
 
 // node_modules/.pnpm/pg-pool@3.14.0_pg@8.21.0/node_modules/pg-pool/index.js
 var require_pg_pool = __commonJS({
-  "node_modules/.pnpm/pg-pool@3.14.0_pg@8.21.0/node_modules/pg-pool/index.js"(exports, module) {
+  "node_modules/.pnpm/pg-pool@3.14.0_pg@8.21.0/node_modules/pg-pool/index.js"(exports2, module2) {
     "use strict";
-    var EventEmitter = __require("events").EventEmitter;
+    var EventEmitter = require("events").EventEmitter;
     var NOOP = function() {
     };
     var removeWhere = (list, predicate) => {
@@ -4643,18 +4638,18 @@ var require_pg_pool = __commonJS({
         return this._clients.length;
       }
     };
-    module.exports = Pool3;
+    module2.exports = Pool3;
   }
 });
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/native/query.js
 var require_query2 = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/native/query.js"(exports, module) {
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/native/query.js"(exports2, module2) {
     "use strict";
-    var EventEmitter = __require("events").EventEmitter;
-    var util2 = __require("util");
+    var EventEmitter = require("events").EventEmitter;
+    var util2 = require("util");
     var utils = require_utils();
-    var NativeQuery = module.exports = function(config2, values, callback) {
+    var NativeQuery = module2.exports = function(config2, values, callback) {
       EventEmitter.call(this);
       config2 = utils.normalizeQueryConfig(config2, values, callback);
       this.text = config2.text;
@@ -4790,17 +4785,17 @@ var require_query2 = __commonJS({
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/native/client.js
 var require_client2 = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/native/client.js"(exports, module) {
-    var nodeUtils = __require("util");
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/native/client.js"(exports2, module2) {
+    var nodeUtils = require("util");
     var Native;
     try {
-      Native = __require("pg-native");
+      Native = require("pg-native");
     } catch (e) {
       throw e;
     }
     var TypeOverrides2 = require_type_overrides();
-    var EventEmitter = __require("events").EventEmitter;
-    var util2 = __require("util");
+    var EventEmitter = require("events").EventEmitter;
+    var util2 = require("util");
     var ConnectionParameters = require_connection_parameters();
     var NativeQuery = require_query2();
     var queryQueueLengthDeprecationNotice = nodeUtils.deprecate(
@@ -4808,7 +4803,7 @@ var require_client2 = __commonJS({
       },
       "Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead."
     );
-    var Client2 = module.exports = function(config2) {
+    var Client2 = module2.exports = function(config2) {
       EventEmitter.call(this);
       config2 = config2 || {};
       this._Promise = config2.Promise || global.Promise;
@@ -5049,15 +5044,15 @@ var require_client2 = __commonJS({
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/native/index.js
 var require_native = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/native/index.js"(exports, module) {
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/native/index.js"(exports2, module2) {
     "use strict";
-    module.exports = require_client2();
+    module2.exports = require_client2();
   }
 });
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/index.js
 var require_lib2 = __commonJS({
-  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/index.js"(exports, module) {
+  "node_modules/.pnpm/pg@8.21.0/node_modules/pg/lib/index.js"(exports2, module2) {
     "use strict";
     var Client2 = require_client();
     var defaults2 = require_defaults();
@@ -5099,8 +5094,8 @@ var require_lib2 = __commonJS({
     if (forceNative) {
       clientConstructor = require_native();
     }
-    module.exports = new PG(clientConstructor);
-    Object.defineProperty(module.exports, "native", {
+    module2.exports = new PG(clientConstructor);
+    Object.defineProperty(module2.exports, "native", {
       configurable: true,
       enumerable: false,
       get() {
@@ -5112,7 +5107,7 @@ var require_lib2 = __commonJS({
             throw err;
           }
         }
-        Object.defineProperty(module.exports, "native", {
+        Object.defineProperty(module2.exports, "native", {
           value: native
         });
         return native;
@@ -5122,29 +5117,29 @@ var require_lib2 = __commonJS({
 });
 
 // artifacts/api-server/src/app.ts
-import express from "express";
-import cors from "cors";
-import helmet from "helmet";
-import { rateLimit } from "express-rate-limit";
-import { pinoHttp } from "pino-http";
+var import_express13 = __toESM(require("express"), 1);
+var import_cors = __toESM(require("cors"), 1);
+var import_helmet = __toESM(require("helmet"), 1);
+var import_express_rate_limit = require("express-rate-limit");
+var import_pino_http = require("pino-http");
 
 // artifacts/api-server/src/routes/index.ts
-import { Router as Router12 } from "express";
+var import_express12 = require("express");
 
 // artifacts/api-server/src/routes/health.ts
-import { Router } from "express";
-var router = Router();
+var import_express = require("express");
+var router = (0, import_express.Router)();
 router.get("/healthz", (_req, res) => {
   res.json({ status: "ok" });
 });
 var health_default = router;
 
 // artifacts/api-server/src/routes/projects.ts
-import { Router as Router2 } from "express";
+var import_express2 = require("express");
 
 // lib/db/src/index.ts
-import { drizzle } from "drizzle-orm/node-postgres";
-import { sql } from "drizzle-orm";
+var import_node_postgres = require("drizzle-orm/node-postgres");
+var import_drizzle_orm2 = require("drizzle-orm");
 
 // node_modules/.pnpm/pg@8.21.0/node_modules/pg/esm/index.mjs
 var import_lib = __toESM(require_lib2(), 1);
@@ -5197,7 +5192,7 @@ __export(schema_exports, {
 });
 
 // lib/db/src/schema/projects.ts
-import { pgTable, serial, text, real, integer as integer2, timestamp, pgEnum } from "drizzle-orm/pg-core";
+var import_pg_core = require("drizzle-orm/pg-core");
 
 // node_modules/.pnpm/zod@3.25.76/node_modules/zod/v4/classic/external.js
 var external_exports = {};
@@ -16339,7 +16334,7 @@ function date4(params) {
 config(en_default());
 
 // node_modules/.pnpm/drizzle-zod@0.8.3_drizzle-o_75717ee7f6436df081a15a148acf053c/node_modules/drizzle-zod/index.mjs
-import { isTable, getTableColumns, getViewSelectedFields, is, Column, SQL, isView } from "drizzle-orm";
+var import_drizzle_orm = require("drizzle-orm");
 var CONSTANTS = {
   INT8_MIN: -128,
   INT8_MAX: 127,
@@ -16542,13 +16537,13 @@ function stringColumnToSchema(column, z, coerce2) {
   return max && fixed ? schema.length(max) : max ? schema.max(max) : schema;
 }
 function getColumns(tableLike) {
-  return isTable(tableLike) ? getTableColumns(tableLike) : getViewSelectedFields(tableLike);
+  return (0, import_drizzle_orm.isTable)(tableLike) ? (0, import_drizzle_orm.getTableColumns)(tableLike) : (0, import_drizzle_orm.getViewSelectedFields)(tableLike);
 }
 function handleColumns(columns, refinements, conditions, factory) {
   const columnSchemas = {};
   for (const [key, selected] of Object.entries(columns)) {
-    if (!is(selected, Column) && !is(selected, SQL) && !is(selected, SQL.Aliased) && typeof selected === "object") {
-      const columns2 = isTable(selected) || isView(selected) ? getColumns(selected) : selected;
+    if (!(0, import_drizzle_orm.is)(selected, import_drizzle_orm.Column) && !(0, import_drizzle_orm.is)(selected, import_drizzle_orm.SQL) && !(0, import_drizzle_orm.is)(selected, import_drizzle_orm.SQL.Aliased) && typeof selected === "object") {
+      const columns2 = (0, import_drizzle_orm.isTable)(selected) || (0, import_drizzle_orm.isView)(selected) ? getColumns(selected) : selected;
       columnSchemas[key] = handleColumns(columns2, refinements[key] ?? {}, conditions, factory);
       continue;
     }
@@ -16557,7 +16552,7 @@ function handleColumns(columns, refinements, conditions, factory) {
       columnSchemas[key] = refinement;
       continue;
     }
-    const column = is(selected, Column) ? selected : void 0;
+    const column = (0, import_drizzle_orm.is)(selected, import_drizzle_orm.Column) ? selected : void 0;
     const schema = column ? columnToSchema(column, factory) : external_exports.any();
     const refined = typeof refinement === "function" ? refinement(schema) : schema;
     if (conditions.never(column)) {
@@ -16587,166 +16582,158 @@ var createInsertSchema = (entity, refine2) => {
 };
 
 // lib/db/src/schema/projects.ts
-var projectStatusEnum = pgEnum("project_status", ["ongoing", "completed", "upcoming"]);
-var projectsTable = pgTable("projects", {
-  id: serial("id").primaryKey(),
-  title: text("title").notNull(),
-  description: text("description").notNull(),
+var projectStatusEnum = (0, import_pg_core.pgEnum)("project_status", ["ongoing", "completed", "upcoming"]);
+var projectsTable = (0, import_pg_core.pgTable)("projects", {
+  id: (0, import_pg_core.serial)("id").primaryKey(),
+  title: (0, import_pg_core.text)("title").notNull(),
+  description: (0, import_pg_core.text)("description").notNull(),
   status: projectStatusEnum("status").notNull().default("upcoming"),
-  country: text("country").notNull(),
-  category: text("category").notNull(),
-  goalAmount: real("goal_amount").notNull(),
-  raisedAmount: real("raised_amount").notNull().default(0),
-  imageUrl: text("image_url").notNull(),
-  beforeImageUrl: text("before_image_url"),
-  afterImageUrl: text("after_image_url"),
-  beneficiaries: integer2("beneficiaries"),
-  location: text("location"),
-  lat: real("lat"),
-  lng: real("lng"),
-  createdAt: timestamp("created_at").defaultNow().notNull()
+  country: (0, import_pg_core.text)("country").notNull(),
+  category: (0, import_pg_core.text)("category").notNull(),
+  goalAmount: (0, import_pg_core.real)("goal_amount").notNull(),
+  raisedAmount: (0, import_pg_core.real)("raised_amount").notNull().default(0),
+  imageUrl: (0, import_pg_core.text)("image_url").notNull(),
+  beforeImageUrl: (0, import_pg_core.text)("before_image_url"),
+  afterImageUrl: (0, import_pg_core.text)("after_image_url"),
+  beneficiaries: (0, import_pg_core.integer)("beneficiaries"),
+  location: (0, import_pg_core.text)("location"),
+  lat: (0, import_pg_core.real)("lat"),
+  lng: (0, import_pg_core.real)("lng"),
+  createdAt: (0, import_pg_core.timestamp)("created_at").defaultNow().notNull()
 });
 var insertProjectSchema = createInsertSchema(projectsTable).omit({ id: true, createdAt: true });
 
 // lib/db/src/schema/donations.ts
-import { pgTable as pgTable2, serial as serial2, text as text2, real as real2, integer as integer3, boolean as boolean4, timestamp as timestamp2, pgEnum as pgEnum2 } from "drizzle-orm/pg-core";
-var donationTypeEnum = pgEnum2("donation_type", ["one-time", "monthly"]);
-var donationsTable = pgTable2("donations", {
-  id: serial2("id").primaryKey(),
-  amount: real2("amount").notNull(),
-  currency: text2("currency").notNull().default("EUR"),
-  donorName: text2("donor_name").notNull(),
-  isAnonymous: boolean4("is_anonymous").notNull().default(false),
-  projectId: integer3("project_id"),
-  message: text2("message"),
+var import_pg_core2 = require("drizzle-orm/pg-core");
+var donationTypeEnum = (0, import_pg_core2.pgEnum)("donation_type", ["one-time", "monthly"]);
+var donationsTable = (0, import_pg_core2.pgTable)("donations", {
+  id: (0, import_pg_core2.serial)("id").primaryKey(),
+  amount: (0, import_pg_core2.real)("amount").notNull(),
+  currency: (0, import_pg_core2.text)("currency").notNull().default("EUR"),
+  donorName: (0, import_pg_core2.text)("donor_name").notNull(),
+  isAnonymous: (0, import_pg_core2.boolean)("is_anonymous").notNull().default(false),
+  projectId: (0, import_pg_core2.integer)("project_id"),
+  message: (0, import_pg_core2.text)("message"),
   type: donationTypeEnum("type").notNull().default("one-time"),
-  stripeSessionId: text2("stripe_session_id").unique(),
-  createdAt: timestamp2("created_at").defaultNow().notNull()
+  stripeSessionId: (0, import_pg_core2.text)("stripe_session_id").unique(),
+  createdAt: (0, import_pg_core2.timestamp)("created_at").defaultNow().notNull()
 });
 var insertDonationSchema = createInsertSchema(donationsTable).omit({ id: true, createdAt: true });
 
 // lib/db/src/schema/team.ts
-import { pgTable as pgTable3, serial as serial3, text as text3, integer as integer4, timestamp as timestamp3, pgEnum as pgEnum3 } from "drizzle-orm/pg-core";
-var teamCategoryEnum = pgEnum3("team_category", ["leadership", "volunteer", "ambassador"]);
-var teamMembersTable = pgTable3("team_members", {
-  id: serial3("id").primaryKey(),
-  name: text3("name").notNull(),
-  role: text3("role").notNull(),
-  bio: text3("bio").notNull(),
-  imageUrl: text3("image_url").notNull(),
-  linkedinUrl: text3("linkedin_url"),
+var import_pg_core3 = require("drizzle-orm/pg-core");
+var teamCategoryEnum = (0, import_pg_core3.pgEnum)("team_category", ["leadership", "volunteer", "ambassador"]);
+var teamMembersTable = (0, import_pg_core3.pgTable)("team_members", {
+  id: (0, import_pg_core3.serial)("id").primaryKey(),
+  name: (0, import_pg_core3.text)("name").notNull(),
+  role: (0, import_pg_core3.text)("role").notNull(),
+  bio: (0, import_pg_core3.text)("bio").notNull(),
+  imageUrl: (0, import_pg_core3.text)("image_url").notNull(),
+  linkedinUrl: (0, import_pg_core3.text)("linkedin_url"),
   category: teamCategoryEnum("category").notNull().default("volunteer"),
-  order: integer4("order").notNull().default(0),
-  createdAt: timestamp3("created_at").defaultNow().notNull()
+  order: (0, import_pg_core3.integer)("order").notNull().default(0),
+  createdAt: (0, import_pg_core3.timestamp)("created_at").defaultNow().notNull()
 });
 var insertTeamMemberSchema = createInsertSchema(teamMembersTable).omit({ id: true, createdAt: true });
 
 // lib/db/src/schema/partners.ts
-import { pgTable as pgTable4, serial as serial4, text as text4, timestamp as timestamp4, pgEnum as pgEnum4 } from "drizzle-orm/pg-core";
-var partnerTypeEnum = pgEnum4("partner_type", ["company", "ngo", "government", "sponsor"]);
-var partnersTable = pgTable4("partners", {
-  id: serial4("id").primaryKey(),
-  name: text4("name").notNull(),
+var import_pg_core4 = require("drizzle-orm/pg-core");
+var partnerTypeEnum = (0, import_pg_core4.pgEnum)("partner_type", ["company", "ngo", "government", "sponsor"]);
+var partnersTable = (0, import_pg_core4.pgTable)("partners", {
+  id: (0, import_pg_core4.serial)("id").primaryKey(),
+  name: (0, import_pg_core4.text)("name").notNull(),
   type: partnerTypeEnum("type").notNull(),
-  logoUrl: text4("logo_url").notNull(),
-  websiteUrl: text4("website_url").notNull(),
-  country: text4("country"),
-  description: text4("description"),
-  createdAt: timestamp4("created_at").defaultNow().notNull()
+  logoUrl: (0, import_pg_core4.text)("logo_url").notNull(),
+  websiteUrl: (0, import_pg_core4.text)("website_url").notNull(),
+  country: (0, import_pg_core4.text)("country"),
+  description: (0, import_pg_core4.text)("description"),
+  createdAt: (0, import_pg_core4.timestamp)("created_at").defaultNow().notNull()
 });
 var insertPartnerSchema = createInsertSchema(partnersTable).omit({ id: true, createdAt: true });
 
 // lib/db/src/schema/events.ts
-import { pgTable as pgTable5, serial as serial5, text as text5, timestamp as timestamp5, pgEnum as pgEnum5 } from "drizzle-orm/pg-core";
-var eventTypeEnum = pgEnum5("event_type", ["event", "update", "press", "video"]);
-var eventsTable = pgTable5("events", {
-  id: serial5("id").primaryKey(),
-  title: text5("title").notNull(),
-  description: text5("description").notNull(),
-  content: text5("content"),
+var import_pg_core5 = require("drizzle-orm/pg-core");
+var eventTypeEnum = (0, import_pg_core5.pgEnum)("event_type", ["event", "update", "press", "video"]);
+var eventsTable = (0, import_pg_core5.pgTable)("events", {
+  id: (0, import_pg_core5.serial)("id").primaryKey(),
+  title: (0, import_pg_core5.text)("title").notNull(),
+  description: (0, import_pg_core5.text)("description").notNull(),
+  content: (0, import_pg_core5.text)("content"),
   type: eventTypeEnum("type").notNull().default("event"),
-  imageUrl: text5("image_url").notNull(),
-  date: text5("date").notNull(),
-  location: text5("location").notNull(),
-  videoUrl: text5("video_url"),
-  createdAt: timestamp5("created_at").defaultNow().notNull()
+  imageUrl: (0, import_pg_core5.text)("image_url").notNull(),
+  date: (0, import_pg_core5.text)("date").notNull(),
+  location: (0, import_pg_core5.text)("location").notNull(),
+  videoUrl: (0, import_pg_core5.text)("video_url"),
+  createdAt: (0, import_pg_core5.timestamp)("created_at").defaultNow().notNull()
 });
 var insertEventSchema = createInsertSchema(eventsTable).omit({ id: true, createdAt: true });
 
 // lib/db/src/schema/community.ts
-import { pgTable as pgTable6, serial as serial6, text as text6, timestamp as timestamp6, pgEnum as pgEnum6 } from "drizzle-orm/pg-core";
-var memberTypeEnum = pgEnum6("member_type", ["individual", "organization", "volunteer"]);
-var communityMembersTable = pgTable6("community_members", {
-  id: serial6("id").primaryKey(),
-  name: text6("name").notNull(),
-  email: text6("email").notNull().unique(),
-  country: text6("country").notNull(),
+var import_pg_core6 = require("drizzle-orm/pg-core");
+var memberTypeEnum = (0, import_pg_core6.pgEnum)("member_type", ["individual", "organization", "volunteer"]);
+var communityMembersTable = (0, import_pg_core6.pgTable)("community_members", {
+  id: (0, import_pg_core6.serial)("id").primaryKey(),
+  name: (0, import_pg_core6.text)("name").notNull(),
+  email: (0, import_pg_core6.text)("email").notNull().unique(),
+  country: (0, import_pg_core6.text)("country").notNull(),
   memberType: memberTypeEnum("member_type").notNull().default("individual"),
-  bio: text6("bio"),
-  avatarUrl: text6("avatar_url"),
-  joinedAt: timestamp6("joined_at").defaultNow().notNull()
+  bio: (0, import_pg_core6.text)("bio"),
+  avatarUrl: (0, import_pg_core6.text)("avatar_url"),
+  joinedAt: (0, import_pg_core6.timestamp)("joined_at").defaultNow().notNull()
 });
 var insertCommunityMemberSchema = createInsertSchema(communityMembersTable).omit({ id: true, joinedAt: true });
 
 // lib/db/src/schema/community_feed.ts
-import {
-  pgTable as pgTable7,
-  serial as serial7,
-  text as text7,
-  timestamp as timestamp7,
-  integer as integer5,
-  pgEnum as pgEnum7,
-  unique
-} from "drizzle-orm/pg-core";
-var reactionTypeEnum = pgEnum7("reaction_type", [
+var import_pg_core7 = require("drizzle-orm/pg-core");
+var reactionTypeEnum = (0, import_pg_core7.pgEnum)("reaction_type", [
   "like",
   "love",
   "celebrate",
   "support",
   "insightful"
 ]);
-var communityPostsTable = pgTable7("community_posts", {
-  id: serial7("id").primaryKey(),
-  authorId: text7("author_id").notNull(),
-  authorName: text7("author_name").notNull(),
-  authorImageUrl: text7("author_image_url"),
-  content: text7("content").notNull(),
-  imageUrl: text7("image_url"),
-  createdAt: timestamp7("created_at").defaultNow().notNull()
+var communityPostsTable = (0, import_pg_core7.pgTable)("community_posts", {
+  id: (0, import_pg_core7.serial)("id").primaryKey(),
+  authorId: (0, import_pg_core7.text)("author_id").notNull(),
+  authorName: (0, import_pg_core7.text)("author_name").notNull(),
+  authorImageUrl: (0, import_pg_core7.text)("author_image_url"),
+  content: (0, import_pg_core7.text)("content").notNull(),
+  imageUrl: (0, import_pg_core7.text)("image_url"),
+  createdAt: (0, import_pg_core7.timestamp)("created_at").defaultNow().notNull()
 });
-var postReactionsTable = pgTable7(
+var postReactionsTable = (0, import_pg_core7.pgTable)(
   "post_reactions",
   {
-    id: serial7("id").primaryKey(),
-    postId: integer5("post_id").notNull().references(() => communityPostsTable.id, { onDelete: "cascade" }),
-    userId: text7("user_id").notNull(),
+    id: (0, import_pg_core7.serial)("id").primaryKey(),
+    postId: (0, import_pg_core7.integer)("post_id").notNull().references(() => communityPostsTable.id, { onDelete: "cascade" }),
+    userId: (0, import_pg_core7.text)("user_id").notNull(),
     type: reactionTypeEnum("type").notNull(),
-    createdAt: timestamp7("created_at").defaultNow().notNull()
+    createdAt: (0, import_pg_core7.timestamp)("created_at").defaultNow().notNull()
   },
   (t) => ({
-    uniqUserPost: unique("uniq_user_post_reaction").on(t.postId, t.userId)
+    uniqUserPost: (0, import_pg_core7.unique)("uniq_user_post_reaction").on(t.postId, t.userId)
   })
 );
-var postCommentsTable = pgTable7("post_comments", {
-  id: serial7("id").primaryKey(),
-  postId: integer5("post_id").notNull().references(() => communityPostsTable.id, { onDelete: "cascade" }),
-  authorId: text7("author_id").notNull(),
-  authorName: text7("author_name").notNull(),
-  authorImageUrl: text7("author_image_url"),
-  content: text7("content").notNull(),
-  createdAt: timestamp7("created_at").defaultNow().notNull()
+var postCommentsTable = (0, import_pg_core7.pgTable)("post_comments", {
+  id: (0, import_pg_core7.serial)("id").primaryKey(),
+  postId: (0, import_pg_core7.integer)("post_id").notNull().references(() => communityPostsTable.id, { onDelete: "cascade" }),
+  authorId: (0, import_pg_core7.text)("author_id").notNull(),
+  authorName: (0, import_pg_core7.text)("author_name").notNull(),
+  authorImageUrl: (0, import_pg_core7.text)("author_image_url"),
+  content: (0, import_pg_core7.text)("content").notNull(),
+  createdAt: (0, import_pg_core7.timestamp)("created_at").defaultNow().notNull()
 });
-var commentReactionsTable = pgTable7(
+var commentReactionsTable = (0, import_pg_core7.pgTable)(
   "comment_reactions",
   {
-    id: serial7("id").primaryKey(),
-    commentId: integer5("comment_id").notNull().references(() => postCommentsTable.id, { onDelete: "cascade" }),
-    userId: text7("user_id").notNull(),
+    id: (0, import_pg_core7.serial)("id").primaryKey(),
+    commentId: (0, import_pg_core7.integer)("comment_id").notNull().references(() => postCommentsTable.id, { onDelete: "cascade" }),
+    userId: (0, import_pg_core7.text)("user_id").notNull(),
     type: reactionTypeEnum("type").notNull(),
-    createdAt: timestamp7("created_at").defaultNow().notNull()
+    createdAt: (0, import_pg_core7.timestamp)("created_at").defaultNow().notNull()
   },
   (t) => ({
-    uniqUserComment: unique("uniq_user_comment_reaction").on(
+    uniqUserComment: (0, import_pg_core7.unique)("uniq_user_comment_reaction").on(
       t.commentId,
       t.userId
     )
@@ -16754,37 +16741,37 @@ var commentReactionsTable = pgTable7(
 );
 
 // lib/db/src/schema/blog.ts
-import { pgTable as pgTable8, serial as serial8, text as text8, timestamp as timestamp8, pgEnum as pgEnum8 } from "drizzle-orm/pg-core";
-var blogCategoryEnum = pgEnum8("blog_category", ["story", "report", "press", "impact"]);
-var blogPostsTable = pgTable8("blog_posts", {
-  id: serial8("id").primaryKey(),
-  title: text8("title").notNull(),
-  excerpt: text8("excerpt").notNull(),
-  content: text8("content").notNull(),
-  author: text8("author").notNull(),
+var import_pg_core8 = require("drizzle-orm/pg-core");
+var blogCategoryEnum = (0, import_pg_core8.pgEnum)("blog_category", ["story", "report", "press", "impact"]);
+var blogPostsTable = (0, import_pg_core8.pgTable)("blog_posts", {
+  id: (0, import_pg_core8.serial)("id").primaryKey(),
+  title: (0, import_pg_core8.text)("title").notNull(),
+  excerpt: (0, import_pg_core8.text)("excerpt").notNull(),
+  content: (0, import_pg_core8.text)("content").notNull(),
+  author: (0, import_pg_core8.text)("author").notNull(),
   category: blogCategoryEnum("category").notNull().default("story"),
-  imageUrl: text8("image_url").notNull(),
-  publishedAt: timestamp8("published_at").defaultNow().notNull()
+  imageUrl: (0, import_pg_core8.text)("image_url").notNull(),
+  publishedAt: (0, import_pg_core8.timestamp)("published_at").defaultNow().notNull()
 });
 var insertBlogPostSchema = createInsertSchema(blogPostsTable).omit({ id: true, publishedAt: true });
 
 // lib/db/src/schema/contact.ts
-import { pgTable as pgTable9, serial as serial9, text as text9, boolean as boolean5, timestamp as timestamp9 } from "drizzle-orm/pg-core";
-var contactSubmissionsTable = pgTable9("contact_submissions", {
-  id: serial9("id").primaryKey(),
-  name: text9("name").notNull(),
-  email: text9("email").notNull(),
-  subject: text9("subject").notNull(),
-  message: text9("message").notNull(),
-  phone: text9("phone"),
-  createdAt: timestamp9("created_at").defaultNow().notNull()
+var import_pg_core9 = require("drizzle-orm/pg-core");
+var contactSubmissionsTable = (0, import_pg_core9.pgTable)("contact_submissions", {
+  id: (0, import_pg_core9.serial)("id").primaryKey(),
+  name: (0, import_pg_core9.text)("name").notNull(),
+  email: (0, import_pg_core9.text)("email").notNull(),
+  subject: (0, import_pg_core9.text)("subject").notNull(),
+  message: (0, import_pg_core9.text)("message").notNull(),
+  phone: (0, import_pg_core9.text)("phone"),
+  createdAt: (0, import_pg_core9.timestamp)("created_at").defaultNow().notNull()
 });
-var newsletterSubscribersTable = pgTable9("newsletter_subscribers", {
-  id: serial9("id").primaryKey(),
-  email: text9("email").notNull().unique(),
-  name: text9("name"),
-  subscribedAt: timestamp9("subscribed_at").defaultNow().notNull(),
-  active: boolean5("active").notNull().default(true)
+var newsletterSubscribersTable = (0, import_pg_core9.pgTable)("newsletter_subscribers", {
+  id: (0, import_pg_core9.serial)("id").primaryKey(),
+  email: (0, import_pg_core9.text)("email").notNull().unique(),
+  name: (0, import_pg_core9.text)("name"),
+  subscribedAt: (0, import_pg_core9.timestamp)("subscribed_at").defaultNow().notNull(),
+  active: (0, import_pg_core9.boolean)("active").notNull().default(true)
 });
 var insertContactSchema = createInsertSchema(contactSubmissionsTable).omit({ id: true, createdAt: true });
 var insertNewsletterSchema = createInsertSchema(newsletterSubscribersTable).omit({ id: true, subscribedAt: true });
@@ -16827,7 +16814,7 @@ function getPool() {
 }
 function getDb() {
   if (!dbInstance) {
-    dbInstance = drizzle(getPool(), { schema: schema_exports });
+    dbInstance = (0, import_node_postgres.drizzle)(getPool(), { schema: schema_exports });
   }
   return dbInstance;
 }
@@ -16845,8 +16832,8 @@ var db = new Proxy({}, {
 });
 
 // artifacts/api-server/src/routes/projects.ts
-import { eq } from "drizzle-orm";
-var router2 = Router2();
+var import_drizzle_orm3 = require("drizzle-orm");
+var router2 = (0, import_express2.Router)();
 function getSingleQueryValue(value) {
   if (typeof value === "string") {
     return value;
@@ -16900,7 +16887,7 @@ router2.get("/projects/:id", async (req, res) => {
     res.status(400).json({ error: "Invalid id" });
     return;
   }
-  const [project] = await db.select().from(projectsTable).where(eq(projectsTable.id, id));
+  const [project] = await db.select().from(projectsTable).where((0, import_drizzle_orm3.eq)(projectsTable.id, id));
   if (!project) {
     res.status(404).json({ error: "Not found" });
     return;
@@ -16944,7 +16931,7 @@ router2.post("/projects", async (req, res) => {
 var projects_default = router2;
 
 // artifacts/api-server/src/routes/donations.ts
-import { Router as Router3 } from "express";
+var import_express3 = require("express");
 
 // node_modules/.pnpm/zod@3.25.76/node_modules/zod/v3/helpers/util.js
 var util;
@@ -21243,11 +21230,11 @@ var SubscribeNewsletterBody = objectType({
 });
 
 // artifacts/api-server/src/routes/donations.ts
-import { desc } from "drizzle-orm";
+var import_drizzle_orm4 = require("drizzle-orm");
 
 // artifacts/api-server/src/stripeClient.ts
-import StripePackage from "stripe";
-import { StripeSync } from "stripe-replit-sync";
+var import_stripe = __toESM(require("stripe"), 1);
+var import_stripe_replit_sync = require("stripe-replit-sync");
 function isUsableStripeKey(key) {
   if (!key) return false;
   const trimmed = key.trim();
@@ -21272,14 +21259,14 @@ function getStripeWebhookSecret() {
   return process.env["STRIPE_WEBHOOK_SECRET"]?.trim() ?? "";
 }
 async function getUncachableStripeClient() {
-  return new StripePackage(getStripeSecretKey());
+  return new import_stripe.default(getStripeSecretKey());
 }
 async function getStripeSync() {
   const databaseUrl = getSupabaseDatabaseUrl();
   if (!databaseUrl) {
     throw new Error("SUPABASE_DB_URL or DATABASE_URL environment variable is required");
   }
-  return new StripeSync({
+  return new import_stripe_replit_sync.StripeSync({
     poolConfig: { connectionString: databaseUrl },
     stripeSecretKey: getStripeSecretKey(),
     stripeWebhookSecret: getStripeWebhookSecret()
@@ -21287,7 +21274,7 @@ async function getStripeSync() {
 }
 
 // artifacts/api-server/src/routes/donations.ts
-var router3 = Router3();
+var router3 = (0, import_express3.Router)();
 function isLocalhostUrl(value) {
   try {
     const url2 = new URL(value);
@@ -21350,11 +21337,11 @@ function getCheckoutBranding() {
   };
 }
 router3.get("/donations", async (_req, res) => {
-  const donations = await db.select().from(donationsTable).orderBy(desc(donationsTable.createdAt));
+  const donations = await db.select().from(donationsTable).orderBy((0, import_drizzle_orm4.desc)(donationsTable.createdAt));
   res.json(donations.map((d) => ({ ...d, createdAt: d.createdAt.toISOString() })));
 });
 router3.get("/donations/summary", async (_req, res) => {
-  const all = await db.select().from(donationsTable).orderBy(desc(donationsTable.createdAt));
+  const all = await db.select().from(donationsTable).orderBy((0, import_drizzle_orm4.desc)(donationsTable.createdAt));
   const totalRaised = all.reduce((sum, d) => sum + d.amount, 0);
   const totalDonors = new Set(all.map((d) => d.donorName)).size;
   const monthlyRecurring = all.filter((d) => d.type === "monthly").reduce((sum, d) => sum + d.amount, 0);
@@ -21442,11 +21429,11 @@ router3.post("/donations/checkout", async (req, res) => {
 var donations_default = router3;
 
 // artifacts/api-server/src/routes/team.ts
-import { Router as Router4 } from "express";
-import { asc } from "drizzle-orm";
-var router4 = Router4();
+var import_express4 = require("express");
+var import_drizzle_orm5 = require("drizzle-orm");
+var router4 = (0, import_express4.Router)();
 router4.get("/team", async (req, res) => {
-  const members = await db.select().from(teamMembersTable).orderBy(asc(teamMembersTable.order));
+  const members = await db.select().from(teamMembersTable).orderBy((0, import_drizzle_orm5.asc)(teamMembersTable.order));
   res.json(members.map((m) => ({ ...m, createdAt: void 0 })));
 });
 router4.post("/team", async (req, res) => {
@@ -21461,8 +21448,8 @@ router4.post("/team", async (req, res) => {
 var team_default = router4;
 
 // artifacts/api-server/src/routes/partners.ts
-import { Router as Router5 } from "express";
-var router5 = Router5();
+var import_express5 = require("express");
+var router5 = (0, import_express5.Router)();
 router5.get("/partners", async (req, res) => {
   const partners = await db.select().from(partnersTable);
   res.json(partners.map((p) => ({ ...p, createdAt: void 0 })));
@@ -21479,15 +21466,15 @@ router5.post("/partners", async (req, res) => {
 var partners_default = router5;
 
 // artifacts/api-server/src/routes/events.ts
-import { Router as Router6 } from "express";
-import { desc as desc2, eq as eq2 } from "drizzle-orm";
-var router6 = Router6();
+var import_express6 = require("express");
+var import_drizzle_orm6 = require("drizzle-orm");
+var router6 = (0, import_express6.Router)();
 router6.get("/events/recent", async (req, res) => {
-  const events = await db.select().from(eventsTable).orderBy(desc2(eventsTable.createdAt)).limit(6);
+  const events = await db.select().from(eventsTable).orderBy((0, import_drizzle_orm6.desc)(eventsTable.createdAt)).limit(6);
   res.json(events.map((e) => ({ ...e, createdAt: e.createdAt.toISOString() })));
 });
 router6.get("/events", async (req, res) => {
-  const events = await db.select().from(eventsTable).orderBy(desc2(eventsTable.createdAt));
+  const events = await db.select().from(eventsTable).orderBy((0, import_drizzle_orm6.desc)(eventsTable.createdAt));
   res.json(events.map((e) => ({ ...e, createdAt: e.createdAt.toISOString() })));
 });
 router6.get("/events/:id", async (req, res) => {
@@ -21496,7 +21483,7 @@ router6.get("/events/:id", async (req, res) => {
     res.status(400).json({ error: "Invalid id" });
     return;
   }
-  const [event] = await db.select().from(eventsTable).where(eq2(eventsTable.id, parsed.data.id));
+  const [event] = await db.select().from(eventsTable).where((0, import_drizzle_orm6.eq)(eventsTable.id, parsed.data.id));
   if (!event) {
     res.status(404).json({ error: "Not found" });
     return;
@@ -21515,9 +21502,9 @@ router6.post("/events", async (req, res) => {
 var events_default = router6;
 
 // artifacts/api-server/src/routes/community.ts
-import { Router as Router7 } from "express";
-import { desc as desc3 } from "drizzle-orm";
-var router7 = Router7();
+var import_express7 = require("express");
+var import_drizzle_orm7 = require("drizzle-orm");
+var router7 = (0, import_express7.Router)();
 router7.get("/community/stats", async (req, res, next) => {
   try {
     const all = await db.select().from(communityMembersTable);
@@ -21531,7 +21518,7 @@ router7.get("/community/stats", async (req, res, next) => {
 });
 router7.get("/community/members", async (req, res, next) => {
   try {
-    const members = await db.select().from(communityMembersTable).orderBy(desc3(communityMembersTable.joinedAt));
+    const members = await db.select().from(communityMembersTable).orderBy((0, import_drizzle_orm7.desc)(communityMembersTable.joinedAt));
     res.json(members.map((m) => ({ ...m, joinedAt: m.joinedAt.toISOString() })));
   } catch (error40) {
     next(error40);
@@ -21557,9 +21544,9 @@ router7.post("/community/members", async (req, res, next) => {
 var community_default = router7;
 
 // artifacts/api-server/src/routes/communityFeed.ts
-import { Router as Router8 } from "express";
-import { and, desc as desc4, asc as asc2, eq as eq3, inArray } from "drizzle-orm";
-var router8 = Router8();
+var import_express8 = require("express");
+var import_drizzle_orm8 = require("drizzle-orm");
+var router8 = (0, import_express8.Router)();
 var REACTION_TYPES = ["like", "love", "celebrate", "support", "insightful"];
 function emptyCounts() {
   return { like: 0, love: 0, celebrate: 0, support: 0, insightful: 0 };
@@ -21622,18 +21609,18 @@ function serializeComment(c, counts, myReaction) {
   };
 }
 async function buildPost(p, me) {
-  const reactions = await db.select().from(postReactionsTable).where(eq3(postReactionsTable.postId, p.id));
+  const reactions = await db.select().from(postReactionsTable).where((0, import_drizzle_orm8.eq)(postReactionsTable.postId, p.id));
   const counts = emptyCounts();
   let myReaction = null;
   for (const r of reactions) {
     counts[r.type] += 1;
     if (me && r.userId === me) myReaction = r.type;
   }
-  const comments = await db.select({ id: postCommentsTable.id }).from(postCommentsTable).where(eq3(postCommentsTable.postId, p.id));
+  const comments = await db.select({ id: postCommentsTable.id }).from(postCommentsTable).where((0, import_drizzle_orm8.eq)(postCommentsTable.postId, p.id));
   return serializePost(p, counts, myReaction, comments.length);
 }
 async function buildComment(c, me) {
-  const reactions = await db.select().from(commentReactionsTable).where(eq3(commentReactionsTable.commentId, c.id));
+  const reactions = await db.select().from(commentReactionsTable).where((0, import_drizzle_orm8.eq)(commentReactionsTable.commentId, c.id));
   const counts = emptyCounts();
   let myReaction = null;
   for (const r of reactions) {
@@ -21645,10 +21632,10 @@ async function buildComment(c, me) {
 router8.get("/community/posts", async (req, res, next) => {
   const me = getUserId(req);
   try {
-    const posts = await db.select().from(communityPostsTable).orderBy(desc4(communityPostsTable.createdAt));
+    const posts = await db.select().from(communityPostsTable).orderBy((0, import_drizzle_orm8.desc)(communityPostsTable.createdAt));
     const ids = posts.map((p) => p.id);
-    const reactions = ids.length ? await db.select().from(postReactionsTable).where(inArray(postReactionsTable.postId, ids)) : [];
-    const comments = ids.length ? await db.select({ postId: postCommentsTable.postId }).from(postCommentsTable).where(inArray(postCommentsTable.postId, ids)) : [];
+    const reactions = ids.length ? await db.select().from(postReactionsTable).where((0, import_drizzle_orm8.inArray)(postReactionsTable.postId, ids)) : [];
+    const comments = ids.length ? await db.select({ postId: postCommentsTable.postId }).from(postCommentsTable).where((0, import_drizzle_orm8.inArray)(postCommentsTable.postId, ids)) : [];
     const countsByPost = /* @__PURE__ */ new Map();
     const myByPost = /* @__PURE__ */ new Map();
     for (const r of reactions) {
@@ -21720,7 +21707,7 @@ router8.delete("/community/posts/:id", async (req, res, next) => {
     return;
   }
   try {
-    const [post] = await db.select().from(communityPostsTable).where(eq3(communityPostsTable.id, id));
+    const [post] = await db.select().from(communityPostsTable).where((0, import_drizzle_orm8.eq)(communityPostsTable.id, id));
     if (!post) {
       res.status(404).json({ error: "Not found" });
       return;
@@ -21729,7 +21716,7 @@ router8.delete("/community/posts/:id", async (req, res, next) => {
       res.status(403).json({ error: "Forbidden" });
       return;
     }
-    await db.delete(communityPostsTable).where(eq3(communityPostsTable.id, id));
+    await db.delete(communityPostsTable).where((0, import_drizzle_orm8.eq)(communityPostsTable.id, id));
     res.status(204).end();
   } catch (error40) {
     next(error40);
@@ -21753,14 +21740,14 @@ router8.put("/community/posts/:id/reaction", async (req, res, next) => {
   }
   const type = parsed.data.type;
   try {
-    const [post] = await db.select().from(communityPostsTable).where(eq3(communityPostsTable.id, id));
+    const [post] = await db.select().from(communityPostsTable).where((0, import_drizzle_orm8.eq)(communityPostsTable.id, id));
     if (!post) {
       res.status(404).json({ error: "Not found" });
       return;
     }
-    const [existing] = await db.select().from(postReactionsTable).where(and(eq3(postReactionsTable.postId, id), eq3(postReactionsTable.userId, me)));
+    const [existing] = await db.select().from(postReactionsTable).where((0, import_drizzle_orm8.and)((0, import_drizzle_orm8.eq)(postReactionsTable.postId, id), (0, import_drizzle_orm8.eq)(postReactionsTable.userId, me)));
     if (existing && existing.type === type) {
-      await db.delete(postReactionsTable).where(eq3(postReactionsTable.id, existing.id));
+      await db.delete(postReactionsTable).where((0, import_drizzle_orm8.eq)(postReactionsTable.id, existing.id));
     } else {
       await db.insert(postReactionsTable).values({ postId: id, userId: me, type }).onConflictDoUpdate({
         target: [postReactionsTable.postId, postReactionsTable.userId],
@@ -21780,9 +21767,9 @@ router8.get("/community/posts/:id/comments", async (req, res, next) => {
     return;
   }
   try {
-    const comments = await db.select().from(postCommentsTable).where(eq3(postCommentsTable.postId, postId)).orderBy(asc2(postCommentsTable.createdAt));
+    const comments = await db.select().from(postCommentsTable).where((0, import_drizzle_orm8.eq)(postCommentsTable.postId, postId)).orderBy((0, import_drizzle_orm8.asc)(postCommentsTable.createdAt));
     const ids = comments.map((c) => c.id);
-    const reactions = ids.length ? await db.select().from(commentReactionsTable).where(inArray(commentReactionsTable.commentId, ids)) : [];
+    const reactions = ids.length ? await db.select().from(commentReactionsTable).where((0, import_drizzle_orm8.inArray)(commentReactionsTable.commentId, ids)) : [];
     const countsByComment = /* @__PURE__ */ new Map();
     const myByComment = /* @__PURE__ */ new Map();
     for (const r of reactions) {
@@ -21829,7 +21816,7 @@ router8.post("/community/posts/:id/comments", async (req, res, next) => {
     return;
   }
   try {
-    const [post] = await db.select().from(communityPostsTable).where(eq3(communityPostsTable.id, postId));
+    const [post] = await db.select().from(communityPostsTable).where((0, import_drizzle_orm8.eq)(communityPostsTable.id, postId));
     if (!post) {
       res.status(404).json({ error: "Not found" });
       return;
@@ -21859,7 +21846,7 @@ router8.delete("/community/comments/:id", async (req, res, next) => {
     return;
   }
   try {
-    const [comment] = await db.select().from(postCommentsTable).where(eq3(postCommentsTable.id, id));
+    const [comment] = await db.select().from(postCommentsTable).where((0, import_drizzle_orm8.eq)(postCommentsTable.id, id));
     if (!comment) {
       res.status(404).json({ error: "Not found" });
       return;
@@ -21868,7 +21855,7 @@ router8.delete("/community/comments/:id", async (req, res, next) => {
       res.status(403).json({ error: "Forbidden" });
       return;
     }
-    await db.delete(postCommentsTable).where(eq3(postCommentsTable.id, id));
+    await db.delete(postCommentsTable).where((0, import_drizzle_orm8.eq)(postCommentsTable.id, id));
     res.status(204).end();
   } catch (error40) {
     next(error40);
@@ -21892,16 +21879,16 @@ router8.put("/community/comments/:id/reaction", async (req, res, next) => {
   }
   const type = parsed.data.type;
   try {
-    const [comment] = await db.select().from(postCommentsTable).where(eq3(postCommentsTable.id, id));
+    const [comment] = await db.select().from(postCommentsTable).where((0, import_drizzle_orm8.eq)(postCommentsTable.id, id));
     if (!comment) {
       res.status(404).json({ error: "Not found" });
       return;
     }
     const [existing] = await db.select().from(commentReactionsTable).where(
-      and(eq3(commentReactionsTable.commentId, id), eq3(commentReactionsTable.userId, me))
+      (0, import_drizzle_orm8.and)((0, import_drizzle_orm8.eq)(commentReactionsTable.commentId, id), (0, import_drizzle_orm8.eq)(commentReactionsTable.userId, me))
     );
     if (existing && existing.type === type) {
-      await db.delete(commentReactionsTable).where(eq3(commentReactionsTable.id, existing.id));
+      await db.delete(commentReactionsTable).where((0, import_drizzle_orm8.eq)(commentReactionsTable.id, existing.id));
     } else {
       await db.insert(commentReactionsTable).values({ commentId: id, userId: me, type }).onConflictDoUpdate({
         target: [commentReactionsTable.commentId, commentReactionsTable.userId],
@@ -21916,11 +21903,11 @@ router8.put("/community/comments/:id/reaction", async (req, res, next) => {
 var communityFeed_default = router8;
 
 // artifacts/api-server/src/routes/blog.ts
-import { Router as Router9 } from "express";
-import { eq as eq4, desc as desc5 } from "drizzle-orm";
-var router9 = Router9();
+var import_express9 = require("express");
+var import_drizzle_orm9 = require("drizzle-orm");
+var router9 = (0, import_express9.Router)();
 router9.get("/blog", async (req, res) => {
-  const posts = await db.select().from(blogPostsTable).orderBy(desc5(blogPostsTable.publishedAt));
+  const posts = await db.select().from(blogPostsTable).orderBy((0, import_drizzle_orm9.desc)(blogPostsTable.publishedAt));
   res.json(posts.map((p) => ({ ...p, publishedAt: p.publishedAt.toISOString() })));
 });
 router9.get("/blog/:id", async (req, res) => {
@@ -21929,7 +21916,7 @@ router9.get("/blog/:id", async (req, res) => {
     res.status(400).json({ error: "Invalid id" });
     return;
   }
-  const [post] = await db.select().from(blogPostsTable).where(eq4(blogPostsTable.id, parsed.data.id));
+  const [post] = await db.select().from(blogPostsTable).where((0, import_drizzle_orm9.eq)(blogPostsTable.id, parsed.data.id));
   if (!post) {
     res.status(404).json({ error: "Not found" });
     return;
@@ -21948,8 +21935,8 @@ router9.post("/blog", async (req, res) => {
 var blog_default = router9;
 
 // artifacts/api-server/src/routes/impact.ts
-import { Router as Router10 } from "express";
-var router10 = Router10();
+var import_express10 = require("express");
+var router10 = (0, import_express10.Router)();
 router10.get("/impact", async (req, res) => {
   const [projects, donations, members, partners] = await Promise.all([
     db.select().from(projectsTable),
@@ -22018,8 +22005,8 @@ router10.get("/impact/roadmap", async (req, res) => {
 var impact_default = router10;
 
 // artifacts/api-server/src/routes/contact.ts
-import { Router as Router11 } from "express";
-var router11 = Router11();
+var import_express11 = require("express");
+var router11 = (0, import_express11.Router)();
 router11.post("/contact", async (req, res) => {
   const parsed = SubmitContactBody.safeParse(req.body);
   if (!parsed.success) {
@@ -22045,7 +22032,7 @@ router11.post("/newsletter", async (req, res) => {
 var contact_default = router11;
 
 // artifacts/api-server/src/routes/index.ts
-var router12 = Router12();
+var router12 = (0, import_express12.Router)();
 router12.use(health_default);
 router12.use(projects_default);
 router12.use(donations_default);
@@ -22060,9 +22047,9 @@ router12.use(contact_default);
 var routes_default = router12;
 
 // artifacts/api-server/src/lib/logger.ts
-import pino from "pino";
+var import_pino = __toESM(require("pino"), 1);
 var isProduction = process.env.NODE_ENV === "production";
-var logger = pino({
+var logger = (0, import_pino.default)({
   level: process.env.LOG_LEVEL ?? "info",
   redact: [
     "req.headers.authorization",
@@ -22123,10 +22110,10 @@ var WebhookHandlers = class {
 };
 
 // artifacts/api-server/src/middlewares/authMiddleware.ts
-import { createClient } from "@supabase/supabase-js";
+var import_supabase_js = require("@supabase/supabase-js");
 var supabaseUrl = process.env.SUPABASE_URL || "https://kzfibfvfejutygenjfhs.supabase.co";
 var supabaseAnonKey = process.env.SUPABASE_ANON_KEY || "";
-var supabase = createClient(supabaseUrl, supabaseAnonKey);
+var supabase = (0, import_supabase_js.createClient)(supabaseUrl, supabaseAnonKey);
 async function authMiddleware(req, res, next) {
   const authorization = req.headers.authorization;
   if (!authorization || !authorization.startsWith("Bearer ")) {
@@ -22172,9 +22159,9 @@ async function authMiddleware(req, res, next) {
 }
 
 // artifacts/api-server/src/app.ts
-var app = express();
+var app = (0, import_express13.default)();
 app.use(
-  pinoHttp({
+  (0, import_pino_http.pinoHttp)({
     logger,
     serializers: {
       req(req) {
@@ -22192,10 +22179,10 @@ app.use(
     }
   })
 );
-app.use(cors({ credentials: true, origin: true }));
+app.use((0, import_cors.default)({ credentials: true, origin: true }));
 app.post(
   "/api/stripe/webhook",
-  express.raw({ type: "application/json" }),
+  import_express13.default.raw({ type: "application/json" }),
   async (req, res) => {
     const signature = req.headers["stripe-signature"];
     if (!signature) {
@@ -22212,14 +22199,14 @@ app.post(
     }
   }
 );
-app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ extended: true, limit: "10mb" }));
+app.use(import_express13.default.json({ limit: "10mb" }));
+app.use(import_express13.default.urlencoded({ extended: true, limit: "10mb" }));
 app.use(authMiddleware);
-app.use(helmet());
+app.use((0, import_helmet.default)());
 var isProduction2 = process.env.NODE_ENV === "production";
 app.use(
   "/api",
-  rateLimit({
+  (0, import_express_rate_limit.rateLimit)({
     windowMs: 15 * 60 * 1e3,
     // 15 minutes
     limit: 150,
@@ -22243,7 +22230,7 @@ app.use((err, req, res, next) => {
   });
 });
 var app_default = app;
-export {
-  app_default as default
-};
+
+// vercel-api/index.ts
+module.exports = app_default;
 //# sourceMappingURL=index.js.map

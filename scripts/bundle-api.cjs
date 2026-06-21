@@ -40,7 +40,7 @@ esbuild.build({
   bundle: true,
   platform: 'node',
   target: 'node20',
-  format: 'esm',
+  format: 'cjs',
   outfile: path.join(__dirname, '../api/index.js'),
   external: external,
   sourcemap: true,
@@ -48,7 +48,7 @@ esbuild.build({
   // Write the catch-all file
   fs.writeFileSync(
     path.join(apiDir, '[...path].js'),
-    'export { default } from "./index.js";\n',
+    'module.exports = require("./index.js");\n',
     'utf8'
   );
   console.log('API bundled successfully!');
