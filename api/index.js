@@ -17117,9 +17117,11 @@ app.use("/api", routes_default);
 app.use((err, req, res, next) => {
   req.log.error({ err }, "Unhandled application error");
   const statusCode = err.statusCode || err.status || 500;
-  const message = (err.message || "Internal Server Error") + "\nStack: " + String(err.stack);
+  const isConfigError = err.message && (err.message.includes("must be set") || err.message.includes("Stripe") || err.message.includes("Clerk") || err.message.includes("Supabase"));
+  const message = isProduction2 && !isConfigError ? "Internal Server Error" : err.message || "Internal Server Error";
   res.status(statusCode).json({
-    error: message
+    error: message,
+    ...isProduction2 ? {} : { stack: err.stack }
   });
 });
 var app_default = app;

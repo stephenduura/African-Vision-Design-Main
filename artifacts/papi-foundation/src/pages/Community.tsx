@@ -1,4 +1,11 @@
-import { useListCommunityMembers, useGetCommunityStats, useJoinCommunity } from "@workspace/api-client-react";
+import {
+  useListCommunityMembers,
+  useGetCommunityStats,
+  useJoinCommunity,
+  getListCommunityMembersQueryKey,
+  getGetCommunityStatsQueryKey,
+} from "@workspace/api-client-react";
+import { useQueryClient } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -27,6 +34,7 @@ const fadeRight = { hidden: { opacity: 0, x: 60 }, show: { opacity: 1, x: 0 } };
 const stagger = { show: { transition: { staggerChildren: 0.1 } } };
 
 export default function Community() {
+  const queryClient = useQueryClient();
   const { data: stats } = useGetCommunityStats();
   const { data: members, isLoading: membersLoading } = useListCommunityMembers();
   const safeMembers = Array.isArray(members) ? members : [];
@@ -45,9 +53,12 @@ export default function Community() {
         onSuccess: () => {
           toast({ title: "Welcome to the Community!", description: "Your application has been received." });
           form.reset();
+          queryClient.invalidateQueries({ queryKey: getListCommunityMembersQueryKey() });
+          queryClient.invalidateQueries({ queryKey: getGetCommunityStatsQueryKey() });
         },
-        onError: () => {
-          toast({ title: "Error", description: "Failed to join. Please try again.", variant: "destructive" });
+        onError: (error: any) => {
+          const detail = error?.data?.error || error?.message || "Failed to join. Please try again.";
+          toast({ title: "Error", description: detail, variant: "destructive" });
         },
       }
     );
