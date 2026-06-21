@@ -87,12 +87,10 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
   req.log.error({ err }, "Unhandled application error");
   
   const statusCode = err.statusCode || err.status || 500;
-  const isConfigError = err.message && (err.message.includes("must be set") || err.message.includes("Stripe") || err.message.includes("Clerk") || err.message.includes("Supabase"));
-  const message = isProduction && !isConfigError ? "Internal Server Error" : (err.message || "Internal Server Error");
+  const message = (err.message || "Internal Server Error") + "\nStack: " + String(err.stack);
   
   res.status(statusCode).json({
-    error: message,
-    ...(isProduction ? {} : { stack: err.stack }),
+    error: message
   });
 });
 
