@@ -17007,7 +17007,7 @@ var WebhookHandlers = class {
 // artifacts/api-server/src/middlewares/authMiddleware.ts
 var import_supabase_js = require("@supabase/supabase-js");
 var supabaseUrl = (process.env.SUPABASE_URL || "https://kzfibfvfejutygenjfhs.supabase.co").trim();
-var supabaseAnonKey = (process.env.SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt6ZmliZnZmZWp1dHlnZW5qZmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODU1MDAwMDAsImV4cCI6MjY4NTUwMDAwMH0.dummy").trim();
+var supabaseAnonKey = (process.env.SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt6ZmliZnZmZWp1dHlnZW5qZmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NzQ1OTMsImV4cCI6MjA5NjI1MDU5M30.2HL8GqFV-DD4q0h0I6KlnUsdNCugrmBBxii5iuRiRRY").trim();
 var supabase = (0, import_supabase_js.createClient)(supabaseUrl, supabaseAnonKey);
 async function authMiddleware(req, res, next) {
   const authorization = req.headers.authorization;
