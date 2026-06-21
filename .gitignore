@@ -52,3 +52,5 @@ Thumbs.db
 # Vercel generated API files
 /api/*.map
 
+.vercel
+.env*.local

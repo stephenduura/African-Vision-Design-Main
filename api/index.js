@@ -11674,7 +11674,7 @@ var insertNewsletterSchema = createInsertSchema(newsletterSubscribersTable).omit
 
 // lib/db/src/supabase.ts
 function getSupabaseDatabaseUrl() {
-  return process.env["SUPABASE_DB_URL"] ?? process.env["DATABASE_URL"] ?? "";
+  return (process.env["SUPABASE_DB_URL"] ?? process.env["DATABASE_URL"] ?? "").trim();
 }
 function getSupabasePoolConfig() {
   const connectionString = getSupabaseDatabaseUrl();
@@ -17006,8 +17006,8 @@ var WebhookHandlers = class {
 
 // artifacts/api-server/src/middlewares/authMiddleware.ts
 var import_supabase_js = require("@supabase/supabase-js");
-var supabaseUrl = process.env.SUPABASE_URL || "https://kzfibfvfejutygenjfhs.supabase.co";
-var supabaseAnonKey = process.env.SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt6ZmliZnZmZWp1dHlnZW5qZmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODU1MDAwMDAsImV4cCI6MjY4NTUwMDAwMH0.dummy";
+var supabaseUrl = (process.env.SUPABASE_URL || "https://kzfibfvfejutygenjfhs.supabase.co").trim();
+var supabaseAnonKey = (process.env.SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt6ZmliZnZmZWp1dHlnZW5qZmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODU1MDAwMDAsImV4cCI6MjY4NTUwMDAwMH0.dummy").trim();
 var supabase = (0, import_supabase_js.createClient)(supabaseUrl, supabaseAnonKey);
 async function authMiddleware(req, res, next) {
   const authorization = req.headers.authorization;
