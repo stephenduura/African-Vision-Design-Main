@@ -23,7 +23,7 @@ interface AuthContextValue {
   isLoaded: boolean;
   logout: () => void;
   signIn: (credentials: { email: string; password: string }) => Promise<{ success: boolean; error?: string }>;
-  signUp: (details: { name: string; email: string; password: string; memberType: AuthUser["memberType"] }) => Promise<{ success: boolean; error?: string }>;
+  signUp: (details: { name: string; email: string; password: string; memberType: AuthUser["memberType"] }) => Promise<{ success: boolean; error?: string; needsConfirmation?: boolean }>;
   followProject: (projectId: number) => void;
   unfollowProject: (projectId: number) => void;
   isFollowing: (projectId: number) => boolean;
@@ -168,7 +168,7 @@ function SupabaseAuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const signUp: AuthContextValue["signUp"] = useCallback(async ({ name, email, password, memberType }) => {
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -181,7 +181,7 @@ function SupabaseAuthProvider({ children }: { children: ReactNode }) {
     if (error) {
       return { success: false, error: error.message };
     }
-    return { success: true };
+    return { success: true, needsConfirmation: !!(data.user && !data.session) };
   }, []);
 
   // Sync token to API client

@@ -188,6 +188,14 @@ export function LocalSignUpCard() {
       toast({ title: "Account creation failed", description: result.error ?? "Please try again.", variant: "destructive" });
       return;
     }
+    if (result.needsConfirmation) {
+      toast({
+        title: "Account Created",
+        description: "Please check your email to verify your account before logging in.",
+      });
+      navigate("/sign-in", { replace: true });
+      return;
+    }
     toast({ title: "Account created", description: "Your account has been created successfully." });
     navigate("/dashboard", { replace: true });
   };
