@@ -11678,19 +11678,18 @@ function getSupabaseDatabaseUrl() {
 }
 function getSupabasePoolConfig() {
   const connectionString = getSupabaseDatabaseUrl();
-  if (!connectionString) {
-    throw new Error("SUPABASE_DB_URL or DATABASE_URL must be set for PostgreSQL access");
-  }
+  const isConfigured = Boolean(connectionString);
+  const conn = connectionString || "postgresql://postgres:postgres@localhost:5432/postgres";
   const hostname2 = (() => {
     try {
-      return new URL(connectionString).hostname;
+      return new URL(conn).hostname;
     } catch {
       return "";
     }
   })();
   const ssl = hostname2.includes("supabase.co") ? { rejectUnauthorized: false } : void 0;
   return {
-    connectionString,
+    connectionString: conn,
     ssl,
     max: 2,
     idleTimeoutMillis: 1e3,
