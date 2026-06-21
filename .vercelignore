@@ -1,3 +1,0 @@
-# Ignore root-level entrypoints on Vercel to prevent overriding the static frontend index.html
-index.js
-app.js
