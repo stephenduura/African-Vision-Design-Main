@@ -4,7 +4,7 @@ import { useLocation, Link } from "wouter";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { ArrowRight, Building2, Lock, Mail, User } from "lucide-react";
+import { ArrowRight, Building2, Lock, Mail, User, Globe } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -22,6 +22,7 @@ const signInSchema = z.object({
 const signUpSchema = z.object({
   name: z.string().min(2, "Full name is required"),
   email: z.string().email("Enter a valid email address"),
+  country: z.string().min(2, "Country is required"),
   password: z.string().min(8, "Password must be at least 8 characters"),
   confirmPassword: z.string().min(1, "Please confirm your password"),
   memberType: z.enum(memberTypes),
@@ -165,6 +166,7 @@ export function LocalSignUpCard() {
     defaultValues: {
       name: "",
       email: "",
+      country: "",
       password: "",
       confirmPassword: "",
       memberType: "individual",
@@ -183,6 +185,7 @@ export function LocalSignUpCard() {
       email: values.email,
       password: values.password,
       memberType: values.memberType,
+      country: values.country,
     });
     if (!result.success) {
       toast({ title: "Account creation failed", description: result.error ?? "Please try again.", variant: "destructive" });
@@ -249,6 +252,22 @@ export function LocalSignUpCard() {
                   <div className="relative">
                     <Mail className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <Input {...field} type="email" placeholder="you@example.com" className="pl-10 border-border focus:border-primary" />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="country"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-[11px] tracking-widest uppercase font-semibold">Country</FormLabel>
+                <FormControl>
+                  <div className="relative">
+                    <Globe className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Input {...field} placeholder="Your country" className="pl-10 border-border focus:border-primary" />
                   </div>
                 </FormControl>
                 <FormMessage />
