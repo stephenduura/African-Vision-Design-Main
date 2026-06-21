@@ -2,7 +2,7 @@ import type { Request, Response, NextFunction } from "express";
 import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = process.env.SUPABASE_URL || "https://kzfibfvfejutygenjfhs.supabase.co";
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || "";
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt6ZmliZnZmZWp1dHlnZW5qZmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODU1MDAwMDAsImV4cCI6MjY4NTUwMDAwMH0.dummy";
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
