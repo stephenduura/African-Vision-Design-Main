@@ -1,0 +1,3 @@
+# Ignore only the root-level entrypoints so they don't override the static frontend
+/index.js
+/app.js
