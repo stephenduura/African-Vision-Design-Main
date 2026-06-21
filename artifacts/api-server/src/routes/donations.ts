@@ -95,17 +95,20 @@ function getCheckoutBranding() {
 
 router.get("/donations", async (_req, res): Promise<void> => {
   const donations = await db.select().from(donationsTable).orderBy(desc(donationsTable.createdAt));
-  res.json(donations.map((d) => ({ ...d, createdAt: d.createdAt.toISOString() })));
+  const realDonations = donations.filter((d) => !d.stripeSessionId?.startsWith("seed_"));
+  res.json(realDonations.map((d) => ({ ...d, createdAt: d.createdAt.toISOString() })));
 });
 
 router.get("/donations/summary", async (_req, res): Promise<void> => {
   const all = await db.select().from(donationsTable).orderBy(desc(donationsTable.createdAt));
-  const totalRaised = all.reduce((sum, d) => sum + d.amount, 0);
-  const totalDonors = new Set(all.map((d) => d.donorName)).size;
-  const monthlyRecurring = all
+  const realDonations = all.filter((d) => !d.stripeSessionId?.startsWith("seed_"));
+  
+  const totalRaised = realDonations.reduce((sum, d) => sum + d.amount, 0);
+  const totalDonors = new Set(realDonations.map((d) => d.donorName)).size;
+  const monthlyRecurring = realDonations
     .filter((d) => d.type === "monthly")
     .reduce((sum, d) => sum + d.amount, 0);
-  const recentDonations = all.slice(0, 10).map((d) => ({ ...d, createdAt: d.createdAt.toISOString() }));
+  const recentDonations = realDonations.slice(0, 10).map((d) => ({ ...d, createdAt: d.createdAt.toISOString() }));
   res.json({ totalRaised, totalDonors, monthlyRecurring, recentDonations });
 });
 
